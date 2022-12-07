@@ -1,15 +1,18 @@
-class ExamMarkForLoop {
+class ExamMarkForLoopII {
     public static void main(String[] args) {
-        System.out.println("Enter 20 Exam Marks: ");
-        
         float[] examMark;
         examMark = new float[20];
 
         float averageMark = 0, totMarks = 0; 
         
         for (int i = 0; i < 20; i++) { 
+            System.out.printf("Enter Mark %d: ", i);
             examMark[i] = Keyboard.readFloat();
             
+            if (examMark[i] <50)
+                System.out.println("Fail");
+            else System.out.println("Pass");
+
             totMarks += examMark[i];
         }
       
