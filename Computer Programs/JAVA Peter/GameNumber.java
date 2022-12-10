@@ -7,7 +7,7 @@ class GameNumber {
 
         for (int i = 5; i >= 1; i--) {
             System.out.println();
-            System.out.println("Please Enter a Number between 1-10:");
+            System.out.print("Please Enter a Number between 1-10: ");
             int num = Keyboard.readInt();
             
             if (num == rNum) {
