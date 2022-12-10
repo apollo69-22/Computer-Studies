@@ -42,16 +42,20 @@ public class Login {
 
     public static boolean authenticate() {
         String[] stored_Creden = {"e2a166aae56dd0058f4be8816c65b5c6b38740d8fca612a86118a549acf1a33e11f5f0d36c75db2a40bad45c1775db6a17f9da04d2f72575eb4239794d744e16"};
-        String login_Hash = loginPrompt();
+
         boolean authen = false;
+        int counter = 0;
+        while (authen == false && counter < 3) {
+            String login_Hash = loginPrompt();
         
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < stored_Creden.length; j++) {
-                if (login_Hash.equals(stored_Creden[j])) 
+            for (int i = 0; i < stored_Creden.length; i++) {
+                if (login_Hash.equals(stored_Creden[i])) 
                     authen = true;
                 /*else if (!login_Hash.equals(stored_Creden[i]) && i == stored_Creden.length - 1)
                     authen = false;*/
             }
+
+            counter++;
         }
 
         return authen;
