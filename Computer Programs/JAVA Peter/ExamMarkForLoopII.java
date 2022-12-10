@@ -20,6 +20,5 @@ class ExamMarkForLoopII {
 
         System.out.println("The Total Marks are: " + totMarks);
         System.out.println("The Average Mark is: " + averageMark);
-           
     }
 }
