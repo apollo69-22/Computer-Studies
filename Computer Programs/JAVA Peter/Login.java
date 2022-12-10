@@ -54,7 +54,6 @@ public class Login {
                 /*else if (!login_Hash.equals(stored_Creden[i]) && i == stored_Creden.length - 1)
                     authen = false;*/
             }
-
             counter++;
         }
 
