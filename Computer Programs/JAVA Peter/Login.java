@@ -45,11 +45,13 @@ public class Login {
         String login_Hash = loginPrompt();
         boolean authen = false;
         
-        for (int i = 0; i < stored_Creden.length; i++) {
-            if (login_Hash.equals(stored_Creden[i])) 
-                authen = true;
-            /*else if (!login_Hash.equals(stored_Creden[i]) && i == stored_Creden.length - 1)
-                authen = false;*/
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < stored_Creden.length; j++) {
+                if (login_Hash.equals(stored_Creden[j])) 
+                    authen = true;
+                /*else if (!login_Hash.equals(stored_Creden[i]) && i == stored_Creden.length - 1)
+                    authen = false;*/
+            }
         }
 
         return authen;
