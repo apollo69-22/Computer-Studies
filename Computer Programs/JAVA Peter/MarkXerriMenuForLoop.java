@@ -4,7 +4,7 @@ class MarkXerriMenuForLoop {
         int choice;
         double[] examMark;
         examMark = new double[21]; 
-        double totMarks = 0, high = 0, low = 0;
+        double totMarks = 0, high = 0, low = 100;
         
         do {
             System.out.println();
