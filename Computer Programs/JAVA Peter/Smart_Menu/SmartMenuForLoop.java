@@ -1,4 +1,9 @@
 class MenuForLoop {
+    public static void mainMenu() {
+
+    }
+
+
     public static void main(String[] args) {
         System.out.println("    Menu    ");
         System.out.println("1. Enter Marks");
