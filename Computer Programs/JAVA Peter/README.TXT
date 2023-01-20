@@ -5,8 +5,6 @@ all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
 PROJECT TITLE: JAVA Peter
-PURPOSE OF PROJECT: Testing
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PURPOSE OF PROJECT: School
+VERSION or DATE: 20/01/2023
+AUTHORS: Peter Farrugia
