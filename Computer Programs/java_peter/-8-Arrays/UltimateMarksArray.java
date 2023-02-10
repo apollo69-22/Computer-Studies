@@ -1,4 +1,5 @@
-package java_peter.-8-Arrays;
+package packages.arrays.ultimatemarksarray;
+import packages.keyboard.Keyboard;
 
 class UltimateMarksArray {
     public static void main(String[] args) {

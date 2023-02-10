@@ -1,4 +1,4 @@
-package java_peter;
+package packages.keyboard;
 
 import java.io.*;
 import java.util.*;
