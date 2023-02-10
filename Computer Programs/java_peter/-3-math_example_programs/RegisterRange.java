@@ -1,3 +1,6 @@
+package packages.math_example_programs.registerrange;
+import packages.keyboard.Keyboard;
+
 class RegisterRange{
     public static void main(String []args){
         System.out.println("Enter register size: ");

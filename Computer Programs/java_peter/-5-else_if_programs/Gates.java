@@ -1,3 +1,6 @@
+package packages.else_if_programs.gates;
+import packages.keyboard.Keyboard;
+
 class Gates{
     public static void main (String []args){
         System.out.println("    AND or OR Gate Outputs  ");

@@ -1,3 +1,6 @@
+package packages.math_example_programs.seconds;
+import packages.keyboard.Keyboard;
+
 class Seconds{
     public static void main(String []args){
         System.out.println("    Seconds in a Year Calculator    ");

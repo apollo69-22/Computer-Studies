@@ -1,3 +1,6 @@
+package packages.keyboard_example_programs.calc;
+import packages.keyboard.Keyboard;
+
 class Calc{
     public static void main(String []args){
         System.out.println("    Calculator    ");

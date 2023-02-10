@@ -1,3 +1,6 @@
+package packages.beginner_programs.name;
+import packages.keyboard.Keyboard;
+
 class Name{
     public static void main(String []args){
         System.out.print("Enter you first name: ");

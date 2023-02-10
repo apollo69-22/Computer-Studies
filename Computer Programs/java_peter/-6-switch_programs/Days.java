@@ -1,3 +1,6 @@
+package packages.switch_programs.days;
+import packages.keyboard.Keyboard;
+
 class Days {
     public static void main(String[] args) {
         System.out.println("    Days of the Week    ");

@@ -1,3 +1,6 @@
+package packages.else_if_programs.menu;
+import packages.keyboard.Keyboard;
+
 class Menu{
     public static void main(String []args){
         System.out.println("Enter 2 integer numbers: ");

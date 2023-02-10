@@ -1,3 +1,6 @@
+package packages.beginner_programs.triangle;
+import packages.keyboard.Keyboard;
+
 class Triangle{
     public static void main (String []args){
         int base = 12;

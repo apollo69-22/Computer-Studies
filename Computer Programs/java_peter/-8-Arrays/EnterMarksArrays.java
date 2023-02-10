@@ -1,3 +1,6 @@
+package packages.arrays.entermarksarrays;
+import packages.keyboard.Keyboard;
+
 class EnterMarksArrays {
     public static void main(String[] args) {
         System.out.println("    Marks Storage   ");

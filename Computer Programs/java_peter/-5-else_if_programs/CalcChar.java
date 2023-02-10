@@ -1,3 +1,6 @@
+package packages.else_if_programs.calcchar;
+import packages.keyboard.Keyboard;
+
 class CalcChar{
     public static void main(String []args){
         System.out.print("Enter Number 1: ");

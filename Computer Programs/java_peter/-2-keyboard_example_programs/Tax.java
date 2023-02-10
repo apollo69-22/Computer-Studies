@@ -1,3 +1,6 @@
+package packages.keyboard_example_programs.tax;
+import packages.keyboard.Keyboard;
+
 class Tax{
     public static void main (String []args){
         System.out.println("    Price Calculator    ");

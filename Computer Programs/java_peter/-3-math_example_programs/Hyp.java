@@ -1,3 +1,6 @@
+package packages.math_example_programs.hyp;
+import packages.keyboard.Keyboard;
+
 class Hyp{
     public static void main(String []args){
         System.out.println("    Hypothenuse Calculator - RIGHT ANGLED TRIANGLE    ");

@@ -1,3 +1,6 @@
+package packages.switch_programs.calculatorswitch;
+import packages.keyboard.Keyboard;
+
 class CalculatorSwitch {
     public static void main(String[] args) {
         System.out.println("    Calculator  ");

@@ -1,3 +1,6 @@
+package packages.math_example_programs.power;
+import packages.keyboard.Keyboard;
+
 class Power{
     public static void main(String []args){
         System.out.println("    Power Calculator    ");

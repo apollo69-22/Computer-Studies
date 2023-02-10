@@ -1,3 +1,6 @@
+package packages.beginner_programs.rectangle;
+import packages.keyboard.Keyboard;
+
 class Rectangle{
     public static void main (String []args){
         int length = 8;

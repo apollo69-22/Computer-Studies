@@ -1,3 +1,6 @@
+package packages.keyboard_example_programs.simpleinterest;
+import packages.keyboard.Keyboard;
+
 class SimpleInterest{
     public static void main(String []args){
         System.out.println("    Simple Interest Calculator    ");

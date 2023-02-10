@@ -1,3 +1,6 @@
+package packages.switch_programs.monthsswitch;
+import packages.keyboard.Keyboard;
+
 class MonthsSwitch{
     public static void main(String []args){
         System.out.println("Enter a number from 1 till 12 to Represent a Month: ");

@@ -1,3 +1,6 @@
+package packages.switch_programs.markswitch;
+import packages.keyboard.Keyboard;
+
 class MarkSwitch {
     public static void main(String[] args) {
         System.out.println("    Exam Mark   ");

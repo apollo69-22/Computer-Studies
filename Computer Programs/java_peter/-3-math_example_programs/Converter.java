@@ -1,3 +1,6 @@
+package packages.math_example_programs.converter;
+import packages.keyboard.Keyboard;
+
 class Converter{
     public static void main(String []args){
         System.out.println("    Binary To Decimal Converter    ");

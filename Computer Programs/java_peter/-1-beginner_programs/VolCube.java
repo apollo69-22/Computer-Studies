@@ -1,3 +1,6 @@
+package packages.beginner_programs.volcube;
+import packages.keyboard.Keyboard;
+
 class VolCube{
     public static void main (String []args){
         int length = 5;

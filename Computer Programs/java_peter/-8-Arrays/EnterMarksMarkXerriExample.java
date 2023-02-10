@@ -1,3 +1,6 @@
+package packages.arrays.entermarksmarkxerriexample;
+import packages.keyboard.Keyboard;
+
 public class EnterMarksMarkXerriExample{
     public static void main (String args []){
         int[] marks=new int [10]; 

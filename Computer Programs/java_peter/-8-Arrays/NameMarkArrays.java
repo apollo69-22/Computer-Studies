@@ -1,3 +1,6 @@
+package packages.arrays.namemarkarrays;
+import packages.keyboard.Keyboard;
+
 class NameMarkArrays {
     public static void main(String[] args) {
         System.out.println("    Names & Marks Storage   ");

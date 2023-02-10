@@ -1,3 +1,6 @@
+package packages.keyboard_example_programs.temp;
+import packages.keyboard.Keyboard;
+
 class Temp{
     public static void main(String []args){
         System.out.println("    Celsius to Fahrenheit    ");

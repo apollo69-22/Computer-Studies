@@ -1,3 +1,6 @@
+package packages.keyboard_example_programs.average;
+import packages.keyboard.Keyboard;
+
 class Average{
     public static void main (String []args){
         System.out.println("    Finding the Average    ");

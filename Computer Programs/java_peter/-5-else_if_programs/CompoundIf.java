@@ -1,3 +1,6 @@
+package packages.else_if_programs.compoundif;
+import packages.keyboard.Keyboard;
+
 class CompoundIf{
     public static void main (String[]args){
         System.out.print("Enter your mark: ");

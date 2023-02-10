@@ -1,3 +1,6 @@
+package packages.math_example_programs.distance;
+import packages.keyboard.Keyboard;
+
 class Distance{
     public static void main(String []args){
         System.out.println("    Distance covered Calculator    ");

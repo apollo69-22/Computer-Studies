@@ -1,3 +1,6 @@
+package packages.math_example_programs.bits;
+import packages.keyboard.Keyboard;
+
 class Bits{
     public static void main(String []args){
         System.out.println("    Megabytes to Bits Calculator    ");

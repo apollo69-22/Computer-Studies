@@ -1,3 +1,6 @@
+package packages.arrays.nametotmarkarrays;
+import packages.keyboard.Keyboard;
+
 class NameTotMarkArrays {
     public static void main(String[] args) {
         System.out.println("    Names & Marks Storage   ");

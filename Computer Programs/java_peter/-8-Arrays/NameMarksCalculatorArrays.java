@@ -1,3 +1,6 @@
+package packages.arrays.namemarkscalculatorarrays;
+import packages.keyboard.Keyboard;
+
 class NameMarksCalculatorArrays {
     public static void main(String[] args) {
         System.out.println("    Marks Calculator   ");

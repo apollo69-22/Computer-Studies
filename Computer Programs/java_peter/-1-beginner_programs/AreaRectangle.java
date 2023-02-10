@@ -1,3 +1,6 @@
+package packages.beginner_programs.arearectangle;
+import packages.keyboard.Keyboard;
+
 class AreaRectangle{
     public static void main (String []args){
         int length = 7;
