@@ -1,3 +1,6 @@
+package packages.arrays.teldirectoryii;
+import packages.keyboard.Keyboard;
+
 public class TelDirectoryII {
     public static int mainMenu() {
         System.out.println("    Menu    ");

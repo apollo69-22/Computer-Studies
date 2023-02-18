@@ -1,3 +1,6 @@
+package packages.arrays.teldirectory;
+import packages.keyboard.Keyboard;
+
 class TelDirectory {
     public static void main(String[] args) {
         System.out.print("Enter Amount of People: " );
