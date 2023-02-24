@@ -11,6 +11,7 @@ class TelDirectory {
         int[] telMobNum = new int[amount];
         
         int choice = 0;
+        boolean entered = false;
         do {
             System.out.println();
             System.out.println();
@@ -40,38 +41,48 @@ class TelDirectory {
     
                         System.out.println();
                     }
-
+                    entered = true;
+                    
                 break;
                          
                 case 2:
-                    System.out.println();
-                    System.out.println("    Details    ");
-
-                    for (int i = 0; i < amount; i++) {   
-                        System.out.println("Names: " + names[i]);
-                        System.out.println("Localities: " + localities[i]);
-                        System.out.println("Tel/Mob Numbers: " + telMobNum[i]);
+                    if (entered == true) {
                         System.out.println();
+                        System.out.println("    Details    ");
+    
+                        for (int i = 0; i < amount; i++) {   
+                            System.out.println("Names: " + names[i]);
+                            System.out.println("Localities: " + localities[i]);
+                            System.out.println("Tel/Mob Numbers: " + telMobNum[i]);
+                            System.out.println();
+                        }
                     }
+                    
+                    else
+                        System.out.println("Please enter details by pressing 1");
                     
                 break;
                 
                 case 3:
-                    System.out.print("Enter a name you want to search for: ");
-                    String search = Keyboard.readString();
-                
-                    boolean found = false;                    
-                    for (int i = 0; i < amount; i++) {
-                        if (search.equals(names[i])) {
-                            System.out.println("Name: " + names[i]);
-                            System.out.println("Locality: " + localities[i]);
-                            System.out.println("Tel/Mob Number: " + telMobNum[i]);
-                            found = true;
-
-                        }
+                    if (entered == true) {
+                        System.out.print("Enter a name you want to search for: ");
+                        String search = Keyboard.readString();
+                    
+                        boolean found = false;                    
+                        for (int i = 0; i < amount; i++) {
+                            if (search.equals(names[i])) {
+                                System.out.println("Name: " + names[i]);
+                                System.out.println("Locality: " + localities[i]);
+                                System.out.println("Tel/Mob Number: " + telMobNum[i]);
+                                found = true;
+    
+                            }
+                        } 
                         if (found == false)
-                            System.out.print("Not Found");
+                                System.out.print("Not Found");
                     }
+                    else
+                        System.out.println("Please enter details by pressing 1");                    
             }
 
         } while (choice != 4);
