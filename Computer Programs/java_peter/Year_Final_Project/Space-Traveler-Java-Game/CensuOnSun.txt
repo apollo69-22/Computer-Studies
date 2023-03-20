@@ -90,3 +90,24 @@ public class CensuOnSun {
             System.out.println(ansi().fg(WHITE).a("**************************************************************************************************************"));
         }
 }
+
+public static void drawMercury() {
+    System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+    System.out.println(ansi().fg(yellow).a("                                                    ##############"));
+    System.out.println(ansi().fg(yellow).a("                                               ######################"));
+    System.out.println(ansi().fg(yellow).a("                                        ###################################"));
+    System.out.println(ansi().fg(yellow).a("                                       #######################################"));
+    System.out.println(ansi().fg(yellow).a("                                     ##########################################"));
+    System.out.println(ansi().fg(yellow).a("                                  ###############################################"));        
+    System.out.println(ansi().fg(yellow).a("                                 ##################################################"));
+    System.out.println(ansi().fg(yellow).a("                                ####################################################"));
+    System.out.println(ansi().fg(yellow).a("                                ####################################################"));
+    System.out.println(ansi().fg(yellow).a("                                ###################################################"));
+    System.out.println(ansi().fg(yellow).a("                                 #################################################"));
+    System.out.println(ansi().fg(yellow).a("                                   #############################################"));
+    System.out.println(ansi().fg(yellow).a("                                       #######################################"));
+    System.out.println(ansi().fg(yellow).a("                                             ############################"));
+    System.out.println(ansi().fg(yellow).a("                                               ######################"));
+    System.out.println(ansi().fg(yellow).a("                                                      ##########"));
+    System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+}
