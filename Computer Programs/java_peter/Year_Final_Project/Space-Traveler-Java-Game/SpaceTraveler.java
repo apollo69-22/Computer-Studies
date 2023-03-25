@@ -21,21 +21,9 @@ class SpaceTraveler {
     public static final int blue = 153;
     public static final int dark_blue = 30;
     public static final int white = 255;
+    public static final int flame_red = 9;
+    public static final int light_black = 240;
 
-    public static void drawCaptain() {
-        System.out.println(ansi().fg(brown).a("                                                      **"));
-        System.out.println(ansi().fg(brown).a("                                                    ******"));
-        System.out.println(ansi().fg(brown).a("                                                    ******"));
-        System.out.println(ansi().fg(brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(grn_skin).a("                                                    *     *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                   *       *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *  O   0  *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *    U    *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *  .   .  *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *   ...   *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
-    }
 
     public static void drawSun() {
         System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
@@ -76,14 +64,14 @@ class SpaceTraveler {
     }
 
     public static void drawMercury() {
-        System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
         System.out.println(ansi().fg(gray).a("                                                      #######"));
         System.out.println(ansi().fg(gray).a("                                                    ###########"));
         System.out.println(ansi().fg(gray).a("                                                  ###############"));
         System.out.println(ansi().fg(gray).a("                                                  ###############"));
         System.out.println(ansi().fg(gray).a("                                                    ###########"));
         System.out.println(ansi().fg(gray).a("                                                      #######"));
-        System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
     }
 
     public static void drawVenus() {
@@ -101,14 +89,14 @@ class SpaceTraveler {
 
     public static void drawEarth() {
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(blue).a("                                                        ######"));
-        System.out.println(ansi().fg(blue).a("                                                     ############"));
-        System.out.println(ansi().fg(grn_skin).a("                                                   ################"));
-        System.out.println(ansi().fg(grn_skin).a("                                                 ####################"));
-        System.out.println(ansi().fg(blue).a("                                                 ####################"));
-        System.out.println(ansi().fg(blue).a("                                                   ################"));
-        System.out.println(ansi().fg(blue).a("                                                     ############"));
-        System.out.println(ansi().fg(blue).a("                                                        ######"));
+        System.out.println(ansi().fg(blue).a("                                                      ######"));
+        System.out.println(ansi().fg(blue).a("                                                   ############"));
+        System.out.println(ansi().fg(grn_skin).a("                                                 ################"));
+        System.out.println(ansi().fg(grn_skin).a("                                               ####################"));
+        System.out.println(ansi().fg(blue).a("                                               ####################"));
+        System.out.println(ansi().fg(blue).a("                                                 ################"));
+        System.out.println(ansi().fg(blue).a("                                                   ############"));
+        System.out.println(ansi().fg(blue).a("                                                      ######"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
     }
 
@@ -194,6 +182,47 @@ class SpaceTraveler {
         System.out.println(ansi().fg(white).a(""));
     }
 
+    public static void drawCaptain() {
+        System.out.println(ansi().fg(brown).a("                                                      **"));
+        System.out.println(ansi().fg(brown).a("                                                    ******"));
+        System.out.println(ansi().fg(brown).a("                                                    ******"));
+        System.out.println(ansi().fg(brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(grn_skin).a("                                                    *     *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                   *       *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                  *  O   0  *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                  *    U    *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                  *  .   .  *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                  *   ...   *"));
+        System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
+    }
+
+    public static void drawSpaceship() {
+        System.out.println(ansi().fg(white).a("                                              *").fg(light_black).a("*************").fg(white).a("."));
+        System.out.println(ansi().fg(flame_red).a("                                   ''''.  ").fg(white).a("     `.`.          *"));
+        System.out.println(ansi().fg(flame_red).a("                                  . ' ' '.").fg(white).a("     *********************************************."));
+        System.out.println(ansi().fg(flame_red).a("                               ' .        ").fg(light_black).a("*** ").fg(white).a("*    '         '        ").fg(yellow).a(".").fg(white).a("             *          '"));
+        System.out.println(ansi().fg(flame_red).a("                                  ' . . . ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("'   '").fg(white).a("          *               '"));
+        System.out.println(ansi().fg(flame_red).a("                                   ....'     ").fg(white).a("*").fg(light_black).a("  ...............    ").fg(yellow).a("'     '").fg(white).a("        *                  #").fg(light_black).a("==---"));
+        System.out.println(ansi().fg(flame_red).a("                                  . ' ' '.   ").fg(white).a("*                     ").fg(yellow).a("'     '").fg(white).a("        *                ."));
+        System.out.println(ansi().fg(flame_red).a("                               ' .        ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("' . '").fg(white).a("          *            ."));
+        System.out.println(ansi().fg(flame_red).a("                                  ' . . . ").fg(light_black).a("*** ").fg(white).a("*    '         '                      *        ."));
+        System.out.println(ansi().fg(flame_red).a("                                   ....'  ").fg(white).a("     *********************************************"));
+        System.out.println(ansi().fg(white).a("                                              ").fg(white).a(" .'.'           .*"));
+        System.out.println(ansi().fg(white).a("                                               *").fg(light_black).a("************").fg(white).a("'"));
+
+
+    }
+
+    public static void drawWormhole() {
+        System.out.println(ansi().fg(gray).a("                                                      #######"));
+        System.out.println(ansi().fg(gray).a("                                                    ###########"));
+        System.out.println(ansi().fg(gray).a("                                                  ###############"));
+        System.out.println(ansi().fg(gray).a("                                                  ###############"));
+        System.out.println(ansi().fg(gray).a("                                                    ###########"));
+        System.out.println(ansi().fg(gray).a("                                                      #######"));
+    }
+
 
     public static int mainMenu() {
         System.out.println("    WELCOME TO SPACE TRAVELER  ");
@@ -255,6 +284,8 @@ class SpaceTraveler {
         boolean T;
         if (choice == 'T' || choice == 't') {
             T = true;
+
+
         }
         else if (choice != 'T' || choice != 't') {
             T = false;
@@ -308,7 +339,7 @@ class SpaceTraveler {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        //System.out.println(ansi().bg(BLACK));
+        //System.out.println(ansi().bg(light_black));
         drawCaptain();
         System.out.println();
         drawSun();
@@ -330,7 +361,7 @@ class SpaceTraveler {
         drawNeptune();
 
 
-        int choice = 0;
+        /*int choice = 0;
 
         while (choice != 3) {
             choice = mainMenu();
@@ -353,6 +384,8 @@ class SpaceTraveler {
                     mainMenu();
                 break;
             }
-        }
+        }*/
+
+        drawSpaceship();
     }
 }
