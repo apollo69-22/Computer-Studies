@@ -10,19 +10,48 @@ import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
 
 class SpaceTraveler {
+    /******************whites********************/
+    public static final int white = 255;
+    public static final int almost_white = 238;
+    public static final int light_white = 245;
+    public static final int white_yellow = 229;
+    /********************************************/
+
+    /******************blacks********************/
+    public static final int light_black = 240;
+    public static final int almost_black = 233;
+    /********************************************/
+    
+    /******************grays********************/
     public static final int gray = 8;
+    /********************************************/
+
+    /******************browns********************/
+    public static final int brown = 58;
+    /********************************************/
+
+    /******************reds********************/
+    public static final int flame_red = 9;
+    /********************************************/
+    
+    /******************yellows********************/
     public static final int yellow = 11;
     public static final int green_yellow = 148;
-    public static final int white_yellow = 229;
+    /********************************************/
+
+    /******************oranges********************/
     public static final int orange = 220;
     public static final int dark_orange = 214;
-    public static final int brown = 58;
-    public static final int grn_skin = 10;
+    /********************************************/
+
+    /******************blues********************/
     public static final int blue = 153;
     public static final int dark_blue = 30;
-    public static final int white = 255;
-    public static final int flame_red = 9;
-    public static final int light_black = 240;
+    /********************************************/
+
+    /******************greens********************/    
+    public static final int grn_skin = 10;
+    /********************************************/
 
 
     public static void drawSun() {
@@ -197,30 +226,75 @@ class SpaceTraveler {
         System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
     }
 
-    public static void drawSpaceship() {
-        System.out.println(ansi().fg(white).a("                                              *").fg(light_black).a("*************").fg(white).a("."));
-        System.out.println(ansi().fg(flame_red).a("                                   ''''.  ").fg(white).a("     `.`.          *"));
-        System.out.println(ansi().fg(flame_red).a("                                  . ' ' '.").fg(white).a("     *********************************************."));
-        System.out.println(ansi().fg(flame_red).a("                               ' .        ").fg(light_black).a("*** ").fg(white).a("*    '         '        ").fg(yellow).a(".").fg(white).a("             *          '"));
-        System.out.println(ansi().fg(flame_red).a("                                  ' . . . ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("'   '").fg(white).a("          *               '"));
-        System.out.println(ansi().fg(flame_red).a("                                   ....'     ").fg(white).a("*").fg(light_black).a("  ...............    ").fg(yellow).a("'     '").fg(white).a("        *                  #").fg(light_black).a("==---"));
-        System.out.println(ansi().fg(flame_red).a("                                  . ' ' '.   ").fg(white).a("*                     ").fg(yellow).a("'     '").fg(white).a("        *                ."));
-        System.out.println(ansi().fg(flame_red).a("                               ' .        ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("' . '").fg(white).a("          *            ."));
-        System.out.println(ansi().fg(flame_red).a("                                  ' . . . ").fg(light_black).a("*** ").fg(white).a("*    '         '                      *        ."));
-        System.out.println(ansi().fg(flame_red).a("                                   ....'  ").fg(white).a("     *********************************************"));
-        System.out.println(ansi().fg(white).a("                                              ").fg(white).a(" .'.'           .*"));
-        System.out.println(ansi().fg(white).a("                                               *").fg(light_black).a("************").fg(white).a("'"));
+    public static void drawSpaceship(boolean engines_on, int pos) throws IOException, InterruptedException  {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        int flame;
 
+        String move_spcs = "";
+
+        if (engines_on) {
+            for (int i = 0; i < pos; i++)
+                move_spcs += " ";
+
+            flame = flame_red;
+        }
+        else {
+            flame = 0;
+            pos = 0;
+        }
+
+        System.out.printf("\n%s" + ansi().fg(white).a("               *").fg(light_black).a("*************").fg(white).a("."), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(white).a("     `.`.          *"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.").fg(white).a("     *********************************************."), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(light_black).a("*** ").fg(white).a("*    '         '        ").fg(yellow).a(".").fg(white).a("             *          '"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("'   '").fg(white).a("          *               '"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'     ").fg(white).a("*").fg(light_black).a("  ...............    ").fg(yellow).a("'     '").fg(white).a("        *                  #").fg(light_black).a("==---"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.   ").fg(white).a("*                     ").fg(yellow).a("'     '").fg(white).a("        *                ."), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("' . '").fg(white).a("          *            ."), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(light_black).a("*** ").fg(white).a("*    '         '                      *        ."), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(white).a("     *********************************************"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(white).a("               ").fg(white).a(" .'.'           .*"), move_spcs);
+        System.out.printf("\n%s" + ansi().fg(white).a("                *").fg(light_black).a("************").fg(white).a("'"), move_spcs);
+        
+        System.out.println("\nTelemetrics:\n\npos:" + pos + ", engines on:" + engines_on + ", flame:" + flame);
+
+        while(engines_on) {
+            System.out.println("habiibi");
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            if (pos <= 100) {
+                pos++;
+                drawSpaceship(true, pos);
+            }
+
+            if (pos > 100) {
+                drawSpaceship(false, pos);
+                System.out.println("haviiviII");
+            }
+        }
 
     }
 
     public static void drawWormhole() {
-        System.out.println(ansi().fg(gray).a("                                                      #######"));
-        System.out.println(ansi().fg(gray).a("                                                    ###########"));
-        System.out.println(ansi().fg(gray).a("                                                  ###############"));
-        System.out.println(ansi().fg(gray).a("                                                  ###############"));
-        System.out.println(ansi().fg(gray).a("                                                    ###########"));
-        System.out.println(ansi().fg(gray).a("                                                      #######"));
+        System.out.println(ansi().fg(light_white).a("                                                      ,").fg(almost_white).a("-----").fg(light_white).a(","));
+        System.out.println(ansi().fg(light_white).a("                                                    '").fg(almost_black).a("#########").fg(light_white).a("'"));
+        System.out.println(ansi().fg(light_white).a("                                                  '").fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-'"));
+
+        System.out.println(ansi().fg(light_white).a("                                                  '").fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
+                                                                                                                .fg(almost_white).a("-'"));
+        System.out.println(ansi().fg(light_white).a("                                                    '").fg(almost_black).a("#########").fg(light_white).a("'"));
+        System.out.println(ansi().fg(light_white).a("                                                      '").fg(almost_white).a("-----").fg(light_white).a("'"));
     }
 
 
@@ -340,7 +414,7 @@ class SpaceTraveler {
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         //System.out.println(ansi().bg(light_black));
-        drawCaptain();
+        /*drawCaptain();
         System.out.println();
         drawSun();
         System.out.println();
@@ -358,8 +432,11 @@ class SpaceTraveler {
         System.out.println();
         drawUranus();
         System.out.println();
-        drawNeptune();
+        drawNeptune();*/
 
+        drawSpaceship(true, 0);
+
+        //drawWormhole();
 
         /*int choice = 0;
 
@@ -385,7 +462,5 @@ class SpaceTraveler {
                 break;
             }
         }*/
-
-        drawSpaceship();
     }
 }
