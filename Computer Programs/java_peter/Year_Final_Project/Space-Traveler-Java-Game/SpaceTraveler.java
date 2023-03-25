@@ -226,22 +226,8 @@ class SpaceTraveler {
         System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
     }
 
-    public static void drawSpaceship(boolean engines_on, int pos) throws IOException, InterruptedException  {
+    public static void drawSpaceship(String move_spcs, int flame) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        int flame;
-
-        String move_spcs = "";
-
-        if (engines_on) {
-            for (int i = 0; i < pos; i++)
-                move_spcs += " ";
-
-            flame = flame_red;
-        }
-        else {
-            flame = 0;
-            pos = 0;
-        }
 
         System.out.printf("\n%s" + ansi().fg(white).a("               *").fg(light_black).a("*************").fg(white).a("."), move_spcs);
         System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(white).a("     `.`.          *"), move_spcs);
@@ -255,26 +241,51 @@ class SpaceTraveler {
         System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(white).a("     *********************************************"), move_spcs);
         System.out.printf("\n%s" + ansi().fg(white).a("               ").fg(white).a(" .'.'           .*"), move_spcs);
         System.out.printf("\n%s" + ansi().fg(white).a("                *").fg(light_black).a("************").fg(white).a("'"), move_spcs);
-        
-        System.out.println("\nTelemetrics:\n\npos:" + pos + ", engines on:" + engines_on + ", flame:" + flame);
+    } 
+    
+    public static void moveSpaceship(boolean engines_on) throws IOException, InterruptedException  {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        int flame = 0;
+        String move_spcs = "";
 
-        while(engines_on) {
-            System.out.println("habiibi");
-            try {
-                Thread.sleep(30);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
+        if (engines_on) {
+            for (int i = 0; i < 100; i++) {
+                if (i == 0) {
+                    drawSpaceship(move_spcs, flame);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                    flame = flame_red;
 
-            if (pos <= 100) {
-                pos++;
-                drawSpaceship(true, pos);
-            }
+                    drawSpaceship(move_spcs, flame);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
 
-            if (pos > 100) {
-                drawSpaceship(false, pos);
-                System.out.println("haviiviII");
+                else if (i > 0 && i < 100) {
+                    flame = flame_red;
+                    drawSpaceship(move_spcs, flame);
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+
+                if (i == 99) {
+                    flame = 0;
+                    drawSpaceship(move_spcs, flame);
+                }
+                move_spcs += " ";
             }
+        }
+        else {
+            drawSpaceship(move_spcs, flame);
         }
 
     }
@@ -433,8 +444,8 @@ class SpaceTraveler {
         drawUranus();
         System.out.println();
         drawNeptune();*/
-
-        drawSpaceship(true, 0);
+        
+        moveSpaceship(true);
 
         //drawWormhole();
 
