@@ -309,11 +309,16 @@ class SpaceTraveler {
     }
 
 
-    public static int mainMenu() {
-        System.out.println("    WELCOME TO SPACE TRAVELER  ");
-        System.out.println("1. Game Instructions");
-        System.out.println("2. Play Game");
-        System.out.println("3. Exit");
+    public static int mainMenu()throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+        System.out.println(" ___________________________________");
+        System.out.println("|     WELCOME TO SPACE TRAVELER     |");
+        System.out.println("|                                   |");
+        System.out.println("| 1. Game Instructions              |");
+        System.out.println("| 2. Play Game                      |");
+        System.out.println("| 3. Exit                           |");
+        System.out.println("|___________________________________|");
         System.out.println();
         
         System.out.print("Enter a choice: ");
@@ -323,26 +328,38 @@ class SpaceTraveler {
         return choice;
     }
 
-    public static char instructions() {
+    public static char instructions() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         char choice;
 
-        System.out.println("                                Game Instructions                                ");
-        System.out.println("You are a traveler through space and your mission is to make it to Europa, Jupiter's Moon!");
-        System.out.println("Your goal is to make it to Europa, to study if there's life!");
-        System.out.println("You start on Earth and then you move on to Mars, through the asteroid belt until..");
-        System.out.println("You finally reach Jupiter and its moon Europa");
-        System.out.println("Each planet gives you a set of points..");
-        System.out.println("BUT....");
-        System.out.println("If you get hit by asteroids on your way you lose points");
-        System.out.println("Some of the challenges on the way are asteroids and our solar system's ASTEROID BELT");
-        System.out.println("The goal is to try to make it to the end and get as many points as possible..");
-        System.out.println("You start with 500 points..");
-        System.out.println("If you lose all of your points, YOU LOSE THE GAME!");
-        System.out.println("TRY NOT TO LOSE!");
-        System.out.println("Enjoy! :D");
+        System.out.println(" __________________________________________________________________________________________________________________");
+        System.out.println("|                                             Instructions:                                                        |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|You are a new Lieutenant in Starfleet.                                                                            |");
+        System.out.println("|You're assigned to Company Alpha under Captain Muhammad Al Sajan. Assigned to the Orbiter IV!                     |");
+        System.out.println("|You're heading to Europa, one of Jupiter's Moons to explore any Alien life you may find.                          |");
+        System.out.println("|Unfortunately the Ships navigation system is a bit glitchy…                                                       |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|Mission:                                                                                                          |");
+        System.out.println("|Help Captain Muhammad cross the Solar System safely.                                                              |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|Objective:                                                                                                        |");
+        System.out.println("|There are multiple Satellites located within the Solar System which have backup Star charts and co-ordinates.     |");
+        System.out.println("|You must locate the proper ones which will take you to Europa.                                                    |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|CAUTION:                                                                                                          |");
+        System.out.println("|Space junk is dangerous!                                                                                          |");
+        System.out.println("|Get hit by Asteroids, you lose lives.                                                                             |");
+        System.out.println("|If you run out of money while your ship needs repairs you'll die!!                                                |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|Starting Stats:                                                                                                   |");
+        System.out.println("|                  - 3 Lives                                                                                       |");
+        System.out.println("|                  - $$55,000 (Starfleet Dollars)                                                                  |");
+        System.out.println("|                  - Starting Location: Earth                                                                      |");
+        System.out.println("|__________________________________________________________________________________________________________________|");
 
         System.out.println();
-        System.out.println("Press B to continue...");
+        System.out.print("Press B to continue: ");
         choice = Keyboard.readChar();
         System.out.println();
 
@@ -418,8 +435,18 @@ class SpaceTraveler {
         }
     }
 
-    public static void game() {
+    public static void getStats(String stats[]) {
+        System.out.println("  ______________________________________");
+        System.out.println(" |   Lives   |   Money   |   Location   |");
+        System.out.printf(" |     %s     |   %s  |    %s     |\n", stats[0], stats[1], stats[2]);
+        System.out.println(" |______________________________________|");
+    } 
 
+    public static void game() {
+        String stats[] = {"3", "$$5500", "Jupiter"};
+
+        getStats(stats);
+        while(true){}
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -445,11 +472,11 @@ class SpaceTraveler {
         System.out.println();
         drawNeptune();*/
         
-        moveSpaceship(true);
+        //moveSpaceship(true);
 
         //drawWormhole();
 
-        /*int choice = 0;
+        int choice = 0;
 
         while (choice != 3) {
             choice = mainMenu();
@@ -467,11 +494,17 @@ class SpaceTraveler {
                 break;
 
                 default:
-                    System.out.println("Error. Please enter a number from 1 to 3");
-                    System.out.println();
+                    System.out.print("Error. Please enter a number from 1 to 3.");
+
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    break;
+                    }
+                    
                     mainMenu();
-                break;
             }
-        }*/
+        }
     }
 }
