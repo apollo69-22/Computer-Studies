@@ -25,6 +25,7 @@ class SpaceTraveler {
         System.out.println("Some of the challenges are asteroids and blackholes..");
         System.out.println("The goal is to try to make it to the end and get as many points as possible..");
         System.out.println("You ONLY have 3 LIVES!");
+        System.out.println("If you lose all lives, YOU LOSE THE GAME!");
         System.out.println("TRY NOT TO DIE!");
         System.out.println("Enjoy! :D");
 
@@ -47,6 +48,14 @@ class SpaceTraveler {
         return choice;
     }
 
+    public static void getMercury() {
+
+    }
+
+    public static boolean hitByAsteroid() {
+        boolean randomizer = Math.random() < 0.5;
+        return randomizer;
+    }
     
     public static int game() {
         char choice;
@@ -114,8 +123,6 @@ class SpaceTraveler {
         System.out.println("You have recieved " + lowPoints[1] + " points");
         System.out.println();
 
-        //ADD RANDOM ASTEROID CODE HERE
-
         System.out.println("Press T to travel to the next planet");
         choice = Keyboard.readChar();
 
@@ -129,6 +136,30 @@ class SpaceTraveler {
             System.out.println();
         }
 
+        if (hitByAsteroid() == true) {
+            System.out.println();
+            System.out.println("OH NO!! You have been hit by an asteroid.");
+            System.out.println("You have been sent back to the previous planet to repair your ship.");
+            System.out.println();
+
+            System.out.println("Location: Planet Venus");
+            System.out.println();
+
+            System.out.println("Press T to travel to the next planet");
+            choice = Keyboard.readChar();
+
+            if (choice == 'T' || choice == 't') {
+                T = true;
+            }
+            else if (choice != 'T' || choice != 't') {
+                T = false;
+                System.out.println("Error. Please press T to travel...");
+                choice = Keyboard.readChar();
+                System.out.println();
+            }
+        
+        }
+
 
         System.out.println();
         System.out.println("You have made it to Mars");
@@ -136,8 +167,6 @@ class SpaceTraveler {
         System.out.println("Location: Planet Mars");
         System.out.println("You have recieved " + lowPoints[2] + " points");
         System.out.println();
-        
-        //ADD RANDOM ASTEROID CODE HERE
 
         System.out.println("Press T to travel to the next planet");
         choice = Keyboard.readChar();
