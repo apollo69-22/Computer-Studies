@@ -228,6 +228,20 @@ class SpaceTraveler {
         System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
     }
 
+    public static void drawBubble() {
+        System.out.println(" ______________________________________ ");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|_____________________________       __|");
+        System.out.println("                              \     / ");
+        System.out.println("                               \   /  ");
+        System.out.println("                                \ /   ");
+
+    }
+
     public static void drawSpaceship(String move_spcs, int flame) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
@@ -443,7 +457,7 @@ class SpaceTraveler {
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
-        System.out.printf(" |     %s     |   %s  |    %s   |\n", stats[0], stats[1], stats[2]);
+        System.out.printf(" |     %s     |   %s  |    %s     |\n", stats[0], stats[1], stats[2]);
         System.out.println(" |______________________________________|");
     } 
 
@@ -457,7 +471,7 @@ class SpaceTraveler {
 
         String stats[] = {"3", "$$5500", locations[3]};
         String command_lst[] = {
-            "exit", "help", "stats"
+            "exit", "help", "stats", "store"
         };
 
         String command = "";
@@ -469,7 +483,7 @@ class SpaceTraveler {
             if (command.equals(command_lst[1])) {
                 System.out.print("\n| ");
                 for (int i = 0; i < command_lst.length; i++) {
-                    System.out.print(command_lst[i] + " ");
+                    System.out.print(command_lst[i] + " : ");
                 }
                 System.out.print("|\n");
             }
