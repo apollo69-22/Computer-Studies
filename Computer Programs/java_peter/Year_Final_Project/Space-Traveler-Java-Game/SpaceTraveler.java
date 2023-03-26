@@ -236,9 +236,9 @@ class SpaceTraveler {
         System.out.println("|                                      |");
         System.out.println("|                                      |");
         System.out.println("|_____________________________       __|");
-        System.out.println("                              \     / ");
-        System.out.println("                               \   /  ");
-        System.out.println("                                \ /   ");
+        System.out.println("                              \\     / ");
+        System.out.println("                               \\   /  ");
+        System.out.println("                                \\ /   ");
 
     }
 
@@ -476,7 +476,8 @@ class SpaceTraveler {
 
         String command = "";
         while(!command.equals(command_lst[0])) {
-
+            drawBubble();
+            
             System.out.print("\nCommand: ");
             command = Keyboard.readString();
 
