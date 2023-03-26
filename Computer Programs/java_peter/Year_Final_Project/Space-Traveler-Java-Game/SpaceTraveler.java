@@ -365,57 +365,55 @@ class SpaceTraveler {
         return choice;
     }
 
-    public static char instructions() throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        char choice;
+    public static void instructions() throws IOException, InterruptedException {        
+        char choice = ' ';
+        while (choice != 'B' && choice != 'b') {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-        //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println(/*\t\t\t\t\t\t\t*/" __________________________________________________________________________________________________________________");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                             Instructions:                                                        |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|You are a new Lieutenant in Starfleet.                                                                            |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|You're assigned to Company Alpha under Captain Muhammad Al Sajan. Assigned to the Orbiter IV!                     |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|You're heading to Europa, one of Jupiter's Moons to explore any Alien life you may find.                          |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Unfortunately the Ships navigation system is a bit glitchy…                                                       |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Mission:                                                                                                          |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Help Captain Muhammad cross the Solar System safely.                                                              |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Objective:                                                                                                        |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|There are multiple Satellites located within the Solar System which have backup Star charts and co-ordinates.     |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|You must locate the proper ones which will take you to Europa.                                                    |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|CAUTION:                                                                                                          |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Space junk is dangerous!                                                                                          |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Get hit by Asteroids, you lose lives.                                                                             |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|If you run out of money while your ship needs repairs you'll die!!                                                |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Starting Stats:                                                                                                   |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                  - 3 Lives                                                                                       |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                  - S-$55,000 (Starfleet Dollars)                                                                 |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                  - Starting Location: Earth                                                                      |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|Tips:                                                                                                             |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|      Try: 'help' for a list of commands!                                                                         |");
-        System.out.println(/*\t\t\t\t\t\t\t*/"|__________________________________________________________________________________________________________________|");
-
-        System.out.println();
-        System.out.print(/*\t\t\t\t\t\t\t*/"Press B to continue: ");
-        choice = Keyboard.readChar();
-        System.out.println();
-
-        boolean B;
-        if (choice == 'B' || choice == 'b') {
-            B = true;
-        }
-        else if (choice != 'B' || choice != 'b') {
-            B = false;
-            System.out.println("Error. Please press B to continue...");
-            choice = Keyboard.readChar();
-            System.out.println();
-        }
+            //System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println(/*\t\t\t\t\t\t\t*/" __________________________________________________________________________________________________________________");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                             Instructions:                                                        |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|You are a new Lieutenant in Starfleet.                                                                            |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|You're assigned to Company Alpha under Captain Muhammad Al Sajan. Assigned to the Orbiter IV!                     |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|You're heading to Europa, one of Jupiter's Moons to explore any Alien life you may find.                          |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Unfortunately the Ships navigation system is a bit glitchy…                                                       |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Mission:                                                                                                          |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Help Captain Muhammad cross the Solar System safely.                                                              |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Objective:                                                                                                        |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|There are multiple Satellites located within the Solar System which have backup Star charts and co-ordinates.     |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|You must locate the proper ones which will take you to Europa.                                                    |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|CAUTION:                                                                                                          |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Space junk is dangerous!                                                                                          |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Get hit by Asteroids, you lose lives.                                                                             |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|If you run out of money while your ship needs repairs you'll die!!                                                |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Starting Stats:                                                                                                   |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                  - 3 Lives                                                                                       |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                  - S-$55,000 (Starfleet Dollars)                                                                 |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                  - Starting Location: Earth                                                                      |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|                                                                                                                  |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|Tips:                                                                                                             |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|      Try: 'help' for a list of commands!                                                                         |");
+            System.out.println(/*\t\t\t\t\t\t\t*/"|__________________________________________________________________________________________________________________|");
             
-        return choice;
+            System.out.println();
+            System.out.print(/*\t\t\t\t\t\t\t*/"Press B to continue: ");
+            choice = Keyboard.readChar();
+
+            if (choice != 'B' && choice != 'b') {
+                System.out.print("\nError. Press B to continue.");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
     }
 
     public static void getEarth() {      
@@ -633,10 +631,8 @@ class SpaceTraveler {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
-                    break;
                     }
-                    
-                    mainMenu();
+                break;
             }
         }
     }
