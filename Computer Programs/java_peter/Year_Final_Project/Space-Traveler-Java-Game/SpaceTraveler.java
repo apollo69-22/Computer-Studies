@@ -579,7 +579,7 @@ class SpaceTraveler {
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         //System.out.println(ansi().bg(light_black));
-        drawCaptain();
+        /*drawCaptain();
         System.out.println();
         drawSun();
         System.out.println();
@@ -601,13 +601,13 @@ class SpaceTraveler {
         System.out.println();
         drawUranus();
         System.out.println();
-        drawNeptune();
+        drawNeptune();*/
         
         //moveSpaceship(true);
 
-        drawWormhole();
+        //drawWormhole();
 
-        /*int choice = 0;
+        int choice = 0;
 
         while (choice != 3) {
             choice = mainMenu();
@@ -636,6 +636,6 @@ class SpaceTraveler {
                     
                     mainMenu();
             }
-        }*/
+        }
     }
 }
