@@ -2,11 +2,12 @@
 
 import java.io.*;
 import java.io.IOException;
-import java.util.Dictionary;
-import java.util.Hashtable;
+import java.util.Map;
+import java.util.HashMap;
+//import java.util.Hashtable;
 
-import org.fusesource.jansi.AnsiColors;
-import org.fusesource.jansi.AnsiConsole;
+//import org.fusesource.jansi.AnsiColors;
+//import org.fusesource.jansi.AnsiConsole;
 
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
@@ -371,7 +372,7 @@ class SpaceTraveler {
         System.out.println("|                                                                                                                  |");
         System.out.println("|Starting Stats:                                                                                                   |");
         System.out.println("|                  - 3 Lives                                                                                       |");
-        System.out.println("|                  - $$55,000 (Starfleet Dollars)                                                                  |");
+        System.out.println("|                  - S-$55,000 (Starfleet Dollars)                                                                  |");
         System.out.println("|                  - Starting Location: Earth                                                                      |");
         System.out.println("|                                                                                                                  |");
         System.out.println("|Tips:                                                                                                             |");
@@ -460,7 +461,28 @@ class SpaceTraveler {
         System.out.println(" |   Lives   |   Money   |   Location   |");
         System.out.printf(" |     %s     |   %s  |    %s     |\n", stats[0], stats[1], stats[2]);
         System.out.println(" |______________________________________|");
-    } 
+    }
+
+    public static void getMap(Map<String, String> star_map) {
+        System.out.println();
+        System.out.println(star_map);
+    }
+
+    public static void check_location(String location, Map<String, String> star_map) {
+        String output = "not found";
+
+        for(Map.Entry<String, String> loc: star_map.entrySet()) {
+            if (loc.getKey().equals(location)) {
+                output = location + ": " + loc.getValue();
+                break;
+            }
+            else if (loc.getValue().equals(location)) {
+                output = location + ": " + loc.getKey();
+                break;
+            }
+        }
+        System.out.printf("\n%s\n", output);
+    }
 
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
@@ -468,16 +490,17 @@ class SpaceTraveler {
             "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
         };
 
-        Dictionary<String, String> coordinates = new Hashtable<>();
+        Map<String, String> star_map = new HashMap<>();
+        star_map.put("EARTH", "-0.992:-0.1:0");
+        star_map.put("SUN", "0:0:0");
 
-        String stats[] = {"3", "$$5500", locations[3]};
+        String stats[] = {"3", "S-$5500", locations[3]};
         String command_lst[] = {
-            "exit", "help", "stats", "store"
+            "exit", "help", "stats", "store", "find: ", "starmap"
         };
 
         String command = "";
         while(!command.equals(command_lst[0])) {
-            drawBubble();
             
             System.out.print("\nCommand: ");
             command = Keyboard.readString();
@@ -491,6 +514,13 @@ class SpaceTraveler {
             }
             else if (command.equals(command_lst[2])) {
                 getStats(stats);
+            }
+            else if (command.contains(command_lst[4])) {
+                String x[] = command.split(" ");
+                check_location(x[1], star_map);
+            }
+            else if (command.contains(command_lst[5])) {
+                getMap(star_map);
             }
         }
     }
