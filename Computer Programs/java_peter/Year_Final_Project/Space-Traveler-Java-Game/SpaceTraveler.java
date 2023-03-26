@@ -132,6 +132,15 @@ class SpaceTraveler {
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
     }
 
+    public static void drawMoon() {
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(gray).a("                                                      #####"));
+        System.out.println(ansi().fg(gray).a("                                                    #########"));
+        System.out.println(ansi().fg(gray).a("                                                    #########"));
+        System.out.println(ansi().fg(gray).a("                                                      #####"));
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+    }
+
     public static void drawMars() {
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
         System.out.println(ansi().fg(dark_orange).a("                                                      #######"));
@@ -155,13 +164,22 @@ class SpaceTraveler {
         System.out.println(ansi().fg(white_yellow).a("                                 ################################################"));
         System.out.println(ansi().fg(orange).a("                                 ################################################"));
         System.out.println(ansi().fg(dark_orange).a("                                 ################################################"));
-        System.out.println(ansi().fg(yellow).a("                                  ##############################################"));
-        System.out.println(ansi().fg(yellow).a("                                   ############################################"));
-        System.out.println(ansi().fg(yellow).a("                                      ######################################"));
-        System.out.println(ansi().fg(yellow).a("                                          ##############################"));
+        System.out.println(ansi().fg(yellow).a("                                  ############################").fg(flame_red).a("****").fg(yellow).a("##############"));
+        System.out.println(ansi().fg(yellow).a("                                   ##########################").fg(flame_red).a("******").fg(yellow).a("############"));
+        System.out.println(ansi().fg(yellow).a("                                      #######################").fg(flame_red).a("******").fg(yellow).a("#########"));
+        System.out.println(ansi().fg(yellow).a("                                          ####################").fg(flame_red).a("****").fg(yellow).a("######"));
         System.out.println(ansi().fg(yellow).a("                                               ####################"));
         System.out.println(ansi().fg(yellow).a("                                                  ##############"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+    }
+
+    public static void drawEuropa() {
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(white_yellow).a("                                                    #####"));
+        System.out.println(ansi().fg(white_yellow).a("                                                  #########"));
+        System.out.println(ansi().fg(white_yellow).a("                                                  #########"));
+        System.out.println(ansi().fg(white_yellow).a("                                                    #####"));
+        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
     }
 
     public static void drawSaturn() {
@@ -484,6 +502,39 @@ class SpaceTraveler {
         System.out.printf("\n%s\n", output);
     }
 
+    public static void getStore() {
+        System.out.println(" ___________________________________________________________________________________________________________________");
+        System.out.println("|                                                       STORE                                                       |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|                                                                                                                   |");
+        System.out.println("|___________________________________________________________________________________________________________________|");
+    }
+
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         String locations[] = {
@@ -528,7 +579,7 @@ class SpaceTraveler {
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         //System.out.println(ansi().bg(light_black));
-        /*drawCaptain();
+        drawCaptain();
         System.out.println();
         drawSun();
         System.out.println();
@@ -538,21 +589,25 @@ class SpaceTraveler {
         System.out.println();
         drawEarth();
         System.out.println();
+        drawMoon();
+        System.out.println();
         drawMars();
         System.out.println();
         drawJupiter();
+        System.out.println();
+        drawEuropa();
         System.out.println();
         drawSaturn();
         System.out.println();
         drawUranus();
         System.out.println();
-        drawNeptune();*/
+        drawNeptune();
         
         //moveSpaceship(true);
 
-        //drawWormhole();
+        drawWormhole();
 
-        int choice = 0;
+        /*int choice = 0;
 
         while (choice != 3) {
             choice = mainMenu();
@@ -581,6 +636,6 @@ class SpaceTraveler {
                     
                     mainMenu();
             }
-        }
+        }*/
     }
 }
