@@ -2,6 +2,8 @@
 
 import java.io.*;
 import java.io.IOException;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 import org.fusesource.jansi.AnsiColors;
 import org.fusesource.jansi.AnsiConsole;
@@ -356,6 +358,9 @@ class SpaceTraveler {
         System.out.println("|                  - 3 Lives                                                                                       |");
         System.out.println("|                  - $$55,000 (Starfleet Dollars)                                                                  |");
         System.out.println("|                  - Starting Location: Earth                                                                      |");
+        System.out.println("|                                                                                                                  |");
+        System.out.println("|Tips:                                                                                                             |");
+        System.out.println("|      Try: 'help' for a list of commands!                                                                         |");
         System.out.println("|__________________________________________________________________________________________________________________|");
 
         System.out.println();
@@ -438,15 +443,40 @@ class SpaceTraveler {
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
-        System.out.printf(" |     %s     |   %s  |    %s     |\n", stats[0], stats[1], stats[2]);
+        System.out.printf(" |     %s     |   %s  |    %s   |\n", stats[0], stats[1], stats[2]);
         System.out.println(" |______________________________________|");
     } 
 
-    public static void game() {
-        String stats[] = {"3", "$$5500", "Jupiter"};
+    public static void game() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        String locations[] = {
+            "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
+        };
 
-        getStats(stats);
-        while(true){}
+        Dictionary<String, String> coordinates = new Hashtable<>();
+
+        String stats[] = {"3", "$$5500", locations[3]};
+        String command_lst[] = {
+            "exit", "help", "stats"
+        };
+
+        String command = "";
+        while(!command.equals(command_lst[0])) {
+
+            System.out.print("\nCommand: ");
+            command = Keyboard.readString();
+
+            if (command.equals(command_lst[1])) {
+                System.out.print("\n| ");
+                for (int i = 0; i < command_lst.length; i++) {
+                    System.out.print(command_lst[i] + " ");
+                }
+                System.out.print("|\n");
+            }
+            else if (command.equals(command_lst[2])) {
+                getStats(stats);
+            }
+        }
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
