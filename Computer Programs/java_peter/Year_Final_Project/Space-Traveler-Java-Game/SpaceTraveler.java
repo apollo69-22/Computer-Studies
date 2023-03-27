@@ -4,9 +4,9 @@ import java.io.*;
 import java.io.IOException;
 import java.util.Map;
 
-import org.fusesource.jansi.Ansi;
-import org.fusesource.jansi.AnsiMain;
-import org.fusesource.jansi.AnsiType;
+//import org.fusesource.jansi.Ansi;
+//import org.fusesource.jansi.AnsiMain;
+//import org.fusesource.jansi.AnsiType;
 
 import java.util.HashMap;
 //import java.util.Hashtable;
@@ -632,7 +632,7 @@ class SpaceTraveler {
                 getMap(star_map);
             }
             else if (command.equals(command_lst[6])) {
-                animate_wormhole();
+                spaghettifySpaceship();
             }
         }
     }
