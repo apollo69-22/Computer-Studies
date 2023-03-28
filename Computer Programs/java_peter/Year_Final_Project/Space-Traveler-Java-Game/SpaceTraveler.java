@@ -560,14 +560,14 @@ class SpaceTraveler {
         System.out.printf("\n%s\n", output);
     }
 
-    public static void getStore() {
+    public static void getStore(Map<String, String> inventory) {
         System.out.println(" ___________________________________________________________________________________________________________________");
         System.out.println("|                                                       STORE                                                       |");
         System.out.println("|...................................................................................................................|");
-        System.out.println("|......................................1. Heat Shielding V2.0: S-$10,000............................................|");
-        System.out.println("|......................................2.                              .............................................|");
-        System.out.println("|......................................3.                              .............................................|");
-        System.out.println("|...................................................................................................................|");
+        System.out.println("|......................................1. Navigational System: S-$15,000............................................|");
+        System.out.println("|......................................2. Heat Shielding V2.0: S-$10,000............................................|");
+        System.out.println("|......................................3. Spacesuit: S-$8,000.......................................................|");
+        System.out.println("|......................................4. Gun: S-$1,000.............................................................|");
         System.out.println("|...................................................................................................................|");
         System.out.println("|...................................................................................................................|");
         System.out.println("|...................................................................................................................|");
@@ -591,6 +591,9 @@ class SpaceTraveler {
         System.out.println("|...................................................................................................................|");
         System.out.println("|...................................................................................................................|");
         System.out.println("|___________________________________________________________________________________________________________________|");
+
+        System.out.println();
+        System.out.println(inventory);
     }
 
     public static void game() throws IOException, InterruptedException {
@@ -598,6 +601,12 @@ class SpaceTraveler {
         String locations[] = {
             "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
         };
+
+        Map<String, String> inventory = new HashMap<>();
+        inventory.put("Navigational System ", " S-$15,000");
+        inventory.put("Heat Shielding V2.0 ", " S-$10,000");
+        inventory.put("Spacesuit ", " S-$8,000");
+        inventory.put("Gun ", " S-$1,000");
 
         Map<String, String> star_map = new HashMap<>();
         star_map.put("EARTH", "-0.992:-0.1:0");
@@ -625,7 +634,7 @@ class SpaceTraveler {
                 getStats(stats);
             }
             else if (command.equals(command_lst[3])) {
-                getStore();
+                getStore(inventory);
             }
             else if (command.contains(command_lst[4])) {
                 String x[] = command.split(" ");
