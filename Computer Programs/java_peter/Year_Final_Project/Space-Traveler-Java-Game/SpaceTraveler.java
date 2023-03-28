@@ -98,6 +98,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(yellow).a("                            ##########################################################"));
         System.out.println(ansi().fg(yellow).a("                                 ################################################"));
         System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawMercury() {
@@ -122,6 +123,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(yellow).a("                                                   ############"));
         System.out.println(ansi().fg(yellow).a("                                                      ######"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawEarth() {
@@ -135,6 +137,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(blue).a("                                                   ############"));
         System.out.println(ansi().fg(blue).a("                                                      ######"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawMoon() {
@@ -155,6 +158,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(dark_orange).a("                                                    ###########"));
         System.out.println(ansi().fg(dark_orange).a("                                                      #######"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
     
     public static void drawJupiter() {
@@ -176,6 +180,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(yellow).a("                                               ####################"));
         System.out.println(ansi().fg(yellow).a("                                                  ##############"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawEuropa() {
@@ -206,6 +211,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(white_yellow).a("                                               ####################"));
         System.out.println(ansi().fg(white_yellow).a("                                                  ##############"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawUranus() {
@@ -220,6 +226,7 @@ class SpaceTraveler {
         System.out.println(ansi().fg(blue).a("                                                 ################"));
         System.out.println(ansi().fg(blue).a("                                                    ##########"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(white));
     }
 
     public static void drawNeptune() {
@@ -234,20 +241,24 @@ class SpaceTraveler {
         System.out.println(ansi().fg(dark_blue).a("                                                 ################"));
         System.out.println(ansi().fg(dark_blue).a("                                                    ##########"));
         System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(white).a(""));
+        System.out.println(ansi().fg(white));
     }
 
-    public static void drawSpaceRock(String ship_pos, int fire) {
-        System.out.println(ansi().fg(gray).a("                                                         #                                                   "));
-        System.out.println(ansi().fg(gray).a("                                                        ###                                                   "));
-        System.out.println(ansi().fg(gray).a("                                                         #                                                   "));
+    public static void drawSpaceRock() {
+        System.out.println(ansi().fg(gray).a("                                                        # #                                                   "));
+        System.out.println(ansi().fg(gray).a("                                                       # # #                                                   "));
+        System.out.println(ansi().fg(gray).a("                                                        # #                                                 "));
+        System.out.print(ansi().fg(white));
     }
 
-    public static void moveSpaceRock(boolean hit) throws IOException, InterruptedException  {
+    public static void moveSpaceRock() throws IOException, InterruptedException  {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        int fire = 0;
-        String ship_pos = "";
+        St
 
+        
+        //int fire = 0;
+        //String ship_pos = "";
+        /*
         if (hit) {
             for (int i = 0; i < 176; i++) {
                 if (i == 0) {
@@ -287,7 +298,7 @@ class SpaceTraveler {
         else {
             drawSpaceRock(ship_pos, fire);
         }
-
+        */
     }
 
     public static void drawCaptain() {
@@ -649,9 +660,7 @@ class SpaceTraveler {
         //System.out.println(inventory);
     }
 
-    public static Map<String, String> star_map = new HashMap<>();
-    public static Map<String, String> inventory = new HashMap<>();
-    public static void game_init_() {
+    public static void game_init_(Map<String, String> star_map, Map<String, String> inventory) {
         star_map.put("EARTH", "-0.992:-0.1:0");
         star_map.put("SUN", "0:0:0");
         
@@ -665,15 +674,20 @@ class SpaceTraveler {
 
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        game_init_(); //intialization
+        Map<String, String> star_map = new HashMap<>();
+        Map<String, String> inventory = new HashMap<>();
+
+        game_init_(star_map, inventory); //intialization
 
         String locations[] = {
             "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
         };
 
         String stats[] = {"3", "S-$5500", locations[3]};
+
         String command_lst[] = {
-            "exit", "help", "stats", "store", "find: ", "starmap", "asshole"
+            "exit", "help", "stats", "store", "find: ", "starmap", "asshole",
+            "rock destroy"
         };
 
         String command = "";
@@ -704,6 +718,9 @@ class SpaceTraveler {
             }
             else if (command.equals(command_lst[6])) {
                 spaghettifySpaceship();
+            }
+            else if (command.equals(command_lst[7])) {
+                drawSpaceRock();
             }
         }
     }
