@@ -596,21 +596,25 @@ class SpaceTraveler {
         //System.out.println(inventory);
     }
 
-    public static void game() throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        String locations[] = {
-            "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
-        };
-
-        Map<String, String> inventory = new HashMap<>();
+    public static Map<String, String> star_map = new HashMap<>();
+    public static Map<String, String> inventory = new HashMap<>();
+    public static void game_init_() {
+        star_map.put("EARTH", "-0.992:-0.1:0");
+        star_map.put("SUN", "0:0:0");
+        
         inventory.put("Navigational System ", " S-$15,000");
         inventory.put("Heat Shielding V2.0 ", " S-$10,000");
         inventory.put("Spacesuit ", " S-$8,000");
         inventory.put("Gun ", " S-$1,000");
+    }
 
-        Map<String, String> star_map = new HashMap<>();
-        star_map.put("EARTH", "-0.992:-0.1:0");
-        star_map.put("SUN", "0:0:0");
+    public static void game() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        game_init_(); //intialization
+
+        String locations[] = {
+            "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
+        };
 
         String stats[] = {"3", "S-$5500", locations[3]};
         String command_lst[] = {
