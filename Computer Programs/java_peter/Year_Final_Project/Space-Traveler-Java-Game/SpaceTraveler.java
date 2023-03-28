@@ -237,6 +237,59 @@ class SpaceTraveler {
         System.out.println(ansi().fg(white).a(""));
     }
 
+    public static void drawSpaceRock(String ship_pos, int fire) {
+        System.out.println(ansi().fg(gray).a("                                                         #                                                   "));
+        System.out.println(ansi().fg(gray).a("                                                        ###                                                   "));
+        System.out.println(ansi().fg(gray).a("                                                         #                                                   "));
+    }
+
+    public static void moveSpaceRock(boolean hit) throws IOException, InterruptedException  {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        int fire = 0;
+        String ship_pos = "";
+
+        if (hit) {
+            for (int i = 0; i < 176; i++) {
+                if (i == 0) {
+                    drawSpaceRock(ship_pos, fire);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                    fire = flame_red;
+
+                    drawSpaceRock(ship_pos, fire);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+
+                else if (i > 0 && i < 176) {
+                    fire = flame_red;
+                    drawSpaceRock(ship_pos, fire);
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+
+                if (i == 99) {
+                    fire = 0;
+                    drawSpaceRock(ship_pos, fire);
+                }
+                ship_pos += " ";
+            }
+        }
+        else {
+            drawSpaceRock(ship_pos, fire);
+        }
+
+    }
+
     public static void drawCaptain() {
         System.out.println(ansi().fg(brown).a("                                                      **"));
         System.out.println(ansi().fg(brown).a("                                                    ******"));
@@ -566,10 +619,10 @@ class SpaceTraveler {
         System.out.println("|...................................................................................................................|");
         System.out.println("|......................................1. Navigational System:       S-$15,000......................................|");
         System.out.println("|......................................2. Heat Shielding V2.0:       S-$10,000......................................|");
-        System.out.println("|......................................3. Spacesuit:                 S-$8,000.......................................|");
-        System.out.println("|......................................4. Smith & Wesson Laser Gun:  S-$1,000.......................................|");
-        System.out.println("|...................................................................................................................|");
-        System.out.println("|...................................................................................................................|");
+        System.out.println("|......................................3. Fuel Tank:                 S-$9,000.......................................|");
+        System.out.println("|......................................4. Spacesuit:                 S-$8,000.......................................|");
+        System.out.println("|......................................5. Oxygen Tank:               S-$5,000.......................................|");
+        System.out.println("|......................................6. Smith & Wesson Laser Gun:  S-$1,000.......................................|");
         System.out.println("|...................................................................................................................|");
         System.out.println("|...................................................................................................................|");
         System.out.println("|...................................................................................................................|");
@@ -604,8 +657,10 @@ class SpaceTraveler {
         
         inventory.put("Navigational System ", " S-$15,000");
         inventory.put("Heat Shielding V2.0 ", " S-$10,000");
+        inventory.put("Fuel Tank ", " S-$9,000");
         inventory.put("Spacesuit ", " S-$8,000");
-        inventory.put("Gun ", " S-$1,000");
+        inventory.put("Oxygen Tank ", " S-$5,000");
+        inventory.put("Smith & Wesson Laser Gun ", " S-$1,000");
     }
 
     public static void game() throws IOException, InterruptedException {
