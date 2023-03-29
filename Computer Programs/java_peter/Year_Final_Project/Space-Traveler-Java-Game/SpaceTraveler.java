@@ -322,11 +322,15 @@ class SpaceTraveler {
 
         if (loop_cnt == 0)
             i_limit = 1;
-        else if (loop_cnt > 0) {
+        else if (loop_cnt > 0 && loop_cnt <= 50) {
             if (loop_cnt_remainder == 0)
                 i_limit = loop_cnt;
-            else if (loop_cnt_remainder > 0)
+            else if (loop_cnt_remainder > 0) {
                 i_limit = loop_cnt + 1;
+
+                String sub_sentence[]; 
+                //sentence.split(sub_sentence, 50);
+            }
         }
         
         System.out.println("__________________________________________________");
