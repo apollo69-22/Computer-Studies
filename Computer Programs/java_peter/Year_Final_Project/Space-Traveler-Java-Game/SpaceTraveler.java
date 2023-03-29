@@ -253,7 +253,7 @@ class SpaceTraveler {
 
     public static void moveSpaceRock() throws IOException, InterruptedException  {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        St
+        //St
 
         
         //int fire = 0;
@@ -316,9 +316,33 @@ class SpaceTraveler {
         System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
     }
 
-    public static void drawBubble() {
-        System.out.println(" ______________________________________ ");
-        System.out.println("|                                      |");
+    public static void drawBubble(String sentence) {
+        int sent_length = sentence.length(), loop_cnt = sent_length / 50, i_limit = 0;
+        float loop_cnt_remainder = sent_length % 50;
+
+        if (loop_cnt == 0)
+            i_limit = 1;
+        else if (loop_cnt > 0) {
+            if (loop_cnt_remainder == 0)
+                i_limit = loop_cnt;
+            else if (loop_cnt_remainder > 0)
+                i_limit = loop_cnt + 1;
+        }
+        
+        System.out.println("__________________________________________________");
+
+        for (int i = 0; i < i_limit; i++) {
+            System.out.printf("\n|%s|", sentence);
+        }
+
+        System.out.println("|_____________________________       __|");
+        System.out.println("                              \\     / ");
+        System.out.println("                               \\   /  ");
+        System.out.println("                                \\ /   ");
+        System.out.println("                                 '");
+
+        System.out.println(" ______________________________________");
+        System.out.printf("|                                                  |");
         System.out.println("|                                      |");
         System.out.println("|                                      |");
         System.out.println("|                                      |");
