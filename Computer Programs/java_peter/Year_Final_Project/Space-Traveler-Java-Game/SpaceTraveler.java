@@ -444,7 +444,7 @@ class SpaceTraveler {
     }
     /**************************************************/
 
-    /***************Captian Graphis********************/
+    /***************Captain Graphis********************/
     public static void drawCaptain() {
         System.out.println(ansi().fg(Colors.brown).a("                                                      **"));
         System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
