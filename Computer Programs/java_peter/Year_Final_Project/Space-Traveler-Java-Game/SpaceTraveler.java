@@ -63,7 +63,7 @@ class Colors {
 }
 
 class SpaceTraveler {
-
+    /***************Solar System Graphics**************/
     public static void drawSun() {
         System.out.println(ansi().fg(Colors.yellow).a("**************************************************************************************************************"));
         System.out.println(ansi().fg(Colors.yellow).a("                                 ################################################"));
@@ -252,7 +252,27 @@ class SpaceTraveler {
         System.out.println(ansi().fg(Colors.gray).a("                                                        # #                                                 "));
         System.out.print(ansi().fg(Colors.white));
     }
+    
+    public static void drawWormhole() {
+        System.out.println(ansi().fg(Colors.light_white).a("                                                      ,").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a(","));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-'"));
 
+        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                      '").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a("'"));
+    }
+    /**************************************************/
+    
+    /***************Solar System Animaton**************/
     public static void moveSpaceRock() throws IOException, InterruptedException  {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         //St
@@ -301,106 +321,6 @@ class SpaceTraveler {
             drawSpaceRock(ship_pos, fire);
         }
         */
-    }
-
-    public static void drawCaptain() {
-        System.out.println(ansi().fg(Colors.brown).a("                                                      **"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                    *     *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                   *       *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  O   0  *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *    U    *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  .   .  *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *   ...   *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  **       **").fg(WHITE));
-    }
-
-    public static void drawBubble(String sentence) {
-        int sent_length = sentence.length(), loop_cnt = sent_length / 50, i_limit = 0;
-        float loop_cnt_remainder = sent_length % 50;
-
-        if (loop_cnt == 0)
-            i_limit = 1;
-        else if (loop_cnt > 0 && loop_cnt <= 50) {
-            if (loop_cnt_remainder == 0)
-                i_limit = loop_cnt;
-            else if (loop_cnt_remainder > 0) {
-                i_limit = loop_cnt + 1;
-
-                String sub_sentence[]; 
-                //sentence.split(sub_sentence, 50);
-            }
-        }
-        
-        System.out.println("__________________________________________________");
-
-        for (int i = 0; i < i_limit; i++) {
-            System.out.printf("\n|%s|", sentence);
-        }
-
-        System.out.println("|_____________________________       __|");
-        System.out.println("                              \\     / ");
-        System.out.println("                               \\   /  ");
-        System.out.println("                                \\ /   ");
-        System.out.println("                                 '");
-
-        System.out.println(" ______________________________________");
-        System.out.printf("|                                                  |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|_____________________________       __|");
-        System.out.println("                              \\     / ");
-        System.out.println("                               \\   /  ");
-        System.out.println("                                \\ /   ");
-        System.out.println("                                 '");
-
-    }
-
-    public static void drawSpaceship(String ship_pos, String wormhole_pos, boolean wormhole_present, int flame) throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        int wormhole_outlineI = 0;
-        int wormhole_outlineII = 0;
-        int wormhole_outlineIII = 0;
-
-        if (wormhole_present) {
-            wormhole_outlineI = Colors.light_white;
-            wormhole_outlineII = Colors.almost_white;
-            wormhole_outlineIII = Colors.almost_black;
-        }
-
-        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               *").fg(Colors.light_black).a("*************").fg(Colors.white).a(".                                                 ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(Colors.white).a("     `.`.          *                                                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.").fg(Colors.white).a("     *********************************************.                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '        ").fg(Colors.yellow).a(".").fg(Colors.white).a("             *          '") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("               ,").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a(","), ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("'   '").fg(Colors.white).a("          *               '") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("         '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'     ").fg(Colors.white).a("*").fg(Colors.light_black).a("  ...............    ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                  #").fg(Colors.light_black).a("==---") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("'").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
-                                         .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
-
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.   ").fg(Colors.white).a("*                     ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                .") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("       '").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
-                                         .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("' . '").fg(Colors.white).a("          *            .") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("            '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '                      *        .") + "%s" + ansi()
-                                         .fg(wormhole_outlineI).a("                 '").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(Colors.white).a("     *********************************************                 ") + "%s", ship_pos, wormhole_pos);
-
-        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               ").fg(Colors.white).a(" .'.'           .*                                                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(Colors.white).a("                *").fg(Colors.light_black).a("************").fg(Colors.white).a("'                                                 ") + "%s", ship_pos, wormhole_pos);
     }
 
     public static String wormhole_loc(int pos) {
@@ -470,24 +390,6 @@ class SpaceTraveler {
         }
 
     }
-
-    public static void drawWormhole() {
-        System.out.println(ansi().fg(Colors.light_white).a("                                                      ,").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a(","));
-        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
-        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-'"));
-
-        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
-                                                                                                                .fg(Colors.almost_white).a("-'"));
-        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
-        System.out.println(ansi().fg(Colors.light_white).a("                                                      '").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a("'"));
-    }
     
     public static void spaghettifySpaceship() throws IOException, InterruptedException {
         //AnsiMain test = ansi().fg(light_white).a("howdy").fg(almost_white).a("---").fg(light_white).a(",");
@@ -496,6 +398,111 @@ class SpaceTraveler {
 
         moveSpaceship(true, true);
     }
+    /**************************************************/
+
+    /***************Starship Graphics******************/
+    public static void drawSpaceship(String ship_pos, String wormhole_pos, boolean wormhole_present, int flame) throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        int wormhole_outlineI = 0;
+        int wormhole_outlineII = 0;
+        int wormhole_outlineIII = 0;
+
+        if (wormhole_present) {
+            wormhole_outlineI = Colors.light_white;
+            wormhole_outlineII = Colors.almost_white;
+            wormhole_outlineIII = Colors.almost_black;
+        }
+
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               *").fg(Colors.light_black).a("*************").fg(Colors.white).a(".                                                 ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(Colors.white).a("     `.`.          *                                                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.").fg(Colors.white).a("     *********************************************.                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '        ").fg(Colors.yellow).a(".").fg(Colors.white).a("             *          '") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("               ,").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a(","), ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("'   '").fg(Colors.white).a("          *               '") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("         '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'     ").fg(Colors.white).a("*").fg(Colors.light_black).a("  ...............    ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                  #").fg(Colors.light_black).a("==---") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("'").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
+                                         .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
+
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.   ").fg(Colors.white).a("*                     ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                .") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("       '").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
+                                         .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("' . '").fg(Colors.white).a("          *            .") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("            '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '                      *        .") + "%s" + ansi()
+                                         .fg(wormhole_outlineI).a("                 '").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(Colors.white).a("     *********************************************                 ") + "%s", ship_pos, wormhole_pos);
+
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               ").fg(Colors.white).a(" .'.'           .*                                                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("                *").fg(Colors.light_black).a("************").fg(Colors.white).a("'                                                 ") + "%s", ship_pos, wormhole_pos);
+    }
+    /**************************************************/
+
+    /***************Captian Graphis********************/
+    public static void drawCaptain() {
+        System.out.println(ansi().fg(Colors.brown).a("                                                      **"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                    *     *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                   *       *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  O   0  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *    U    *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  .   .  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *   ...   *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  **       **").fg(WHITE));
+    }
+    
+    public static void drawBubble(String sentence) {
+        int sent_length = sentence.length(), loop_cnt = sent_length / 50, i_limit = 0;
+        float loop_cnt_remainder = sent_length % 50;
+
+        if (loop_cnt == 0)
+            i_limit = 1;
+        else if (loop_cnt > 0 && loop_cnt <= 50) {
+            if (loop_cnt_remainder == 0)
+                i_limit = loop_cnt;
+            else if (loop_cnt_remainder > 0) {
+                i_limit = loop_cnt + 1;
+
+                String sub_sentence[]; 
+                //sentence.split(sub_sentence, 50);
+            }
+        }
+        
+        System.out.println("__________________________________________________");
+
+        for (int i = 0; i < i_limit; i++) {
+            System.out.printf("\n|%s|", sentence);
+        }
+
+        System.out.println("|_____________________________       __|");
+        System.out.println("                              \\     / ");
+        System.out.println("                               \\   /  ");
+        System.out.println("                                \\ /   ");
+        System.out.println("                                 '");
+
+        System.out.println(" ______________________________________");
+        System.out.printf("|                                                  |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|                                      |");
+        System.out.println("|_____________________________       __|");
+        System.out.println("                              \\     / ");
+        System.out.println("                               \\   /  ");
+        System.out.println("                                \\ /   ");
+        System.out.println("                                 '");
+
+    }
+    /**************************************************/
 
     public static int mainMenu()throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
