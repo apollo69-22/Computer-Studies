@@ -72,25 +72,25 @@ class SpaceTraveler {
         System.out.println(ansi().fg(Colors.yellow).a("                     ########################################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("                   ############################################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("                 ################################################################################"));
-        System.out.println(ansi().fg(yellow).a("               ####################################################################################"));
-        System.out.println(ansi().fg(yellow).a("             ########################################################################################"));
-        System.out.println(ansi().fg(yellow).a("            ##########################################################################################"));
-        System.out.println(ansi().fg(yellow).a("           ############################################################################################"));
-        System.out.println(ansi().fg(yellow).a("          ##############################################################################################"));
-        System.out.println(ansi().fg(yellow).a("         ################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("        ##################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("       ####################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("        ##################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("         ################################################################################################"));
-        System.out.println(ansi().fg(yellow).a("          ##############################################################################################"));
-        System.out.println(ansi().fg(yellow).a("           ############################################################################################"));
-        System.out.println(ansi().fg(yellow).a("            ##########################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("               ####################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("             ########################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("            ##########################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("           ############################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("          ##############################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("         ################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("        ##################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("       ####################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("        ##################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("         ################################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("          ##############################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("           ############################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("            ##########################################################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("             ########################################################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("               ####################################################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("                 ################################################################################"));
@@ -100,157 +100,157 @@ class SpaceTraveler {
         System.out.println(ansi().fg(Colors.yellow).a("                            ##########################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("                                 ################################################"));
         System.out.println(ansi().fg(Colors.yellow).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawMercury() {
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(gray).a("                                                      #######"));
-        System.out.println(ansi().fg(gray).a("                                                    ###########"));
-        System.out.println(ansi().fg(gray).a("                                                  ###############"));
-        System.out.println(ansi().fg(gray).a("                                                  ###############"));
-        System.out.println(ansi().fg(gray).a("                                                    ###########"));
-        System.out.println(ansi().fg(gray).a("                                                      #######"));
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                      #######"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                    ###########"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                  ###############"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                  ###############"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                    ###########"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                      #######"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
     }
 
     public static void drawVenus() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(yellow).a("                                                      ######"));
-        System.out.println(ansi().fg(yellow).a("                                                   ############"));
-        System.out.println(ansi().fg(yellow).a("                                                 ################"));
-        System.out.println(ansi().fg(yellow).a("                                               ####################"));
-        System.out.println(ansi().fg(yellow).a("                                               ####################"));
-        System.out.println(ansi().fg(yellow).a("                                                 ################"));
-        System.out.println(ansi().fg(yellow).a("                                                   ############"));
-        System.out.println(ansi().fg(yellow).a("                                                      ######"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                   ############"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                   ############"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawEarth() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(blue).a("                                                      ######"));
-        System.out.println(ansi().fg(blue).a("                                                   ############"));
-        System.out.println(ansi().fg(grn_skin).a("                                                 ################"));
-        System.out.println(ansi().fg(grn_skin).a("                                               ####################"));
-        System.out.println(ansi().fg(blue).a("                                               ####################"));
-        System.out.println(ansi().fg(blue).a("                                                 ################"));
-        System.out.println(ansi().fg(blue).a("                                                   ############"));
-        System.out.println(ansi().fg(blue).a("                                                      ######"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                   ############"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                   ############"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawMoon() {
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(gray).a("                                                      #####"));
-        System.out.println(ansi().fg(gray).a("                                                    #########"));
-        System.out.println(ansi().fg(gray).a("                                                    #########"));
-        System.out.println(ansi().fg(gray).a("                                                      #####"));
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                      #####"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                    #########"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                    #########"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                      #####"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
     }
 
     public static void drawMars() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(dark_orange).a("                                                      #######"));
-        System.out.println(ansi().fg(dark_orange).a("                                                    ###########"));
-        System.out.println(ansi().fg(dark_orange).a("                                                  ###############"));
-        System.out.println(ansi().fg(dark_orange).a("                                                  ###############"));
-        System.out.println(ansi().fg(dark_orange).a("                                                    ###########"));
-        System.out.println(ansi().fg(dark_orange).a("                                                      #######"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                      #######"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                    ###########"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                  ###############"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                  ###############"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                    ###########"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                                      #######"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
     
     public static void drawJupiter() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(gray).a("                                                  ##############"));
-        System.out.println(ansi().fg(gray).a("                                               ####################"));
-        System.out.println(ansi().fg(green_yellow).a("                                          ##############################"));
-        System.out.println(ansi().fg(white_yellow).a("                                      ######################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                    ##########################################"));
-        System.out.println(ansi().fg(dark_orange).a("                                   ############################################"));        
-        System.out.println(ansi().fg(orange).a("                                  ##############################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(orange).a("                                 ################################################"));
-        System.out.println(ansi().fg(dark_orange).a("                                 ################################################"));
-        System.out.println(ansi().fg(yellow).a("                                  ############################").fg(flame_red).a("****").fg(yellow).a("##############"));
-        System.out.println(ansi().fg(yellow).a("                                   ##########################").fg(flame_red).a("******").fg(yellow).a("############"));
-        System.out.println(ansi().fg(yellow).a("                                      #######################").fg(flame_red).a("******").fg(yellow).a("#########"));
-        System.out.println(ansi().fg(yellow).a("                                          ####################").fg(flame_red).a("****").fg(yellow).a("######"));
-        System.out.println(ansi().fg(yellow).a("                                               ####################"));
-        System.out.println(ansi().fg(yellow).a("                                                  ##############"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.gray).a("                                                  ##############"));
+        System.out.println(ansi().fg(Colors.gray).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.green_yellow).a("                                          ##############################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                      ######################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                    ##########################################"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                   ############################################"));        
+        System.out.println(ansi().fg(Colors.orange).a("                                  ##############################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.orange).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.dark_orange).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                  ############################").fg(Colors.flame_red).a("****").fg(Colors.yellow).a("##############"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                   ##########################").fg(Colors.flame_red).a("******").fg(Colors.yellow).a("############"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                      #######################").fg(Colors.flame_red).a("******").fg(Colors.yellow).a("#########"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                          ####################").fg(Colors.flame_red).a("****").fg(Colors.yellow).a("######"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                                  ##############"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawEuropa() {
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(white_yellow).a("                                                    #####"));
-        System.out.println(ansi().fg(white_yellow).a("                                                  #########"));
-        System.out.println(ansi().fg(white_yellow).a("                                                  #########"));
-        System.out.println(ansi().fg(white_yellow).a("                                                    #####"));
-        System.out.println(ansi().fg(white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                    #####"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                  #########"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                  #########"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                    #####"));
+        System.out.println(ansi().fg(Colors.white).a("**************************************************************************************************************"));
     }
 
     public static void drawSaturn() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(white_yellow).a("                                                  ##############"));
-        System.out.println(ansi().fg(white_yellow).a("                                               ####################"));
-        System.out.println(ansi().fg(white_yellow).a("                                          ##############################"));
-        System.out.println(ansi().fg(white_yellow).a("                                      ######################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                    ##########################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                   ############################################"));        
-        System.out.println(ansi().fg(white_yellow).a("                                  ##############################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                  ##############################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                   ############################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                      ######################################"));
-        System.out.println(ansi().fg(white_yellow).a("                                          ##############################"));
-        System.out.println(ansi().fg(white_yellow).a("                                               ####################"));
-        System.out.println(ansi().fg(white_yellow).a("                                                  ##############"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                  ##############"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                          ##############################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                      ######################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                    ##########################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                   ############################################"));        
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                  ##############################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                  ##############################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                   ############################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                      ######################################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                          ##############################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.white_yellow).a("                                                  ##############"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawUranus() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(blue).a("                                                    ##########"));
-        System.out.println(ansi().fg(blue).a("                                                 ################"));
-        System.out.println(ansi().fg(blue).a("                                               ####################"));
-        System.out.println(ansi().fg(blue).a("                                             ########################"));
-        System.out.println(ansi().fg(blue).a("                                             ########################"));
-        System.out.println(ansi().fg(blue).a("                                             ########################"));
-        System.out.println(ansi().fg(blue).a("                                               ####################"));
-        System.out.println(ansi().fg(blue).a("                                                 ################"));
-        System.out.println(ansi().fg(blue).a("                                                    ##########"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                    ##########"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                    ##########"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void drawNeptune() {
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(dark_blue).a("                                                    ##########"));
-        System.out.println(ansi().fg(dark_blue).a("                                                 ################"));
-        System.out.println(ansi().fg(dark_blue).a("                                               ####################"));
-        System.out.println(ansi().fg(dark_blue).a("                                             ########################"));
-        System.out.println(ansi().fg(dark_blue).a("                                             ########################"));
-        System.out.println(ansi().fg(dark_blue).a("                                             ########################"));
-        System.out.println(ansi().fg(dark_blue).a("                                               ####################"));
-        System.out.println(ansi().fg(dark_blue).a("                                                 ################"));
-        System.out.println(ansi().fg(dark_blue).a("                                                    ##########"));
-        System.out.println(ansi().fg(gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                                    ##########"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                             ########################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                                 ################"));
+        System.out.println(ansi().fg(Colors.dark_blue).a("                                                    ##########"));
+        System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.white));
     }
 
     public static void drawSpaceRock() {
-        System.out.println(ansi().fg(gray).a("                                                        # #                                                   "));
-        System.out.println(ansi().fg(gray).a("                                                       # # #                                                   "));
-        System.out.println(ansi().fg(gray).a("                                                        # #                                                 "));
-        System.out.print(ansi().fg(white));
+        System.out.println(ansi().fg(Colors.gray).a("                                                        # #                                                   "));
+        System.out.println(ansi().fg(Colors.gray).a("                                                       # # #                                                   "));
+        System.out.println(ansi().fg(Colors.gray).a("                                                        # #                                                 "));
+        System.out.print(ansi().fg(Colors.white));
     }
 
     public static void moveSpaceRock() throws IOException, InterruptedException  {
@@ -304,18 +304,18 @@ class SpaceTraveler {
     }
 
     public static void drawCaptain() {
-        System.out.println(ansi().fg(brown).a("                                                      **"));
-        System.out.println(ansi().fg(brown).a("                                                    ******"));
-        System.out.println(ansi().fg(brown).a("                                                    ******"));
-        System.out.println(ansi().fg(brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(grn_skin).a("                                                    *     *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                   *       *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *  O   0  *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *    U    *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *  .   .  *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  *   ...   *"));
-        System.out.println(ansi().fg(grn_skin).a("                                                  **       **").fg(WHITE));
+        System.out.println(ansi().fg(Colors.brown).a("                                                      **"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                    *     *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                   *       *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  O   0  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *    U    *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  .   .  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *   ...   *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  **       **").fg(WHITE));
     }
 
     public static void drawBubble(String sentence) {
@@ -368,39 +368,39 @@ class SpaceTraveler {
         int wormhole_outlineIII = 0;
 
         if (wormhole_present) {
-            wormhole_outlineI = light_white;
-            wormhole_outlineII = almost_white;
-            wormhole_outlineIII = almost_black;
+            wormhole_outlineI = Colors.light_white;
+            wormhole_outlineII = Colors.almost_white;
+            wormhole_outlineIII = Colors.almost_black;
         }
 
-        System.out.printf("\n%s" + ansi().fg(white).a("               *").fg(light_black).a("*************").fg(white).a(".                                                 ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(white).a("     `.`.          *                                                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.").fg(white).a("     *********************************************.                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(light_black).a("*** ").fg(white).a("*    '         '        ").fg(yellow).a(".").fg(white).a("             *          '") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               *").fg(Colors.light_black).a("*************").fg(Colors.white).a(".                                                 ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ''''.  ").fg(Colors.white).a("     `.`.          *                                                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.").fg(Colors.white).a("     *********************************************.                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '        ").fg(Colors.yellow).a(".").fg(Colors.white).a("             *          '") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("               ,").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a(","), ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("'   '").fg(white).a("          *               '") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("'   '").fg(Colors.white).a("          *               '") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("         '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'     ").fg(white).a("*").fg(light_black).a("  ...............    ").fg(yellow).a("'     '").fg(white).a("        *                  #").fg(light_black).a("==---") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'     ").fg(Colors.white).a("*").fg(Colors.light_black).a("  ...............    ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                  #").fg(Colors.light_black).a("==---") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("'").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
                                          .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
 
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.   ").fg(white).a("*                     ").fg(yellow).a("'     '").fg(white).a("        *                .") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(flame).a("   . ' ' '.   ").fg(Colors.white).a("*                     ").fg(Colors.yellow).a("'     '").fg(Colors.white).a("        *                .") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("       '").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##")
                                          .fg(wormhole_outlineII).a("-").fg(wormhole_outlineIII).a("##").fg(wormhole_outlineII).a("-'"), ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(light_black).a("***").fg(white).a("*    ***********       ").fg(yellow).a("' . '").fg(white).a("          *            .") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(flame).a("' .        ").fg(Colors.light_black).a("***").fg(Colors.white).a("*    ***********       ").fg(Colors.yellow).a("' . '").fg(Colors.white).a("          *            .") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("            '").fg(wormhole_outlineIII).a("#########").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(light_black).a("*** ").fg(white).a("*    '         '                      *        .") + "%s" + ansi()
+        System.out.printf("\n%s" + ansi().fg(flame).a("   ' . . . ").fg(Colors.light_black).a("*** ").fg(Colors.white).a("*    '         '                      *        .") + "%s" + ansi()
                                          .fg(wormhole_outlineI).a("                 '").fg(wormhole_outlineII).a("-----").fg(wormhole_outlineI).a("'"), ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(white).a("     *********************************************                 ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(flame).a("    ....'  ").fg(Colors.white).a("     *********************************************                 ") + "%s", ship_pos, wormhole_pos);
 
-        System.out.printf("\n%s" + ansi().fg(white).a("               ").fg(white).a(" .'.'           .*                                                ") + "%s", ship_pos, wormhole_pos);
-        System.out.printf("\n%s" + ansi().fg(white).a("                *").fg(light_black).a("************").fg(white).a("'                                                 ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("               ").fg(Colors.white).a(" .'.'           .*                                                ") + "%s", ship_pos, wormhole_pos);
+        System.out.printf("\n%s" + ansi().fg(Colors.white).a("                *").fg(Colors.light_black).a("************").fg(Colors.white).a("'                                                 ") + "%s", ship_pos, wormhole_pos);
     }
 
     public static String wormhole_loc(int pos) {
@@ -436,7 +436,7 @@ class SpaceTraveler {
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
-                    flame = flame_red;
+                    flame = Colors.flame_red;
 
                     drawSpaceship(ship_pos, wormhole_pos, wormhole_present, flame);
                     try {
@@ -447,7 +447,7 @@ class SpaceTraveler {
                 }
 
                 else if (i > 0 && i < 176) {
-                    flame = flame_red;
+                    flame = Colors.flame_red;
                     drawSpaceship(ship_pos, wormhole_pos, wormhole_present, flame);
                     try {
                         Thread.sleep(30);
@@ -472,21 +472,21 @@ class SpaceTraveler {
     }
 
     public static void drawWormhole() {
-        System.out.println(ansi().fg(light_white).a("                                                      ,").fg(almost_white).a("-----").fg(light_white).a(","));
-        System.out.println(ansi().fg(light_white).a("                                                    '").fg(almost_black).a("#########").fg(light_white).a("'"));
-        System.out.println(ansi().fg(light_white).a("                                                  '").fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                      ,").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a(","));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-'"));
 
-        System.out.println(ansi().fg(light_white).a("                                                  '").fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-").fg(almost_black).a("##")
-                                                                                                                .fg(almost_white).a("-'"));
-        System.out.println(ansi().fg(light_white).a("                                                    '").fg(almost_black).a("#########").fg(light_white).a("'"));
-        System.out.println(ansi().fg(light_white).a("                                                      '").fg(almost_white).a("-----").fg(light_white).a("'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                  '").fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-").fg(Colors.almost_black).a("##")
+                                                                                                                .fg(Colors.almost_white).a("-'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                    '").fg(Colors.almost_black).a("#########").fg(Colors.light_white).a("'"));
+        System.out.println(ansi().fg(Colors.light_white).a("                                                      '").fg(Colors.almost_white).a("-----").fg(Colors.light_white).a("'"));
     }
     
     public static void spaghettifySpaceship() throws IOException, InterruptedException {
