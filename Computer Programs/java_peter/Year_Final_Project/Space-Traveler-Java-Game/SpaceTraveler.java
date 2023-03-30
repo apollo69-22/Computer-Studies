@@ -17,59 +17,61 @@ import java.util.HashMap;
 import static org.fusesource.jansi.Ansi.*;
 import static org.fusesource.jansi.Ansi.Color.*;
 
-class SpaceTraveler {
+class Colors {
     /******************whites********************/
-    public static final int white = 255;
-    public static final int almost_white = 238;
-    public static final int light_white = 245;
-    public static final int white_yellow = 229;
+    static final int white = 255;
+    static final int almost_white = 238;
+    static final int light_white = 245;
+    static final int white_yellow = 229;
     /********************************************/
 
     /******************blacks********************/
-    public static final int light_black = 240;
-    public static final int almost_black = 233;
+    static final int light_black = 240;
+    static final int almost_black = 233;
     /********************************************/
     
     /******************grays********************/
-    public static final int gray = 8;
+    static final int gray = 8;
     /********************************************/
 
     /******************browns********************/
-    public static final int brown = 58;
+    static final int brown = 58;
     /********************************************/
 
     /******************reds********************/
-    public static final int flame_red = 9;
+    static final int flame_red = 9;
     /********************************************/
     
     /******************yellows********************/
-    public static final int yellow = 11;
-    public static final int green_yellow = 148;
+    static final int yellow = 11;
+    static final int green_yellow = 148;
     /********************************************/
 
     /******************oranges********************/
-    public static final int orange = 220;
-    public static final int dark_orange = 214;
+    static final int orange = 220;
+    static final int dark_orange = 214;
     /********************************************/
 
     /******************blues********************/
-    public static final int blue = 153;
-    public static final int dark_blue = 30;
+    static final int blue = 153;
+    static final int dark_blue = 30;
     /********************************************/
 
     /******************greens********************/    
-    public static final int grn_skin = 10;
+    static final int grn_skin = 10;
     /********************************************/
+}
 
+class SpaceTraveler {
 
     public static void drawSun() {
-        System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(yellow).a("                            ##########################################################"));
-        System.out.println(ansi().fg(yellow).a("                        ##################################################################"));
-        System.out.println(ansi().fg(yellow).a("                     ########################################################################"));
-        System.out.println(ansi().fg(yellow).a("                   ############################################################################"));
-        System.out.println(ansi().fg(yellow).a("                 ################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                            ##########################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                        ##################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                     ########################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                   ############################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                 ################################################################################"));
         System.out.println(ansi().fg(yellow).a("               ####################################################################################"));
         System.out.println(ansi().fg(yellow).a("             ########################################################################################"));
         System.out.println(ansi().fg(yellow).a("            ##########################################################################################"));
@@ -89,15 +91,15 @@ class SpaceTraveler {
         System.out.println(ansi().fg(yellow).a("          ##############################################################################################"));
         System.out.println(ansi().fg(yellow).a("           ############################################################################################"));
         System.out.println(ansi().fg(yellow).a("            ##########################################################################################"));
-        System.out.println(ansi().fg(yellow).a("             ########################################################################################"));
-        System.out.println(ansi().fg(yellow).a("               ####################################################################################"));
-        System.out.println(ansi().fg(yellow).a("                 ################################################################################"));
-        System.out.println(ansi().fg(yellow).a("                   ############################################################################"));
-        System.out.println(ansi().fg(yellow).a("                     ########################################################################"));
-        System.out.println(ansi().fg(yellow).a("                        ##################################################################"));
-        System.out.println(ansi().fg(yellow).a("                            ##########################################################"));
-        System.out.println(ansi().fg(yellow).a("                                 ################################################"));
-        System.out.println(ansi().fg(yellow).a("**************************************************************************************************************"));
+        System.out.println(ansi().fg(Colors.yellow).a("             ########################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("               ####################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                 ################################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                   ############################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                     ########################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                        ##################################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                            ##########################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("                                 ################################################"));
+        System.out.println(ansi().fg(Colors.yellow).a("**************************************************************************************************************"));
         System.out.print(ansi().fg(white));
     }
 
