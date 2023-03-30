@@ -627,7 +627,7 @@ class SpaceTraveler {
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
-        System.out.printf(" |     %s     |   %s |    %s     |\n", stats[0], stats[1], stats[2]);
+        System.out.printf(" |     %s     | %s |    %s     |\n", stats[0], stats[1], stats[2]);
         System.out.println(" |______________________________________|");
     }
 
@@ -702,6 +702,10 @@ class SpaceTraveler {
 
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+        drawCaptain();
+
+
         Map<String, String> star_map = new HashMap<>();
         Map<String, String> inventory = new HashMap<>();
 
@@ -711,7 +715,7 @@ class SpaceTraveler {
             "SUN", "MERCURY", "VENUS", "EARTH", "MARS", "JUPITER", "SATURN", "URANUS", "NEPTUNE", "PLUTO"
         };
 
-        String stats[] = {"3", "S-$5500", locations[3]};
+        String stats[] = {"3", "S-$55,000", locations[3]};
 
         String command_lst[] = {
             "exit", "help", "stats", "store", "find: ", "starmap", "asshole",
@@ -756,8 +760,8 @@ class SpaceTraveler {
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         //System.out.println(ansi().bg(light_black));
-        /*drawCaptain();
-        System.out.println();
+        //drawCaptain();
+        /*System.out.println();
         drawSun();
         System.out.println();
         drawMercury();
