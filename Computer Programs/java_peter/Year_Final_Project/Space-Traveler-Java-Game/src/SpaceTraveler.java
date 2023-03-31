@@ -464,23 +464,27 @@ class SpaceTraveler {
     
     public static void drawBubble(String sentence) {
         String[] bubble = {
-            "_", "|", "\\", "'", " ", "______|", "\\     /", "\\   /", "\\ /", "'"
+            "_", "|", "\\", "'", " ", "       ____|", " \\     /", "  \\   /", "   \\ /", "    '"
         };
 
         bubble[4] = " " + sentence;
         sentence = bubble[4] + " ";
         bubble[4] = " ";
         int sent_length = sentence.length();
+        String spcs = "";
 
-        System.out.print(bubble[4]);
-        for (int i = 0; i < sent_length; i++)
-            System.out.print(bubble[0]);
-        System.out.println();
+        if (sent_length < 20) {
+            sent_length = 20;
 
-        if (sent_length <= 30)
-            System.out.printf("%s%s%s\n", bubble[1], sentence, bubble[1]);
+            System.out.print(bubble[4]);
+            for (int i = 0; i < sent_length; i++)
+                System.out.print(bubble[0]);
+            for (int i = 0; i < sent_length - sentence.length(); i++)
+                spcs += " ";
+            System.out.println();
+            System.out.printf("%s%s%s%s\n", bubble[1], sentence, spcs, bubble[1]);
+        }
         else {
-            //System.out.println("30 above");
             int largest_chunk_size = 0;
             String[] split_sent = sentence.split(" ");
             List<String> chunk = new LinkedList<String>();
@@ -507,23 +511,42 @@ class SpaceTraveler {
 
             for (int i = 0; i < chunk.size(); i++) {
                 if (chunk.get(i) != "") {
-                    String spcs = "";
+                    spcs = "";
                     for (int j = 0; j < sent_length - chunk.get(i).length(); j++)
                         spcs += bubble[4];
                     System.out.printf("%s%s%s%s\n", bubble[1], chunk.get(i), spcs, bubble[1]);
                 }
             }
+            
         }
 
-        String spcsII = ""; int cnt = 5;
-        System.out.println(sent_length);
+        /***************bottom of bubble*******************/
+        spcs = ""; int cnt = 5, loop_lmt = sent_length - bubble[cnt].length()+1;
+
+        for (int i = 0; i < sent_length; i++)
+            spcs += " ";
+        System.out.printf("%s", bubble[1]);
+
         for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < sent_length; j++);
-                spcsII += " ";
-            System.out.println(spcsII.length());
-            System.out.printf("|%s%s\n", spcsII, bubble[cnt]);
+            spcs = "";
+
+            for (int j = 0; j < loop_lmt; j++) {
+                if (i == 0)
+                    spcs += bubble[0];
+                else
+                    spcs += bubble[4];
+            }
+            System.out.printf("%s%s\n", spcs, bubble[cnt]);
             cnt++;
         }
+        /**************************************************/
+        /*
+        sent_length = sentence.length();
+
+        System.out.print(bubble[4]);
+        for (int i = 0; i < sent_length; i++)
+            System.out.print(bubble[0]);
+        System.out.println();*/
 
     }
     /**************************************************/
