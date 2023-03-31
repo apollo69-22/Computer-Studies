@@ -2,6 +2,7 @@
 
 import java.io.*;
 import java.io.IOException;
+import java.util.*;
 import java.util.Map;
 
 //import org.fusesource.jansi.Ansi;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 import java.util.HashMap;
 //import java.util.Hashtable;
+import java.util.LinkedList;
 
 //import org.fusesource.jansi.AnsiColors;
 //import org.fusesource.jansi.AnsiConsole;
@@ -461,53 +463,73 @@ class SpaceTraveler {
     }
     
     public static void drawBubble(String sentence) {
-        int sent_length = sentence.length(), loop_cnt = sent_length / 50, i_limit = 0;
-        float loop_cnt_remainder = sent_length % 50;
+        String[] bubble = {
+            "_", "|", "\\", "'", " ", "______|", "\\     /", "\\   /", "\\ /", "'"
+        };
 
-        if (loop_cnt == 0)
-            i_limit = 1;
-        else if (loop_cnt > 0 && loop_cnt <= 50) {
-            if (loop_cnt_remainder == 0)
-                i_limit = loop_cnt;
-            else if (loop_cnt_remainder > 0) {
-                i_limit = loop_cnt + 1;
+        bubble[4] = " " + sentence;
+        sentence = bubble[4] + " ";
+        bubble[4] = " ";
+        int sent_length = sentence.length();
 
-                String sub_sentence[]; 
-                //sentence.split(sub_sentence, 50);
+        System.out.print(bubble[4]);
+        for (int i = 0; i < sent_length; i++)
+            System.out.print(bubble[0]);
+        System.out.println();
+
+        if (sent_length <= 30) {
+            //System.out.println("30 below");
+            //System.out.printf("%s%s%s\n", bubble[1], sentence, bubble[1]);
+        }
+        else {
+            //System.out.println("30 above");
+            int largest_chunk_size = 0;
+            String[] split_sent = sentence.split(" ");
+            List<String> chunk = new LinkedList<String>();
+            //System.out.println(split_sent.length);
+
+            for (int i = 0; i < split_sent.length; i++) {
+                //System.out.println(i + " " + split_sent.length);
+                if (split_sent[i].length() > 30)
+                    chunk.add(split_sent[i]);
+                else {
+                    if ((i + 1) >= split_sent.length) {
+                        chunk.add(split_sent[i]);
+                    }
+                    else {
+                        if (split_sent[i].concat(split_sent[i+1]).length() > 30)
+                            chunk.add(split_sent[i]);
+                        else {
+                            chunk.add(split_sent[i].concat(split_sent[i+1]));
+                            i++;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < chunk.size(); i++) {
+                if (chunk.get(i) != "") {
+                    String spcs = "";
+                    for (int j = 0; j < sent_length - chunk.get(i).length(); j++)
+                        spcs += bubble[4];
+                    System.out.printf("%s%s%s%s\n", bubble[1], chunk.get(i), spcs, bubble[1]);
+                }
             }
         }
-        
-        System.out.println("__________________________________________________");
 
-        for (int i = 0; i < i_limit; i++) {
-            System.out.printf("\n|%s|", sentence);
+        String spcsII = ""; int cnt = 5;
+        System.out.println(sent_length);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < sent_length; j++);
+                spcsII += " ";
+            System.out.println(spcsII.length());
+            System.out.printf("|%s%s\n", spcsII, bubble[cnt]);
+            cnt++;
         }
-
-        System.out.println("|_____________________________       __|");
-        System.out.println("                              \\     / ");
-        System.out.println("                               \\   /  ");
-        System.out.println("                                \\ /   ");
-        System.out.println("                                 '");
-
-        System.out.println(" ______________________________________");
-        System.out.printf("|                                                  |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|                                      |");
-        System.out.println("|_____________________________       __|");
-        System.out.println("                              \\     / ");
-        System.out.println("                               \\   /  ");
-        System.out.println("                                \\ /   ");
-        System.out.println("                                 '");
 
     }
     /**************************************************/
 
-    
-
-    
-    
     /*
     public static void getEarth() {      
         System.out.println("Location: Planet Earth");
@@ -568,6 +590,7 @@ class SpaceTraveler {
     }
     */
     
+    /***************Game Methods & Funcs***************/
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
@@ -631,6 +654,7 @@ class SpaceTraveler {
         //System.out.println();
         //System.out.println(inventory);
     }
+    /**************************************************/
 
     /***************Program Methods********************/
     public static int mainMenu()throws IOException, InterruptedException {
@@ -652,7 +676,7 @@ class SpaceTraveler {
 
         return choice;
     }
-    
+    /***************Instructions Menu******************/
     public static void instructions() throws IOException, InterruptedException {        
         char choice = ' ';
         while (choice != 'B' && choice != 'b') {
@@ -735,7 +759,7 @@ class SpaceTraveler {
 
         String command_lst[] = {
             "exit", "help", "stats", "store", "find: ", "starmap", "asshole",
-            "rock destroy"
+            "rock destroy", "bubble"
         };
 
         String command = "";
@@ -769,6 +793,11 @@ class SpaceTraveler {
             }
             else if (command.equals(command_lst[7])) {
                 drawSpaceRock();
+            }
+            else if (command.equals(command_lst[8])) {
+                System.out.print(": ");
+                String x = Keyboard.readString();
+                drawBubble(x);
             }
         }
     }
