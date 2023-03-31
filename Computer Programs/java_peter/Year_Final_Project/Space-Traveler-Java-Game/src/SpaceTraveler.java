@@ -477,10 +477,8 @@ class SpaceTraveler {
             System.out.print(bubble[0]);
         System.out.println();
 
-        if (sent_length <= 30) {
-            //System.out.println("30 below");
-            //System.out.printf("%s%s%s\n", bubble[1], sentence, bubble[1]);
-        }
+        if (sent_length <= 30)
+            System.out.printf("%s%s%s\n", bubble[1], sentence, bubble[1]);
         else {
             //System.out.println("30 above");
             int largest_chunk_size = 0;
