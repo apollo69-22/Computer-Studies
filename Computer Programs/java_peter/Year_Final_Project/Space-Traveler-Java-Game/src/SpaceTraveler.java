@@ -132,14 +132,14 @@ class SpaceTraveler {
 
     public static void drawEarth() {
         System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
-        System.out.println(ansi().fg(Colors.blue).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.white).a("                                                      ######"));
         System.out.println(ansi().fg(Colors.blue).a("                                                   ############"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                 ################"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                               ####################"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                                 #########").fg(Colors.blue).a("#######"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                                               #########").fg(Colors.blue).a("###########"));
         System.out.println(ansi().fg(Colors.blue).a("                                               ####################"));
-        System.out.println(ansi().fg(Colors.blue).a("                                                 ################"));
-        System.out.println(ansi().fg(Colors.blue).a("                                                   ############"));
-        System.out.println(ansi().fg(Colors.blue).a("                                                      ######"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                 ###########").fg(Colors.grn_skin).a("###").fg(Colors.blue).a("##"));
+        System.out.println(ansi().fg(Colors.blue).a("                                                   ##########").fg(Colors.grn_skin).a("##"));
+        System.out.println(ansi().fg(Colors.white).a("                                                      ######"));
         System.out.println(ansi().fg(Colors.gray).a("**************************************************************************************************************"));
         System.out.print(ansi().fg(Colors.white));
     }
@@ -588,7 +588,7 @@ class SpaceTraveler {
     }
     */
     
-    /***************Game Methods & Funcs***************/
+    /***************Game Methods & Functions***************/
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
@@ -622,7 +622,7 @@ class SpaceTraveler {
         System.out.println("|                                                       STORE                                                       |");
         System.out.println("|...................................................................................................................|");
         System.out.println("|......................................1. Navigational System:       S-$15,000......................................|");
-        System.out.println("|......................................2. Heat Shielding V2.0:       S-$10,000......................................|");
+        System.out.println("|......................................2. Repair Ship:               S-$10,000......................................|");
         System.out.println("|......................................3. Fuel Tank:                 S-$9,000.......................................|");
         System.out.println("|......................................4. Spacesuit:                 S-$8,000.......................................|");
         System.out.println("|......................................5. Oxygen Tank:               S-$5,000.......................................|");
@@ -727,9 +727,17 @@ class SpaceTraveler {
     }
     /***************Game Initialization****************/
     public static void game_init_(Map<String, String> star_map, Map<String, String> inventory) {
-        star_map.put("EARTH", "-0.992:-0.1:0");
         star_map.put("SUN", "0:0:0");
-        
+        star_map.put("MERCURY", "0:0:0");
+        star_map.put("VENUS", "0:0:0");
+        star_map.put("EARTH", "-0.992:-0.1:0");
+        star_map.put("MARS", "0:0:0");
+        star_map.put("JUPITER", "0:0:0");
+        star_map.put("SATURN", "0:0:0");
+        star_map.put("URANUS", "0:0:0");
+        star_map.put("NEPTUNE", "0:0:0");
+        star_map.put("PLUTO", "0:0:0");
+
         inventory.put("Navigational System ", " S-$15,000");
         inventory.put("Heat Shielding V2.0 ", " S-$10,000");
         inventory.put("Fuel Tank ", " S-$9,000");
@@ -803,7 +811,7 @@ class SpaceTraveler {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        /*System.out.println(ansi().bg(light_black));
+        /*System.out.println(ansi().bg(Color.light_black));
         drawCaptain();
         System.out.println();
         drawSun();
