@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.Map;
 import java.util.function.ToIntFunction;
 
+import org.fusesource.jansi.io.AnsiOutputStream.WidthSupplier;
+
 //import org.fusesource.jansi.Ansi;
 //import org.fusesource.jansi.AnsiMain;
 //import org.fusesource.jansi.AnsiType;
@@ -463,97 +465,134 @@ class SpaceTraveler {
         System.out.println(ansi().fg(Colors.grn_skin).a("                                                  **       **").fg(WHITE));
     }
     
+    /***************Bubble Graphis*********************/
     public static void drawBubble(String sentence) {
+        /***************Bubble Logic***********************/
         String[] bubble = {
             "_", "|", "\\", "'", " ", "       ____|", " \\     /", "  \\   /", "   \\ /", "    '"
         };
+
+        String[] split_sent = sentence.split(" ");
+        List<String> split_sent_lst = new LinkedList<String>();
+        for (int i = 0; i < split_sent.length; i++)
+            split_sent_lst.add(split_sent[i]);
+
         List<String> chunk = new LinkedList<String>();
+        int largest_chunk = 0;
 
-        bubble[4] = " " + sentence;
-        sentence = bubble[4] + " ";
-        bubble[4] = " ";
-        int sent_length = sentence.length();
-        String spcs = "";
-
-        if (sent_length < 20) {
-            sent_length = 20;
-
-            System.out.print(bubble[4]);
-            for (int i = 0; i < sent_length; i++)
-                System.out.print(bubble[0]);
-            for (int i = 0; i < sent_length - sentence.length(); i++)
-                spcs += " ";
-            System.out.println();
-            System.out.printf("%s%s%s%s\n", bubble[1], sentence, spcs, bubble[1]);
+        for (int i = 0; i < split_sent.length; i++) {
+            if (largest_chunk < split_sent[i].length())
+                largest_chunk = split_sent[i].length();
+            //System.out.println(split_sent[i].length());
         }
-        else {
-            String[] split_sent = sentence.split(" ");
-            //System.out.println(split_sent.length);
+        if (largest_chunk < 20)
+            largest_chunk = 20;
 
-            for (int i = 0; i < split_sent.length; i++) {
-                //System.out.println(i + " " + split_sent.length);
-                if (split_sent[i].length() > 30)
-                    chunk.add(split_sent[i]);
-                else {
-                    if ((i + 1) >= split_sent.length) {
-                        chunk.add(split_sent[i]);
-                    }
+        //System.out.println(largest_chunk);
+
+        /*for (int i = 0; i < split_sent_lst.size(); i++) {
+            //System.out.println("i:" + i + " " + split_sent_lst.size());
+            if ((i+1) > split_sent_lst.size()-1)
+                chunk.add(split_sent_lst.get(i));
+            else {
+                String tmp_chunk = ""; int tmp_count = 0;
+
+                while (tmp_chunk.length() < largest_chunk) {
+                    if (tmp_count > split_sent_lst.size()-1)
+                        break;
                     else {
-                        if (split_sent[i].concat(split_sent[i+1]).length() > 30)
-                            chunk.add(split_sent[i]);
-                        else {
-                            chunk.add(split_sent[i].concat(split_sent[i+1]));
-                            i++;
-                        }
+                        //System.out.println(tmp_chunk.length() + " " + largest_chunk + " " + split_sent_lst.size());
+                        tmp_chunk += split_sent_lst.get(tmp_count);
+                        tmp_count++;
                     }
                 }
+                chunk.add(tmp_chunk);
             }
-
-            for (int i = 0; i < chunk.size(); i++) {
-                if (chunk.get(i) != "") {
-                    spcs = "";
-                    for (int j = 0; j < sent_length - chunk.get(i).length(); j++)
-                        spcs += bubble[4];
-                    System.out.printf("%s%s%s%s\n", bubble[1], chunk.get(i), spcs, bubble[1]);
+        }*/
+        
+        String tmp_chunk = "";
+        for (int i = 0; i < split_sent_lst.size(); i++) {
+            System.out.printf("Largest chunk:%s tmp_chunk:%s\n", largest_chunk, tmp_chunk);
+            if ((i+1) > split_sent_lst.size()) {
+                chunk.add(split_sent_lst.get(i));
+                System.out.println("err");
+            }
+            else {
+                //System.out.println(tmp_chunk.concat(split_sent_lst.get(i)));
+                if (tmp_chunk.concat(split_sent_lst.get(i)).length() < largest_chunk)
+                    if (tmp_chunk == "")
+                        tmp_chunk += split_sent_lst.get(i);
+                    else
+                        tmp_chunk += " " + split_sent_lst.get(i);
+                else {
+                    chunk.add(tmp_chunk);
+                    tmp_chunk = "";
+                    tmp_chunk = split_sent_lst.get(i);
                 }
             }
-            
         }
-
-        /***************bottom of bubble*******************/
-        spcs = ""; int cnt = 5;
-        int largest_chunk_size = 0;
 
         for (int i = 0; i < chunk.size(); i++)
-            if (largest_chunk_size < chunk.get(i).length())
-                largest_chunk_size = chunk.get(i).length();
-                
-        int loop_lmt = largest_chunk_size - bubble[cnt].length()+1;
+            System.out.println(chunk.get(i));
 
-        for (int i = 0; i < largest_chunk_size; i++)
-            spcs += " ";
-        System.out.printf("%s", bubble[1]);
+        /*String tmp_chunk = ""; int tmp_count = 0;
+        while (tmp_chunk.length() < largest_chunk) {
+            if (split_sent[tmp_count])
+        }*/
 
-        for (int i = 0; i < 5; i++) {
+        /*for (int i = 0; i < split_sent.length; i++) {
+            if (split_sent[i].length() > largest_chunk)
+                chunk.add(split_sent[i]);
+            else {
+                if ((i+1) >= split_sent.length)
+                    chunk.add(split_sent[i]);
+                else {
+                    if (split_sent[i].concat(" ").concat(split_sent[i+1]).length() > largest_chunk)
+                        chunk.add(split_sent[i]);
+                    else {
+                        chunk.add(split_sent[i].concat(" ").concat(split_sent[i+1]));
+                        i++;
+                        //System.out.println(split_sent[i].concat(" ").concat(split_sent[i+1]));
+                    }
+                }
+            }
+        }*/
+        for (int i = 0; i < chunk.size(); i++)
+            System.out.println(chunk.get(i));
+        /***************Bubble Graphics********************/
+        /***************Bubble Top Graphics****************/
+        System.out.print(bubble[4]);
+        for (int i = 0; i < largest_chunk; i++)
+            System.out.print(bubble[0]);
+        System.out.println();
+        /**************************************************/
+        /***************Bubble Sentence Graphics***********/
+        String spcs = "";
+        for (int i = 0; i < chunk.size(); i++) {
             spcs = "";
+            for (int j = 0; j < largest_chunk - chunk.get(i).length(); j++)
+                spcs += " ";
+            if (chunk.get(i) != "")
+                System.out.printf("%s%s%s%s\n", bubble[1], chunk.get(i), spcs, bubble[1]);
+        }
+        /**************************************************/
+        /***************Bubble Bottom Graphics*************/
+        spcs = ""; int count = 5, loop_lmt = 0;
+        
+        System.out.printf("%s", bubble[1]);
+        for (int i = 0; i < 5; i++) {
+            spcs = ""; loop_lmt = largest_chunk - bubble[count].length()+1;
 
             for (int j = 0; j < loop_lmt; j++) {
-                if (i == 0)
+                if (count == 5)
                     spcs += bubble[0];
                 else
                     spcs += bubble[4];
             }
-            System.out.printf("%s%s\n", spcs, bubble[cnt]);
-            cnt++;
+            System.out.printf("%s%s\n", spcs, bubble[count]);
+            count++;
         }
         /**************************************************/
-        /*
-        sent_length = sentence.length();
-
-        System.out.print(bubble[4]);
-        for (int i = 0; i < sent_length; i++)
-            System.out.print(bubble[0]);
-        System.out.println();*/
 
     }
     /**************************************************/
