@@ -469,7 +469,7 @@ class SpaceTraveler {
     public static void drawBubble(String sentence) {
         /***************Bubble Logic***********************/
         String[] bubble = {
-            "_", "|", "\\", "'", " ", "       ____|", "\\     /", "\\   /", "\\ /", "'"
+            "_", "|", "\\", "'", " ", "       ____|", " \\     /", "  \\   /", "   \\ /", "    '"
         };
 
         String[] split_sent = sentence.split(" ");
@@ -527,11 +527,11 @@ class SpaceTraveler {
         }
         /**************************************************/
         /***************Bubble Bottom Graphics*************/
-        spcs = ""; int count = 5, loop_lmt = 0;
+        spcs = ""; int count = 5, loop_lmt = largest_chunk - bubble[count].length()+1;
         
         System.out.printf("%s", bubble[1]);
         for (int i = 0; i < 5; i++) {
-            spcs = ""; loop_lmt = largest_chunk - bubble[count].length()+1;
+            spcs = "";
 
             for (int j = 0; j < loop_lmt; j++) {
                 if (count == 5)
