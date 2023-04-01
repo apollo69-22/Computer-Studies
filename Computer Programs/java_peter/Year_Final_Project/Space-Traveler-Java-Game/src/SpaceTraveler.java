@@ -4,6 +4,7 @@ import java.io.*;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map;
+import java.util.function.ToIntFunction;
 
 //import org.fusesource.jansi.Ansi;
 //import org.fusesource.jansi.AnsiMain;
@@ -466,6 +467,7 @@ class SpaceTraveler {
         String[] bubble = {
             "_", "|", "\\", "'", " ", "       ____|", " \\     /", "  \\   /", "   \\ /", "    '"
         };
+        List<String> chunk = new LinkedList<String>();
 
         bubble[4] = " " + sentence;
         sentence = bubble[4] + " ";
@@ -485,9 +487,7 @@ class SpaceTraveler {
             System.out.printf("%s%s%s%s\n", bubble[1], sentence, spcs, bubble[1]);
         }
         else {
-            int largest_chunk_size = 0;
             String[] split_sent = sentence.split(" ");
-            List<String> chunk = new LinkedList<String>();
             //System.out.println(split_sent.length);
 
             for (int i = 0; i < split_sent.length; i++) {
@@ -521,9 +521,16 @@ class SpaceTraveler {
         }
 
         /***************bottom of bubble*******************/
-        spcs = ""; int cnt = 5, loop_lmt = sent_length - bubble[cnt].length()+1;
+        spcs = ""; int cnt = 5;
+        int largest_chunk_size = 0;
 
-        for (int i = 0; i < sent_length; i++)
+        for (int i = 0; i < chunk.size(); i++)
+            if (largest_chunk_size < chunk.get(i).length())
+                largest_chunk_size = chunk.get(i).length();
+                
+        int loop_lmt = largest_chunk_size - bubble[cnt].length()+1;
+
+        for (int i = 0; i < largest_chunk_size; i++)
             spcs += " ";
         System.out.printf("%s", bubble[1]);
 
