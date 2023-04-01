@@ -489,16 +489,30 @@ class SpaceTraveler {
         if (largest_chunk < 20)
             largest_chunk = 20;
         
-        if (split_sent_lst.size() == 1)
-            chunk.add(split_sent_lst.get(0));
+        String tmp_chunk = "";
+        if (split_sent_lst.size() == 1 || largest_chunk == 20) {
+            if (split_sent_lst.size() == 1)
+                chunk.add(split_sent_lst.get(0));
+            else {
+                for (int i = 0; i < split_sent_lst.size(); i++)
+                    if (tmp_chunk == "")
+                        tmp_chunk += split_sent_lst.get(i);
+                    else
+                        tmp_chunk += " " + split_sent_lst.get(i);
+                chunk.add(tmp_chunk);
+            }
+        }
         else {
-            String tmp_chunk = split_sent_lst.get(0);
             for (int i = 0; i < split_sent_lst.size(); i++) {
                 if ((i+1) > split_sent_lst.size())
                     chunk.add(split_sent_lst.get(i));
                 else {
-                    if (tmp_chunk.concat(split_sent_lst.get(i)).length() < largest_chunk)
-                        tmp_chunk += " " + split_sent_lst.get(i);
+                    if (tmp_chunk.concat(split_sent_lst.get(i)).length() < largest_chunk) {
+                        if (tmp_chunk == "")
+                            tmp_chunk += split_sent_lst.get(i);
+                        else
+                            tmp_chunk += " " + split_sent_lst.get(i);
+                    }
                     else {
                         chunk.add(tmp_chunk);
                         tmp_chunk = "";
