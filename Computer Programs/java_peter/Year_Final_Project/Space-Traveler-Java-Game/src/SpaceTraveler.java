@@ -490,35 +490,43 @@ class SpaceTraveler {
             largest_chunk = 20;
         
         String tmp_chunk = "";
-        if (split_sent_lst.size() == 1 || largest_chunk == 20) {
-            if (split_sent_lst.size() == 1)
-                chunk.add(split_sent_lst.get(0));
-            else {
-                for (int i = 0; i < split_sent_lst.size(); i++)
-                    if (tmp_chunk == "")
-                        tmp_chunk += split_sent_lst.get(i);
-                    else
-                        tmp_chunk += " " + split_sent_lst.get(i);
-                chunk.add(tmp_chunk);
-            }
-        }
+        if (split_sent_lst.size() == 1)
+            chunk.add(split_sent_lst.get(0));
         else {
             for (int i = 0; i < split_sent_lst.size(); i++) {
-                if ((i+1) > split_sent_lst.size())
-                    chunk.add(split_sent_lst.get(i));
-                else {
+                /*if ((i+1) > split_sent_lst.size()-1) {
+                    chunk.add(tmp_chunk + " " + split_sent_lst.get(i));
+                }
+                else {*/
+                    System.out.println(tmp_chunk);
                     if (tmp_chunk.concat(split_sent_lst.get(i)).length() < largest_chunk) {
-                        if (tmp_chunk == "")
-                            tmp_chunk += split_sent_lst.get(i);
-                        else
-                            tmp_chunk += " " + split_sent_lst.get(i);
+                        if (tmp_chunk == "") {
+                            if ((i+1) < split_sent_lst.size())
+                                tmp_chunk += split_sent_lst.get(i);
+                            else {
+                                chunk.add(tmp_chunk);
+                                tmp_chunk = "";
+                                chunk.add(split_sent_lst.get(i));
+                            }
+                        }
+                        else {
+                            if ((i+1) < split_sent_lst.size())
+                                tmp_chunk += " " + split_sent_lst.get(i);
+                            else {
+                                chunk.add(tmp_chunk);
+                                tmp_chunk = "";
+                            }
+                        }
                     }
                     else {
                         chunk.add(tmp_chunk);
                         tmp_chunk = "";
-                        tmp_chunk = split_sent_lst.get(i);
+                        if ((i+1) < split_sent_lst.size())
+                            tmp_chunk = split_sent_lst.get(i);
+                        else
+                            chunk.add(split_sent_lst.get(i));
                     }
-                }
+                //}
             }
         }
         /***************Bubble Logic***********************/
