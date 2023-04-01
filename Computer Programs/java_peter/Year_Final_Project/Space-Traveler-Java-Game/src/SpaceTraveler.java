@@ -494,39 +494,28 @@ class SpaceTraveler {
             chunk.add(split_sent_lst.get(0));
         else {
             for (int i = 0; i < split_sent_lst.size(); i++) {
-                /*if ((i+1) > split_sent_lst.size()-1) {
-                    chunk.add(tmp_chunk + " " + split_sent_lst.get(i));
+                if ((i+1) > split_sent_lst.size()-1) {
+                    if (tmp_chunk.concat(" " + split_sent_lst.get(i)).length() < largest_chunk)
+                        chunk.add(tmp_chunk.concat(" " + split_sent_lst.get(i)));
+                    else {
+                        chunk.add(tmp_chunk);
+                        tmp_chunk = "";
+                        chunk.add(split_sent_lst.get(i));
+                    }
                 }
-                else {*/
-                    System.out.println(tmp_chunk);
+                else {
                     if (tmp_chunk.concat(split_sent_lst.get(i)).length() < largest_chunk) {
-                        if (tmp_chunk == "") {
-                            if ((i+1) < split_sent_lst.size())
-                                tmp_chunk += split_sent_lst.get(i);
-                            else {
-                                chunk.add(tmp_chunk);
-                                tmp_chunk = "";
-                                chunk.add(split_sent_lst.get(i));
-                            }
-                        }
-                        else {
-                            if ((i+1) < split_sent_lst.size())
-                                tmp_chunk += " " + split_sent_lst.get(i);
-                            else {
-                                chunk.add(tmp_chunk);
-                                tmp_chunk = "";
-                            }
-                        }
+                        if (tmp_chunk == "")
+                            tmp_chunk += split_sent_lst.get(i);
+                        else
+                            tmp_chunk += " " + split_sent_lst.get(i);
                     }
                     else {
                         chunk.add(tmp_chunk);
                         tmp_chunk = "";
-                        if ((i+1) < split_sent_lst.size())
-                            tmp_chunk = split_sent_lst.get(i);
-                        else
-                            chunk.add(split_sent_lst.get(i));
+                        tmp_chunk = split_sent_lst.get(i);
                     }
-                //}
+                }
             }
         }
         /***************Bubble Logic***********************/
