@@ -619,19 +619,6 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
-<<<<<<< HEAD
-    public static String[] getResponse(int res_index) {
-        String response[] = {
-            "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
-            "Let's start the engines.", "GAME: Press S to start the engines...", 
-            "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", ""
-        };
-
-        if (res_index == -1)
-            return response;
-
-        return new String[] {response[res_index]};
-=======
     public static String getResponse(int res_index) {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
@@ -645,7 +632,6 @@ class SpaceTraveler {
         };
 
         return response[res_index];
->>>>>>> 9d78c19fe7757646237798e5800c723a4c829c98
     }
 
     public static void getStats(String stats[]) {
@@ -807,7 +793,6 @@ class SpaceTraveler {
     /***************Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-<<<<<<< HEAD
         
         //Example code:
         for (int i = 0; i < getResponse(-1).length; i++) {
@@ -823,13 +808,6 @@ class SpaceTraveler {
             if ((i+1) < getResponse(-1).length)
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         }
-=======
-         
-        drawBubble("Welcome lieutenant. This is our ship");
-        drawCaptain();
-        drawSpaceship();
-
->>>>>>> 9d78c19fe7757646237798e5800c723a4c829c98
 
         Map<String, String> star_map = new HashMap<>();
         Map<String, String> inventory = new HashMap<>();
