@@ -627,7 +627,8 @@ class SpaceTraveler {
             "Oh no we went into the wrong wormhole. This one led us to Pluto!", "Looks like our navigational system glitched out and went into the wrong wormhole!!", "GAME: Fuel left 90%", 
             "We lost a bit of fuel but it's no worries for now", "FACT: Did you know a year on Pluto is equivalent to 248 Earth years!", "GAME: Press S to start the engines...", 
             "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
-            "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
+            "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "GAME: Press S to start the engines...", "GAME: Fuel left 60%", 
+            "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", "We are in serious trouble! We have crash landed on Venus. That means that Venus's", "", "", "", "", "", "", "", "", ""
         };
 
         return response[res_index];
