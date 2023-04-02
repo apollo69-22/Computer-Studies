@@ -451,18 +451,18 @@ class SpaceTraveler {
 
     /***************Captain Graphis********************/
     public static void drawCaptain() {
-        System.out.println(ansi().fg(Colors.brown).a("                                                      **"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                    ******"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(Colors.brown).a("                                                  ***********"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                    *     *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                   *       *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  O   0  *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *    U    *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *  .   .  *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  *   ...   *"));
-        System.out.println(ansi().fg(Colors.grn_skin).a("                                                  **       **").fg(WHITE));
+        System.out.println(ansi().fg(Colors.brown).a("                      **"));
+        System.out.println(ansi().fg(Colors.brown).a("                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                    ******"));
+        System.out.println(ansi().fg(Colors.brown).a("                 ***********"));
+        System.out.println(ansi().fg(Colors.brown).a("                 ***********"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                    *     *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                   *       *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                  *  O   0  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                  *    U    *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                  *  .   .  *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                  *   ...   *"));
+        System.out.println(ansi().fg(Colors.grn_skin).a("                  **       **").fg(WHITE));
     }
     
     /***************Bubble Graphis*********************/
@@ -619,6 +619,19 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
+    public static String[] getResponse(int res_index) {
+        String response[] = {
+            "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
+            "Let's start the engines.", "GAME: Press S to start the engines...", 
+            "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", ""
+        };
+
+        if (res_index == -1)
+            return response;
+
+        return new String[] {response[res_index]};
+    }
+
     public static void getStats(String stats[]) {
         System.out.println("  ______________________________________");
         System.out.println(" |   Lives   |   Money   |   Location   |");
@@ -778,9 +791,21 @@ class SpaceTraveler {
     /***************Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        
+        //Example code:
+        for (int i = 0; i < getResponse(-1).length; i++) {
+            String response = getResponse(i)[0];
+            drawBubble(response);
+            drawCaptain();
 
-        drawCaptain();
-
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            if ((i+1) < getResponse(-1).length)
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        }
 
         Map<String, String> star_map = new HashMap<>();
         Map<String, String> inventory = new HashMap<>();
@@ -795,7 +820,7 @@ class SpaceTraveler {
 
         String command_lst[] = {
             "exit", "help", "stats", "store", "find: ", "starmap", "asshole",
-            "rock destroy", "bubble"
+            "rock destroy"
         };
 
         String command = "";
@@ -829,11 +854,6 @@ class SpaceTraveler {
             }
             else if (command.equals(command_lst[7])) {
                 drawSpaceRock();
-            }
-            else if (command.equals(command_lst[8])) {
-                System.out.print(": ");
-                String x = Keyboard.readString();
-                drawBubble(x);
             }
         }
     }
