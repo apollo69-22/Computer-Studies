@@ -619,7 +619,7 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
-    public static String getResponse(int res_index) {
+    public static String[] getResponse(int res_index) {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
             "Let's start the engines.", "GAME: Press S to start the engines...", 
@@ -630,8 +630,10 @@ class SpaceTraveler {
             "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "GAME: Press S to start the engines...", "GAME: Fuel left 60%", 
             "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", "We are in serious trouble! We have crash landed on Venus. That means that Venus's", "", "", "", "", "", "", "", "", ""
         };
-
-        return response[res_index];
+        if (res_index == -1)
+            return response;
+    
+        return new String[] {response[res_index]};
     }
 
     public static void getStats(String stats[]) {
