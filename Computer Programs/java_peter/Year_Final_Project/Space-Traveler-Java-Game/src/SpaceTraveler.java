@@ -628,7 +628,29 @@ class SpaceTraveler {
             "We lost a bit of fuel but it's no worries for now", "FACT: Did you know a year on Pluto is equivalent to 248 Earth years!", "GAME: Press S to start the engines...", 
             "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
             "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "GAME: Press S to start the engines...", "GAME: Fuel left 60%", 
-            "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", "We are in serious trouble! We have crash landed on Venus. That means that Venus's", "", "", "", "", "", "", "", "", ""
+            "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", 
+            "We are in serious trouble! We have crash landed on Venus. That means that Venus' acidic rain will break our spaceship apart if we stay here any longer!", "Better start your engines and leave or else we'll die!", 
+            "GAME: Press S to start the engines...", "FACT: Did you know Venus is the hottest planet in our solar system, even though Mercury is the closest to the Sun!!", 
+            "Ok we are in Venus' orbit. We need to head back to Earth to fix our ship, it's gonna cost you but let's hope you got money.", "GAME: Repair your ship by purchasing the 'Repair Ship' option in the store..", 
+            "Good, now that you have repaired your ship we can leave Earth.", "GAME: Press S to start the engines...", "Let's hope that this time we enter the right wormhole.", "Eww! What's that smell!", "I think we just traveled", 
+            "Quick let's get out of here before we get poisoned by Hydrogen Sulfide (H2S)", "GAME: Press S to start the engines...", "FACT: Did you know Uranus is the coldest planet in our solar system!", "Wait why are we speeding up!?", 
+            "I think we are falling into Neptune's gravitational pull.", "You better start the engines and get us out of here lieutenant before we get crushed by Neptune's high-speed winds!", "GAME: Press S to start the engines...", 
+            "FACT: Did you know Neptune's winds can reach a staggering speed of more than 1,200 mph (2,000 km/h)", "Ok phew we got out of that one..", "Those rings are beautiful..", "Wait is this Saturn!?", 
+            "Wait if this is Saturn, then we are going to crash into its rings of rocks.", "Lieutenant better fire those engines before we get destroyed!", 
+            
+            //Need to make an if statement for these-------------------------------
+            "Phew. We luckily got out of there alive!", "Start the engines and put in Europa's coordinates.", "GAME: Press S to start the engines...", "FACT: Did you know Saturn's rings can be as small as grains of sand!", 
+            "       OR       ", 
+            "GAME: →  You lost a life or Game Over", "GAME: →  Location Earth", "Captain: “FACT: Did you know Saturn's rings can be as small as grains of sand!", 
+            //End of if statement--------------------------------------------------
+
+            "Start the engines and put in Europa's coordinates.", "GAME: Press S to start the engines...", "Lieutenant..", "That wormhole spat us out near Mars not Europa.", 
+            "FACT: Did you know Mars is called the Red Planet because of all the iron in its soil!", "But before we can go any further..", "We have a Warning Message!", "GAME: “WARNING: LOW FUEL", "GAME: “WARNING: LOW FUEL", 
+            "GAME: “WARNING: LOW FUEL", "Lieutenant we have to get back to Earth to refuel!", "GAME: Refuel your ship by purchasing the 'Fuel Tank' option in the store..", "Good, now that you have refueled your ship we can leave Earth.", 
+            "GAME: Press S to start the engines...", "FACT: Did you know Earth's days are getting longer, (approximately 2.3 milliseconds every century)!!", "We are back in orbit.", "Now for the MOTHER OF GOD let's make it to Europa!", 
+            "Ahhh. Finally I can see Jupiter.", "FACT: Did you know Jupiter is more than twice as massive as all the other planets combined!", "We are closing in on Europa, Lieutenant.", 
+            "FACT: Did you know, hidden beneath the icy surface of Europa is a salty-water ocean that is thought to contain twice as much water as Earth's combined!", "Lieutenant we have touch down. We made it to Europa. FINALLLLLYY!!", 
+            "		CONGRATULATIONS YOU HAVE WON THE GAME		"
         };
         if (res_index == -1)
             return response;
@@ -803,7 +825,7 @@ class SpaceTraveler {
             drawCaptain();
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
