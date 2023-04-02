@@ -619,6 +619,7 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
+<<<<<<< HEAD
     public static String[] getResponse(int res_index) {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
@@ -630,6 +631,21 @@ class SpaceTraveler {
             return response;
 
         return new String[] {response[res_index]};
+=======
+    public static String getResponse(int res_index) {
+        String response[] = {
+            "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
+            "Let's start the engines.", "GAME: Press S to start the engines...", 
+            "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", 
+            "Oh no we went into the wrong wormhole. This one led us to Pluto!", "Looks like our navigational system glitched out and went into the wrong wormhole!!", "GAME: Fuel left 90%", 
+            "We lost a bit of fuel but it's no worries for now", "FACT: Did you know a year on Pluto is equivalent to 248 Earth years!", "GAME: Press S to start the engines...", 
+            "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
+            "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "GAME: Press S to start the engines...", "GAME: Fuel left 60%", 
+            "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", "We are in serious trouble! We have crash landed on Venus. That means that Venus's", "", "", "", "", "", "", "", "", ""
+        };
+
+        return response[res_index];
+>>>>>>> 9d78c19fe7757646237798e5800c723a4c829c98
     }
 
     public static void getStats(String stats[]) {
@@ -791,6 +807,7 @@ class SpaceTraveler {
     /***************Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+<<<<<<< HEAD
         
         //Example code:
         for (int i = 0; i < getResponse(-1).length; i++) {
@@ -806,6 +823,13 @@ class SpaceTraveler {
             if ((i+1) < getResponse(-1).length)
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         }
+=======
+         
+        drawBubble("Welcome lieutenant. This is our ship");
+        drawCaptain();
+        drawSpaceship();
+
+>>>>>>> 9d78c19fe7757646237798e5800c723a4c829c98
 
         Map<String, String> star_map = new HashMap<>();
         Map<String, String> inventory = new HashMap<>();
