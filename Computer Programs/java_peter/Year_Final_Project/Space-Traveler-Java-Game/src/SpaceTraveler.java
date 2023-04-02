@@ -1,10 +1,16 @@
 //package Year_Final_Project.Space-Traveler-Java-Game;
 
 import java.io.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.Map;
 import java.util.function.ToIntFunction;
+import java.util.ArrayList;
+import java.util.List;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 import org.fusesource.jansi.io.AnsiOutputStream.WidthSupplier;
 
@@ -619,6 +625,47 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
+    public static void musicList() {
+        List<String> musicToPlay = new ArrayList<String>();
+        musicToPlay.add("G:\\Interstellar Main Theme  Hans Zimmer.wav");
+        musicToPlay.add("G:\\No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
+
+        try {
+            for(int i = 0; i < musicToPlay.size(); i++) {
+                System.out.println("Playing: " + musicToPlay.get(i));
+                Clip currentClip = playGameMusic(musicToPlay.get(i));
+                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {
+
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            }
+    }
+
+    public static Clip playGameMusic(String location) {
+        try {
+            File musicPath = new File(location);
+
+            if(musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+                return clip;
+            }
+            else {
+                System.out.println("Can't find files");
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+            }
+
+        return null;        
+    }
+
     public static String[] getResponse(int res_index) {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
@@ -818,6 +865,7 @@ class SpaceTraveler {
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         
+        musicList();
         //Example code:
         for (int i = 0; i < getResponse(-1).length; i++) {
             String response = getResponse(i)[0];
