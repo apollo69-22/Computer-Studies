@@ -623,7 +623,11 @@ class SpaceTraveler {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
             "Let's start the engines.", "GAME: Press S to start the engines...", 
-            "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", ""
+            "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", 
+            "Oh no we went into the wrong wormhole. This one led us to Pluto!", "Looks like our navigational system glitched out and went into the wrong wormhole!!", "GAME: Fuel left 90%", 
+            "We lost a bit of fuel but it's no worries for now", "FACT: Did you know a year on Pluto is equivalent to 248 Earth years!", "GAME: Press S to start the engines...", 
+            "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
+            "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""
         };
 
         return response[res_index];
