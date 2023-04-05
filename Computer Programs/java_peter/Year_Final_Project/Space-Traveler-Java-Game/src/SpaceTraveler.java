@@ -3,6 +3,7 @@
 import java.io.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.*;
 import java.util.Map;
 import java.util.function.ToIntFunction;
@@ -627,16 +628,18 @@ class SpaceTraveler {
     /***************Game Methods & Functions***************/
     public static void musicList() {
         List<String> musicToPlay = new ArrayList<String>();
-        musicToPlay.add("G:\\Interstellar Main Theme  Hans Zimmer.wav");
-        musicToPlay.add("G:\\No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
+        musicToPlay.add("music-files Interstellar Main Theme  Hans Zimmer.wav");
+        musicToPlay.add("No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
 
         try {
             for(int i = 0; i < musicToPlay.size(); i++) {
                 System.out.println("Playing: " + musicToPlay.get(i));
-                Clip currentClip = playGameMusic(musicToPlay.get(i));
-                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {
-
-                }
+                //makes sorta of a relative path ;)
+                String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
+                
+                Clip currentClip = playGameMusic(file_path);
+                //the loop below needs to run in a different thread / process or the game will hang!!!
+                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {}
             }
         }
         catch (Exception e) {
