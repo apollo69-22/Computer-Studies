@@ -1,1 +1,0 @@
-javac -d . -8-Arrays/TelDirectoryII.java; java packages.arrays.teldirectoryii.TelDirectoryII

@@ -628,16 +628,16 @@ class SpaceTraveler {
     /***************Game Methods & Functions***************/
     public static void musicList() {
         List<String> musicToPlay = new ArrayList<String>();
-        musicToPlay.add("music-files Interstellar Main Theme  Hans Zimmer.wav");
+        musicToPlay.add("Interstellar Main Theme  Hans Zimmer.wav");
         musicToPlay.add("No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
 
         try {
             for(int i = 0; i < musicToPlay.size(); i++) {
                 System.out.println("Playing: " + musicToPlay.get(i));
-                //makes sorta of a relative path ;)
                 String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
                 
-                Clip currentClip = playGameMusic(file_path);
+                Clip currentClip = playGameMusic(musicToPlay.get(i));
+
                 //the loop below needs to run in a different thread / process or the game will hang!!!
                 while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {}
             }
@@ -676,7 +676,7 @@ class SpaceTraveler {
             "Now we are in orbit. Let's find the coordinates of Europa, input them into our navigational system and go through the nearest wormhole that leads to it.", 
             "Oh no we went into the wrong wormhole. This one led us to Pluto!", "Looks like our navigational system glitched out and went into the wrong wormhole!!", "GAME: Fuel left 90%", 
             "We lost a bit of fuel but it's no worries for now", "FACT: Did you know a year on Pluto is equivalent to 248 Earth years!", "GAME: Press S to start the engines...", 
-            "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
+            "Now we are in orbit. Let's hope this time we enter the correct wormhole.", "Not again. This time we are at the complete opposite end. We are on Mercury!", "GAME: Fuel left 85%", "GAME: Fuel left 80%", "GAME: Fuel left 75%", 
             "Oh no. We are so close to the Sun, that our fuel is evaporating. Better get out of here!", "GAME: Fuel left 70%", "GAME: Fuel left 65%", "GAME: Press S to start the engines...", "GAME: Fuel left 60%", 
             "Better fly out of here soon, before we start melting too!!", "FACT: Did you know Mercury is slightly larger than Earth's Moon!", "Phew. We are lucky we got out of there! But wait, WHERE ARE WE!?", 
             "We are in serious trouble! We have crash landed on Venus. That means that Venus' acidic rain will break our spaceship apart if we stay here any longer!", "Better start your engines and leave or else we'll die!", 
@@ -896,7 +896,7 @@ class SpaceTraveler {
         String stats[] = {"3", "S-$55,000", locations[3]};
 
         String command_lst[] = {
-            "exit", "help", "stats", "store", "find: ", "starmap", "asshole",
+            "exit", "help", "stats", "store", "find: ", "starmap", "wormhole",
             "rock destroy"
         };
 
