@@ -74,6 +74,67 @@ class Colors {
     /********************************************/
 }
 
+class BackgroundMusic implements Runnable{
+    public static void musicList() {
+        List<String> musicToPlay = new ArrayList<String>();
+        musicToPlay.add("Interstellar Main Theme  Hans Zimmer.wav");
+        musicToPlay.add("No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
+
+        try {
+            for(int i = 0; i < musicToPlay.size(); i++) {
+                System.out.println("Playing: " + musicToPlay.get(i));
+                String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
+                
+                Clip currentClip = playGameMusic(musicToPlay.get(i));
+
+                //the loop below needs to run in a different thread / process or the game will hang!!!
+                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {}
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            }
+    }
+
+    public static Clip playGameMusic(String location) {
+        try {
+            File musicPath = new File(location);
+
+            if(musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+                return clip;
+            }
+            else {
+                System.out.println("Can't find files");
+            }
+            
+        } catch (Exception e) {
+            System.out.println(e);
+            }
+
+        return null;        
+    }
+    
+    private Thread worker;
+
+    public void start() {
+        worker = new Thread(this);
+        worker.start();
+    }
+
+    public void run() {
+        while (!Thread.currentThread().isInterrupted())
+            musicList();
+    }
+
+    public void interrupt() {
+        worker.interrupt();
+    }
+}
+
 class SpaceTraveler {
     /***************Solar System Graphics**************/
     public static void drawSun() {
@@ -626,49 +687,6 @@ class SpaceTraveler {
     */
     
     /***************Game Methods & Functions***************/
-    public static void musicList() {
-        List<String> musicToPlay = new ArrayList<String>();
-        musicToPlay.add("Interstellar Main Theme  Hans Zimmer.wav");
-        musicToPlay.add("No Time For Caution Interstellar Soundtrack Docking  Hans Zimmer.wav");
-
-        try {
-            for(int i = 0; i < musicToPlay.size(); i++) {
-                System.out.println("Playing: " + musicToPlay.get(i));
-                String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
-                
-                Clip currentClip = playGameMusic(musicToPlay.get(i));
-
-                //the loop below needs to run in a different thread / process or the game will hang!!!
-                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {}
-            }
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            }
-    }
-
-    public static Clip playGameMusic(String location) {
-        try {
-            File musicPath = new File(location);
-
-            if(musicPath.exists()) {
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
-                return clip;
-            }
-            else {
-                System.out.println("Can't find files");
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e);
-            }
-
-        return null;        
-    }
-
     public static String[] getResponse(int res_index) {
         String response[] = {
             "Welcome lieutenant. This is our ship.", "Our mission today is to cross the solar system safely and make it to Europa.", "We detected signs of life on Europa and we have to fly over there to get more results.",
@@ -868,9 +886,12 @@ class SpaceTraveler {
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         
-        musicList();
+        BackgroundMusic bg_music = new BackgroundMusic();
+        Thread t1 = new Thread(bg_music);
+        t1.setDaemon(true);
+        t1.start();
         //Example code:
-        for (int i = 0; i < getResponse(-1).length; i++) {
+        for (int i = 0; i < 2 /*getResponse(-1).length*/; i++) {
             String response = getResponse(i)[0];
             drawBubble(response);
             drawCaptain();
@@ -902,11 +923,12 @@ class SpaceTraveler {
 
         String command = "";
         while(!command.equals(command_lst[0])) {
-            
             System.out.print("\nCommand: ");
             command = Keyboard.readString();
 
-            if (command.equals(command_lst[1])) {
+            if (command.equals(command_lst[0]))
+                t1.interrupt();
+            else if (command.equals(command_lst[1])) {
                 System.out.print("\n| ");
                 for (int i = 0; i < command_lst.length; i++) {
                     System.out.print(command_lst[i] + " : ");
