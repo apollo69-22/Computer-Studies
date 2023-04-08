@@ -74,7 +74,9 @@ class Colors {
     /********************************************/
 }
 
-class BackgroundMusic implements Runnable{
+class BackgroundMusic implements Runnable {
+    private static boolean exit;
+
     public static void musicList() {
         List<String> musicToPlay = new ArrayList<String>();
         musicToPlay.add("Interstellar Main Theme  Hans Zimmer.wav");
@@ -82,13 +84,22 @@ class BackgroundMusic implements Runnable{
 
         try {
             for(int i = 0; i < musicToPlay.size(); i++) {
-                System.out.println("Playing: " + musicToPlay.get(i));
-                String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
-                
-                Clip currentClip = playGameMusic(musicToPlay.get(i));
+                if (exit)
+                    break;
+                else {
+                    System.out.println("Playing: " + musicToPlay.get(i));
+                    String file_path = Paths.get(".\\music-files\\" + musicToPlay.get(i)).toString();
+                    
+                    Clip currentClip = playGameMusic(file_path);
 
-                //the loop below needs to run in a different thread / process or the game will hang!!!
-                while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {}
+                    //the loop below needs to run in a different thread / process or the game will hang!!!
+                    while (currentClip.getMicrosecondLength() != currentClip.getMicrosecondPosition()) {
+                        if (Thread.currentThread().isInterrupted()) {
+                            stop(currentClip);
+                            break;
+                        }
+                    }
+                }
             }
         }
         catch (Exception e) {
@@ -118,20 +129,18 @@ class BackgroundMusic implements Runnable{
         return null;        
     }
     
-    private Thread worker;
-
-    public void start() {
-        worker = new Thread(this);
-        worker.start();
+    //class constructor
+    BackgroundMusic() {
+        exit = false;
     }
 
     public void run() {
-        while (!Thread.currentThread().isInterrupted())
-            musicList();
+        musicList();
     }
-
-    public void interrupt() {
-        worker.interrupt();
+    
+    public static void stop(Clip currentClip) {
+        currentClip.close();
+        exit = true;
     }
 }
 
@@ -890,6 +899,7 @@ class SpaceTraveler {
         Thread t1 = new Thread(bg_music);
         t1.setDaemon(true);
         t1.start();
+
         //Example code:
         for (int i = 0; i < 2 /*getResponse(-1).length*/; i++) {
             String response = getResponse(i)[0];
@@ -897,10 +907,11 @@ class SpaceTraveler {
             drawCaptain();
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+
             if ((i+1) < getResponse(-1).length)
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         }
