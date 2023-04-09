@@ -84,26 +84,23 @@ class SpaceRacer {
     }
 
     public static String travel(String current_location, String dest_coordinate, Map<String, String> star_map) {
-        String found_location = check_location(dest_coordinate, star_map);
+        String found_location[] = check_location(dest_coordinate, star_map).split(": ");
         
-        if (found_location.equals("not found"))
+        if (found_location[0].equals("not found"))
             System.out.println("Invalid Location");
         else {
-            if (found_location.equals(current_location))
-                System.out.println("Already there.");
-            else 
-                current_location = found_location;
-        }
-        
+            for(Map.Entry<String, String> loc: star_map.entrySet()) {
+                if (loc.getKey().equals(found_location[0]) || loc.getValue().equals(found_location[0])) {
+                    if (loc.getKey().equals(current_location))
+                        System.out.println("Already there.");
+                    else {
+                        current_location = loc.getKey();
+                        break;
+                    }
+                }
+            }
+        }        
         return current_location;
-    }
-
-    public static String updateCurrentLocation(String current_location, String[] locations) {
-        for (int i = 0; i < locations.length; i++) {
-            if (.equals()
-        }
-        
-        return ;
     }
 
     public static void game() throws IOException, InterruptedException {
@@ -152,7 +149,7 @@ class SpaceRacer {
             }
             else if (command.contains(command_lst[6])) {
                 String x[] = command.split(" ");
-                current_location = travel(current_location, x[1], star_map);
+                stats[0] = current_location = travel(current_location, x[1], star_map);
             }
             else if (command.contains(command_lst[7])) {
                 getHint();
