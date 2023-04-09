@@ -168,7 +168,7 @@ class SpaceRacer {
             System.out.println("|You are a new Lieutenant in Starfleet.                                                                            |");
             System.out.println("|You're assigned to Company Alpha under Captain James T. Kirk. Assigned to the Orbiter IV!                         |");
             System.out.println("|You're heading to Europa, one of Jupiter's Moons to explore any Alien life you may find.                          |");
-            System.out.println("|Unfortunately the Ships navigation system is a bit glitchy…                                                       |");
+            System.out.println("|Unfortunately the Ships navigation system glitched out and not all solar system objects are mapped.               |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Mission:                                                                                                          |");
             System.out.println("|Help Captain Kirk cross the Solar System safely.                                                                  |");
