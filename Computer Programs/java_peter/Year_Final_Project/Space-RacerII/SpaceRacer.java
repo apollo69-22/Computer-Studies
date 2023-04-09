@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 class SpaceRacer {
+    /******************Welcome Screen******************/
     public static int mainMenu()throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
@@ -19,21 +20,27 @@ class SpaceRacer {
 
         return choice;
     }
+    /************************************************************/
 
+
+    /************************Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         
+        /***************Variable Initialization****************/
         int currentAsteroid = 1;
         int numAsteroids = 100;
         int[] asteroidPoints = new int[numAsteroids];
         boolean[] isWormhole = new boolean[numAsteroids];
         int totalPoints = 0;
         boolean enteredWormhole = false;
+        /******************************************************/
 
         System.out.println("Welcome Lieutenant!");
         System.out.println("You are currently on Mars.");
         System.out.println("Use the dice to travel between asteroids and reach Europa!");
 
+        //Randomizing Asteroid & Wormhole Chances
         for (int i = 0; i < numAsteroids; i++) {
             asteroidPoints[i] = (int) (Math.random() * 26) + 75;
             isWormhole[i] = Math.random() < 0.13;
@@ -72,7 +79,8 @@ class SpaceRacer {
                     }
 
                     enteredWormhole = true;
-                } else {
+                } 
+                else {
                     int points = asteroidPoints[currentAsteroid-1];
                     System.out.println();
                     System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
@@ -95,15 +103,19 @@ class SpaceRacer {
             System.out.println("Your total score is: " + totalPoints + " points.");
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
     }
+    /************************************************************/
 
+
+    /******************Instructions Menu******************/
     public static void instructions() throws IOException, InterruptedException {        
         char choice = ' ';
+    
         while (choice != 'B' && choice != 'b') {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
@@ -146,7 +158,10 @@ class SpaceRacer {
             }
         }
     }
+    /************************************************************/
 
+    
+    /******************main Method******************/
     public static void main(String[] args) throws IOException, InterruptedException {
         int choice = 0;
 
@@ -177,4 +192,5 @@ class SpaceRacer {
             }
         }
     }
+    /************************************************************/
 }
