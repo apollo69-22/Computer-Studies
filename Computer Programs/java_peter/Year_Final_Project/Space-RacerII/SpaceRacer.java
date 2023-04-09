@@ -33,79 +33,105 @@ class SpaceRacer {
         int[] asteroidPoints = new int[numAsteroids];
         boolean[] isWormhole = new boolean[numAsteroids];
         int totalPoints = 0;
+        int lives = 3;
         boolean enteredWormhole = false;
+
+        String[] position = {"Earth", "Mars"};
+        String currentPostion = position[0];
         /******************************************************/
 
         System.out.println("Welcome Lieutenant!");
-        System.out.println("You are currently on Mars.");
-        System.out.println("Use the dice to travel between asteroids and reach Europa!");
+        System.out.println("You are currently on " + currentPostion);
 
-        //Randomizing Asteroid & Wormhole Chances
-        for (int i = 0; i < numAsteroids; i++) {
-            asteroidPoints[i] = (int) (Math.random() * 26) + 75;
-            isWormhole[i] = Math.random() < 0.13;
+        System.out.print("Press T to travel to Mars: ");
+        char travel = Keyboard.readChar();
+        if (travel != 'T' && travel != 't') {
+            System.out.println("Error. Press T to travel to Mars.");
+
+            /*try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }*/
         }
-
-        while (currentAsteroid < numAsteroids && !enteredWormhole) {
+        else {
             System.out.println();
-            System.out.print("Press R to roll the dice and travel to a new asteroid: ");
-            char roll = Keyboard.readChar();
-            if (roll != 'R' && roll != 'r') {
-                System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
+            System.out.println("You have arrived on " + position[1] + "!");
+            System.out.println("Use the dice to travel between asteroids and reach Europa!");
+
+            //Randomizing Asteroid & Wormhole Chances
+            for (int i = 0; i < numAsteroids; i++) {
+                asteroidPoints[i] = (int) (Math.random() * 26) + 75;
+                isWormhole[i] = Math.random() < 0.13;
+            }
+            
+            while (currentAsteroid < numAsteroids && lives > 0) {
+                System.out.println();
+                System.out.print("Press R to roll the dice and travel to a new asteroid: ");
+                char roll = Keyboard.readChar();
+                if (roll != 'R' && roll != 'r') {
+                    System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
+
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                }
+                else {
+                    int diceResult = (int) (Math.random() * 12) + 1;
+                    currentAsteroid += diceResult;
+        
+                    if (currentAsteroid > numAsteroids) {
+                        currentAsteroid = numAsteroids;
+                    }
+        
+                    if (isWormhole[currentAsteroid-1]) {
+                        System.out.println();
+                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
+                        System.out.println("Oh no! The wormhole leads to a random location in the universe and you're lost forever...");
+                        lives--;
+                        System.out.println("You have " + lives + " lives left.");
+                        if (lives == 0) {
+                            System.out.println("GAME OVER!");
+                            return;
+                        }
+
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+
+                        enteredWormhole = true;
+                    } 
+                    else {
+                        int points = asteroidPoints[currentAsteroid-1];
+                        System.out.println();
+                        System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
+                        System.out.println("This asteroid is worth " + points + " points!");
+
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+
+                        totalPoints += points;
+                    }
+                }            
+            }
+
+            if (!enteredWormhole) {
+                System.out.println();
+                System.out.println("You have reached Europa!");
+                System.out.println("Your total score is: " + totalPoints + " points.");
 
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
-            }
-            else {
-                int diceResult = (int) (Math.random() * 12) + 1;
-                currentAsteroid += diceResult;
-    
-                if (currentAsteroid > numAsteroids) {
-                    currentAsteroid = numAsteroids;
-                }
-    
-                if (isWormhole[currentAsteroid-1]) {
-                    System.out.println();
-                    System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
-                    System.out.println("Oh no! The wormhole leads to a random location in the universe and you're lost forever...");
-
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-
-                    enteredWormhole = true;
-                } 
-                else {
-                    int points = asteroidPoints[currentAsteroid-1];
-                    System.out.println();
-                    System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
-                    System.out.println("This asteroid is worth " + points + " points!");
-
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-
-                    totalPoints += points;
-                }
-            }            
-        }
-
-        if (!enteredWormhole) {
-            System.out.println();
-            System.out.println("You have reached Europa!");
-            System.out.println("Your total score is: " + totalPoints + " points.");
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
             }
         }
     }
