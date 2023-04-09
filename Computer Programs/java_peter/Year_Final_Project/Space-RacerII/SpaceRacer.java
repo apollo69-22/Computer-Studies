@@ -1,7 +1,8 @@
 import java.io.IOException;
 
 class SpaceRacer {
-    public static int mainMenu() {
+    public static int mainMenu()throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
         System.out.println(" ___________________________________");
         System.out.println("|     WELCOME TO SPACE TRAVELER     |");
@@ -63,14 +64,26 @@ class SpaceRacer {
                     System.out.println();
                     System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                     System.out.println("Oh no! The wormhole leads to a random location in the universe and you're lost forever...");
-                    System.out.println();
-                    System.out.println();
+
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+
                     enteredWormhole = true;
                 } else {
                     int points = asteroidPoints[currentAsteroid-1];
                     System.out.println();
                     System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
                     System.out.println("This asteroid is worth " + points + " points!");
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+
                     totalPoints += points;
                 }
             }            
@@ -80,6 +93,12 @@ class SpaceRacer {
             System.out.println();
             System.out.println("You have reached Europa!");
             System.out.println("Your total score is: " + totalPoints + " points.");
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 
