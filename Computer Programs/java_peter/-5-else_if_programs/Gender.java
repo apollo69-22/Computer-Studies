@@ -1,5 +1,5 @@
-package packages.else_if_programs.gender;
-import packages.keyboard.Keyboard;
+/*package packages.else_if_programs.gender;
+import packages.keyboard.Keyboard;*/
 
 class Gender{
     public static void main (String []args){
@@ -32,7 +32,8 @@ class Gender{
                     System.out.println("Miss. " + name);
             }
             
-            } else if (gen!=M | gen!=m | gen!=F | gen!=f){
+        } 
+        else if (gen!=M | gen!=m | gen!=F | gen!=f){
                 System.out.println("Error, please try again");            
         }
     }
