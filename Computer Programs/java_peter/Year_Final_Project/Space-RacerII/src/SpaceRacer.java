@@ -26,10 +26,18 @@ class SpaceRacer {
 
     /*****************Game Methods & Functions******************/
     public static void getStats(int lives, int money, String currentPosition) {
-        System.out.println("  ______________________________________");
-        System.out.println(" |   Lives   |   Money   |   Location   |");
-        System.out.println(" |     " +  lives  + "     | S-$" + money + "  |    " + currentPosition + "     |");
-        System.out.println(" |______________________________________|");
+        if (money == 0) {
+            System.out.println("  ______________________________________");
+            System.out.println(" |   Lives   |   Money   |   Location   |");
+            System.out.println(" |     " +  lives  + "     |   S-$" + money + "    |    " + currentPosition + "     |");
+            System.out.println(" |______________________________________|");
+        }
+        else {
+            System.out.println("  ______________________________________");
+            System.out.println(" |   Lives   |   Money   |   Location   |");
+            System.out.println(" |     " +  lives  + "     | S-$" + money + "  |    " + currentPosition + "     |");
+            System.out.println(" |______________________________________|");
+        }
     }
 
     public static void getStore(Map<String, String> inventory) {
@@ -96,11 +104,7 @@ class SpaceRacer {
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
                     asteroidPoints[i] = (int) (Math.random() * 26) + 75;
-                    isWormhole[i] = Math.random() < 0.25;
-                    boolean isSunBurned = Math.random() < 0.20;
-                    boolean isTeleported = Math.random() < 0.15;
-                    boolean isHitByMeteoroid = Math.random() < 0.60;
-                    boolean isLandedOnEuropa = Math.random() < 0.05;
+                    isWormhole[i] = Math.random() < 0.65;
 
                 }
                 
@@ -125,15 +129,14 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        int challengeType = (int)(Math.random() * 4) + 1;
-                        if (/*isWormhole[currentAsteroid-1]*/) {
+                        int challengeType = (int)(Math.random() * 3) + 1;
+                        if (isWormhole[currentAsteroid-1]) {
                             switch (challengeType) {
                                 case 1:
-                                    if (Math.random() < 0.20) {  // need to fix these ifs
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[0];
-                                        System.out.println("Oh no! The wormhole lead to the " + currentPosition + ". Oops you burned up..");
+                                        System.out.println("Oh no! The wormhole led to the " + currentPosition + ". Oops you burned up..");
                                         lives--;
                                         System.out.println("You have " + lives + " lives left.");
                                         if (lives == 0) {
@@ -155,16 +158,14 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
     
-                                        enteredWormhole = true;
-                                    }                                    
+                                        enteredWormhole = true;                               
                                 break;
 
                                 case 2:
-                                    if (Math.random() < 0.15) {  // need to fix these ifs
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[11];
-                                        System.out.println("Oh no! The wormhole lead to an " + currentPosition + " location in the universe and you're lost forever...");
+                                        System.out.println("Oh no! The wormhole led to an " + currentPosition + " location in the universe and you're lost forever...");
                                         lives--;
                                         System.out.println("You have " + lives + " lives left.");
                                         if (lives == 0) {
@@ -187,121 +188,153 @@ class SpaceRacer {
                                         }
 
                                         enteredWormhole = true;
-                                    }
                                 break;
 
                                 case 3:
-                                    if (Math.random() < 0.05) {  // need to fix these ifs
-                                        System.out.println();
-                                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
-                                        currentPosition = position[5];
-                                        System.out.println("Congratulations this wormhole lead straight to " + currentPosition + "!");
-                                        System.out.println("Your total score is: " + totalPoints + " points.");
-
-                                        try {
-                                            Thread.sleep(5000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                        }
-
-                                        enteredWormhole = true;
-                                    }
-                                return;
-
-                                case 4:
-                                    if (Math.random() < 0.60) {  // need to fix these ifs
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
                                         System.out.println("You have to go back to Earth to repair your ship or else you will die!");
                                         
-                                        choice = ' ';
-                                        while (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
+                                        boolean repairedShip = false;
+                                        while (!repairedShip) {
+                                            choice = ' ';
+                                            while (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
 
-                                            System.out.print("Do you want to travel back to Earth? (Y/N): ");
-                                            choice = Keyboard.readChar();
-                                            if (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
-                                                System.out.print("\nError. Press (Y/N) to continue.");
+                                                System.out.println();
+                                                System.out.print("Do you want to travel back to Earth? (Y/N): ");
+                                                choice = Keyboard.readChar();
+                                                if (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
+                                                    System.out.println("Error. Press (Y/N) to continue.");
 
-                                                try {
-                                                    Thread.sleep(2000);
-                                                } catch (InterruptedException e) {
-                                                    Thread.currentThread().interrupt();
+                                                    try {
+                                                        Thread.sleep(2000);
+                                                    } catch (InterruptedException e) {
+                                                        Thread.currentThread().interrupt();
+                                                    }
                                                 }
-                                            }
-                                            else {
-                                                currentPosition = position[3];
-                                                System.out.println();
-                                                System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
-                                                System.out.println("We noticed your ship needs a few repairs.");
-                                                System.out.println();
-                                                System.out.print("HINT: Type 'Help' for a list of commands.");
+                                                else if (choice == 'Y' | choice == 'y') {
+                                                    currentPosition = position[3];
+                                                    System.out.println();
+                                                    System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
+                                                    System.out.println("We noticed your ship needs a few repairs.");
+                                                    System.out.println();
+                                                    System.out.print("HINT: Type 'Help' for a list of commands.");
 
-                                                String command_lst[] = {
-                                                    "Exit", "Help", "Stats", "Store"};
-                                        
-                                                String command = "";
-                                                while(!command.equals(command_lst[0])) {
-                                                    System.out.print("\nCommand: ");
-                                                    command = Keyboard.readString();
-                                        
-                                                    if (command.equals(command_lst[1])) {
-                                                        System.out.print("\n| ");
-                                                        for (int i = 0; i < command_lst.length; i++) {
-                                                            System.out.print(command_lst[i] + " : ");
+                                                    String command_lst[] = {"Exit", "Help", "Stats", "Store"};
+                                            
+                                                    String command = "";
+                                                    while(!command.equals(command_lst[0])) {
+                                                        System.out.print("\nCommand: ");
+                                                        command = Keyboard.readString();
+                                            
+                                                        if (command.equals(command_lst[1])) {
+                                                            System.out.print("\n| ");
+                                                            for (int i = 0; i < command_lst.length; i++) {
+                                                                System.out.print(command_lst[i] + " : ");
+                                                            }
+                                                            System.out.print("|\n");
                                                         }
-                                                        System.out.print("|\n");
-                                                    }
-                                                    else if (command.equals(command_lst[2])) {
-                                                        getStats(lives, money, currentPosition);
-                                                    }
-                                                    else if (command.contains(command_lst[3])) {
-                                                        getStore(inventory);
+                                                        else if (command.equals(command_lst[2])) {
+                                                            getStats(lives, money, currentPosition);
+                                                        }
+                                                        else if (command.contains(command_lst[3])) {
+                                                            getStore(inventory);
 
-                                                        System.out.println();
-                                                        System.out.println("Pick what you need Lieutenant.");
-                                                        System.out.print("Choice: ");
-                                                        int storeChoice = Keyboard.readInt();
-
-                                                        if (storeChoice == 1) {
                                                             System.out.println();
-                                                            System.out.println("Lieutenant, we have just repaired your ship.");
-                                                            System.out.println("That costed you 10,000 Starfleet Dollars!");
-                                                            money -= 10000;
-                                                            if (money == 0) {
-                                                                System.out.println("You ran out of money and you can't repair your ship.");
-                                                                System.out.println("Lieutenant, its GAME OVER!");
+                                                            System.out.println("Pick what you need Lieutenant.");
+                                                            System.out.print("Choice: ");
+                                                            int storeChoice = Keyboard.readInt();
 
-                                                                //return;
+                                                            if (storeChoice == 1) {
+                                                                if (money <= 0) {
+                                                                    System.out.println("You ran out of money and you can't repair your ship.");
+                                                                    System.out.println("Lieutenant, its GAME OVER!");
+
+                                                                    try {
+                                                                        Thread.sleep(5000);
+                                                                    } catch (InterruptedException e) {
+                                                                        Thread.currentThread().interrupt();
+                                                                    }
+
+                                                                    return;
+                                                                }
+                                                                else {
+                                                                    System.out.println();
+                                                                    System.out.println("Lieutenant, we have just repaired your ship.");
+                                                                    System.out.println("That costed you 10,000 Starfleet Dollars!");
+                                                                    money -= 10000;
+
+                                                                    try {
+                                                                        Thread.sleep(2500);
+                                                                    } catch (InterruptedException e) {
+                                                                        Thread.currentThread().interrupt();
+                                                                    }
+
+                                                                    System.out.println();
+                                                                    System.out.println("You have " + money + " Starfleet Dollars left!");
+                                                                    System.out.println();
+
+                                                                    System.out.println("Lieutenant, now you can keep going on your journey!");
+                                                                    System.out.println("Good Luck and don't DIE!");
+                                                                    repairedShip = true;
+
+                                                                    try {
+                                                                        Thread.sleep(5000);
+                                                                    } catch (InterruptedException e) {
+                                                                        Thread.currentThread().interrupt();
+                                                                    }
+                                                                }
                                                             }
-                                                            else {
-                                                                System.out.println("You have " + money + " Starfleet Dollars left!");
+                                                            else
+                                                                System.out.print("Invalid Option");
                                                                 System.out.println();
-                                                                System.out.println("Lieutenant, now you can keep going on your journey!");
-                                                                System.out.println("Good Luck and don't DIE!");
-
-                                                                //return;
-                                                            }
                                                         }
-                                                        else
-                                                            System.out.print("Invalid Option");
                                                     }
                                                 }
-                                            }
-                                            /*if (choice == 'N' && choice == 'n') {
-                                                System.out.println("YOU LOST!");
-                                                System.out.println("You did not repair your ship, therefore you died!");
+                                                else if (choice == 'N' | choice == 'n') {
+                                                    System.out.println();
+                                                    System.out.println("GAME OVER!");
+                                                    System.out.println("You did not repair your ship, therefore you couldn't continue the mission!");
 
-                                                try {
-                                                    Thread.sleep(4000);
-                                                } catch (InterruptedException e) {
-                                                    Thread.currentThread().interrupt();
+                                                    try {
+                                                        Thread.sleep(4000);
+                                                    } catch (InterruptedException e) {
+                                                        Thread.currentThread().interrupt();
+                                                    }
+
+                                                    return;                                
                                                 }
-
-                                                return;                                
-                                            }*/
-                                        }   
-                                    }
+                                            }
+                                        }
                                 break;
+
+                                case 4:
+                                        System.out.println();
+                                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
+                                        currentPosition = position[5];
+                                        System.out.println("Congratulations this wormhole led straight to " + currentPosition + "!");
+                                        System.out.println("Let's hope you managed to get as many points as you could then, Lieutenant!");
+                                        try {
+                                            Thread.sleep(2000);
+                                        } catch (InterruptedException e) {
+                                            Thread.currentThread().interrupt();
+                                        }
+                                        System.out.println("Because...");
+                                        try {
+                                            Thread.sleep(2000);
+                                        } catch (InterruptedException e) {
+                                            Thread.currentThread().interrupt();
+                                        }
+                                        System.out.println("Your total score is: " + totalPoints + " points.");
+
+                                        try {
+                                            Thread.sleep(3000);
+                                        } catch (InterruptedException e) {
+                                            Thread.currentThread().interrupt();
+                                        }
+
+                                        enteredWormhole = true;
+                                        return;
                             }
                         }
                         else {
@@ -326,22 +359,27 @@ class SpaceRacer {
                     if (currentAsteroid >= numAsteroids) {
                         System.out.println("You have reached Europa!");
                         System.out.println("Your total score is: " + totalPoints + " points.");
-                    } 
-                    else if (currentAsteroid <= numAsteroids) {
-                        System.out.println("GAME OVER!");
-                    }
-                    else if (money > 0) {
-                        System.out.println("You ran out of money and your ship can't be repaired!");
-                    }                        
-                
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
-                }
 
-                
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+
+                        return;
+                    } 
+                    /*else if (currentAsteroid <= numAsteroids) {
+                        System.out.println("GAME OVER!");
+                        
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                        
+                        return;
+                    }*/
+                }
             }
         }
     }
@@ -373,7 +411,7 @@ class SpaceRacer {
             System.out.println("|CAUTION:                                                                                                          |");
             System.out.println("|Space junk is dangerous!                                                                                          |");
             System.out.println("|Some asteroids will give you a set of points and some will be wormholes.                                          |");
-            System.out.println("|If you pass through a wormhole you can end up anywhere in the universe! Therefore you will die.                   |");
+            System.out.println("|If you pass through a wormhole you can end up anywhere in the universe! High chance that you'll end up dead.      |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Starting Stats:                                                                                                   |");
             System.out.println("|                  - 3 Lives                                                                                       |");
