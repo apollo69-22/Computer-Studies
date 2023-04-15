@@ -1,3 +1,4 @@
+//Importing extra tools for program
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -8,7 +9,7 @@ class SpaceRacer {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
         System.out.println(" ___________________________________");
-        System.out.println("|     WELCOME TO SPACE TRAVELER     |");
+        System.out.println("|      WELCOME TO SPACE RACER       |");
         System.out.println("|                                   |");
         System.out.println("| 1. Game Instructions              |");
         System.out.println("| 2. Play Game                      |");
@@ -52,7 +53,7 @@ class SpaceRacer {
 
     /********************Game Initialization********************/
     public static void game_init_(Map<String, String> star_map, Map<String, String> inventory) {
-        inventory.put("Repair Ship ", " S-$10,000");
+        inventory.put("Repair Ship ", " S-$10,000"); //Declaring a map type String, String to "Repair Ship", "S-$10,000"
     }
     /***********************************************************/
 
@@ -61,25 +62,26 @@ class SpaceRacer {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         
         /***************Variable Initialization****************/
-        int currentAsteroid = 1;
-        int numAsteroids = 100;
-        int[] asteroidPoints = new int[numAsteroids];
-        boolean[] isWormhole = new boolean[numAsteroids];
-        boolean[] isMeteoroid = new boolean[numAsteroids];
-        boolean enteredWormhole = false;
+        int currentAsteroid = 1; //Declaring a variable named currentAsteroid to 1
+        int numAsteroids = 100;  //Declaring a variable named numAsteroids to 100
 
-        int totalPoints = 0;
-        int lives = 3;
-        int money = 20000;
+        int[] asteroidPoints = new int[numAsteroids];        //Declaring an array named asteroidPoints to the number of asteroids the user is at
+        boolean[] isWormhole = new boolean[numAsteroids];    //Declaring an array named isWormhole to the number of asteroids the user is at
 
-        Map<String, String> inventory = new HashMap<>();
+        int totalPoints = 0;  //Declaring a variable named totalPoints to 0
+        int lives = 3;        //Declaring a variable named lives to 3 
+        int money = 20000;    //Declaring a variable named money to 20000
 
-        String[] position = {"Sun", "Mercury", "Venus", "Earth", "Mars", "Europa", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "UNKNOWN"};
-        String currentPosition = position[3];
+
+        Map<String, String> inventory = new HashMap<>(); //This map type Sting, String is connectedto the method getStore()
+
+        String[] position = {"Sun", "Mercury", "Venus", "Earth", "Mars", "Europa", 
+        "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "UNKNOWN"}; //Declaring an array named position and it stores all of the positions used in this game
+        String currentPosition = position[3]; //Starting position is set to position 3 (Earth)
         /******************************************************/
 
         char choice = ' ';
-        while (choice != 'T' && choice != 't') {
+        while (choice != 'T' && choice != 't') { //This while loop will work only if the user enters the letter 'T' or 't', otherwise it will print an error
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
             System.out.println("Welcome Lieutenant!");
@@ -87,7 +89,7 @@ class SpaceRacer {
 
             System.out.print("Press T to travel to Mars: ");
             choice = Keyboard.readChar();
-            if (choice != 'T' && choice != 't') {
+            if (choice != 'T' && choice != 't') { //Checks if user entered 'T' or 't' in the variable choice
                 System.out.print("\nError. Press T to travel to Mars.");
 
                 try {
@@ -104,7 +106,7 @@ class SpaceRacer {
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
                     asteroidPoints[i] = (int) (Math.random() * 26) + 75;
-                    isWormhole[i] = Math.random() < 0.65;
+                    isWormhole[i] = Math.random() < 0.01;
 
                 }
                 
@@ -112,7 +114,7 @@ class SpaceRacer {
                     System.out.println();
                     System.out.print("Press R to roll the dice and travel to a new asteroid: ");
                     char roll = Keyboard.readChar();
-                    if (roll != 'R' && roll != 'r') {
+                    if (roll != 'R' && roll != 'r') { //Checks if user entered 'R' or 'r' in the variable choice
                         System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
 
                         try {
@@ -121,15 +123,16 @@ class SpaceRacer {
                             Thread.currentThread().interrupt();
                         }
                     }
-                    else {
+                    else { //If user entered 'R' or 'r', then the diceResult will run and result will be added to currentAsteroid
                         int diceResult = (int)(Math.random() * 12) + 1;
                         currentAsteroid += diceResult;
             
+                        //This if will run everytime until currentAsteroid is equal to numAsteroids 
                         if (currentAsteroid > numAsteroids) {
                             currentAsteroid = numAsteroids;
                         }
 
-                        int challengeType = (int)(Math.random() * 3) + 1;
+                        int challengeType = (int)(Math.random() * 4) + 1; //Variable challengeType is created to randomize 4 chances of different ypes of challenges
                         if (isWormhole[currentAsteroid-1]) {
                             switch (challengeType) {
                                 case 1:
@@ -156,9 +159,7 @@ class SpaceRacer {
                                             Thread.sleep(5000);
                                         } catch (InterruptedException e) {
                                             Thread.currentThread().interrupt();
-                                        }
-    
-                                        enteredWormhole = true;                               
+                                        }                          
                                 break;
 
                                 case 2:
@@ -186,8 +187,6 @@ class SpaceRacer {
                                         } catch (InterruptedException e) {
                                             Thread.currentThread().interrupt();
                                         }
-
-                                        enteredWormhole = true;
                                 break;
 
                                 case 3:
@@ -203,7 +202,7 @@ class SpaceRacer {
                                                 System.out.println();
                                                 System.out.print("Do you want to travel back to Earth? (Y/N): ");
                                                 choice = Keyboard.readChar();
-                                                if (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
+                                                if (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) { //Checks if user entered 'Y' or 'y' or 'N' or 'n' in the variable choice, if not prints error message
                                                     System.out.println("Error. Press (Y/N) to continue.");
 
                                                     try {
@@ -212,7 +211,7 @@ class SpaceRacer {
                                                         Thread.currentThread().interrupt();
                                                     }
                                                 }
-                                                else if (choice == 'Y' | choice == 'y') {
+                                                else if (choice == 'Y' | choice == 'y') { //If user entered 'Y' or 'y', the below code will execute
                                                     currentPosition = position[3];
                                                     System.out.println();
                                                     System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
@@ -223,7 +222,7 @@ class SpaceRacer {
                                                     String command_lst[] = {"Exit", "Help", "Stats", "Store"};
                                             
                                                     String command = "";
-                                                    while(!command.equals(command_lst[0])) {
+                                                    while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Exit"
                                                         System.out.print("\nCommand: ");
                                                         command = Keyboard.readString();
                                             
@@ -285,13 +284,14 @@ class SpaceRacer {
                                                                     }
                                                                 }
                                                             }
-                                                            else
+                                                            else {
                                                                 System.out.print("Invalid Option");
                                                                 System.out.println();
+                                                            }
                                                         }
                                                     }
                                                 }
-                                                else if (choice == 'N' | choice == 'n') {
+                                                else if (choice == 'N' | choice == 'n') { //If user entered 'N' or 'n', the game will tell user they lost and then stops
                                                     System.out.println();
                                                     System.out.println("GAME OVER!");
                                                     System.out.println("You did not repair your ship, therefore you couldn't continue the mission!");
@@ -333,11 +333,10 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        enteredWormhole = true;
                                         return;
                             }
                         }
-                        else {
+                        else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
                             int points = asteroidPoints[currentAsteroid-1];
                             System.out.println();
                             System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
@@ -354,31 +353,19 @@ class SpaceRacer {
                     }            
                 }
 
-                if (currentAsteroid >= numAsteroids /*|| lives == 0*/) {
+                if (currentAsteroid >= numAsteroids) { //If the currentAsteroid the user is on is greater or equal to the numAsteroids(100) then the user is done from game and congratulating message is outputted
                     System.out.println();
-                    if (currentAsteroid >= numAsteroids) {
-                        System.out.println("You have reached Europa!");
-                        System.out.println("Your total score is: " + totalPoints + " points.");
+                    System.out.println("CONGRATULATIONS!");
+                    System.out.println("You have reached Europa!");
+                    System.out.println("Your total score is: " + totalPoints + " points.");
 
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
 
-                        return;
-                    } 
-                    /*else if (currentAsteroid <= numAsteroids) {
-                        System.out.println("GAME OVER!");
-                        
-                        try {
-                            Thread.sleep(5000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
-                        
-                        return;
-                    }*/
+                    return;
                 }
             }
         }
@@ -390,7 +377,7 @@ class SpaceRacer {
     public static void instructions() throws IOException, InterruptedException {        
         char choice = ' ';
     
-        while (choice != 'B' && choice != 'b') {
+        while (choice != 'B' && choice != 'b') { //The instructions will be shown to user until they press 'B' or 'b', if they do it will return to main()
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
             System.out.println(" __________________________________________________________________________________________________________________");
@@ -444,7 +431,7 @@ class SpaceRacer {
     public static void main(String[] args) throws IOException, InterruptedException {
         int choice = 0;
 
-        while (choice != 3) {
+        while (choice != 3) { //This while loop will keep running until 3 is pressed, if so program will exit
             choice = mainMenu();
 
             switch (choice) {
