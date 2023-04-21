@@ -227,7 +227,7 @@ class SpaceRacer {
                                                     System.out.print("HINT: Type 'Help' for a list of commands.");
 
                                                     String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
-                                            
+                                                    
                                                     //boolean loopedOnce = false;
                                                     String command = "";
                                                     while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Leave Earth"
@@ -432,6 +432,7 @@ class SpaceRacer {
             System.out.println("|If you get teleported in an Unknown location in the universe you'll die and lose a life.                          |");
             System.out.println("|If you get hit by a meteoroid you'll have to go back to Earth to repair your ship from a store,                   |");
             System.out.println("|otherwise you'll die and it's GAME OVER!!                                                                         |");
+            System.out.println("|If you repair your ship you'll be brought back to the last asteroid you were at before you got hit.               |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Starting Stats:                                                                                                   |");
             System.out.println("|                  - 3 Lives                                                                                       |");
