@@ -1,4 +1,4 @@
-//Importing extra tools for program
+//Importing extra tools for game
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -67,6 +67,7 @@ class SpaceRacer {
 
         int[] asteroidPoints = new int[numAsteroids];        //Declaring an array named asteroidPoints to the number of asteroids the user is at
         boolean[] isWormhole = new boolean[numAsteroids];    //Declaring an array named isWormhole to the number of asteroids the user is at
+        boolean enteredWormhole = false;
 
         int totalPoints = 0;  //Declaring a variable named totalPoints to 0
         int lives = 3;        //Declaring a variable named lives to 3 
@@ -106,7 +107,7 @@ class SpaceRacer {
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
                     asteroidPoints[i] = (int) (Math.random() * 26) + 75;
-                    isWormhole[i] = Math.random() < 0.01;
+                    isWormhole[i] = Math.random() < 0.30;
 
                 }
                 
@@ -159,7 +160,9 @@ class SpaceRacer {
                                             Thread.sleep(5000);
                                         } catch (InterruptedException e) {
                                             Thread.currentThread().interrupt();
-                                        }                          
+                                        }
+                                        
+                                        enteredWormhole = true;
                                 break;
 
                                 case 2:
@@ -187,12 +190,14 @@ class SpaceRacer {
                                         } catch (InterruptedException e) {
                                             Thread.currentThread().interrupt();
                                         }
+
+                                        enteredWormhole = true;
                                 break;
 
                                 case 3:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
-                                        System.out.println("You have to go back to Earth to repair your ship or else you will die!");
+                                        System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
                                         
                                         boolean repairedShip = false;
                                         while (!repairedShip) {
@@ -219,10 +224,10 @@ class SpaceRacer {
                                                     System.out.println();
                                                     System.out.print("HINT: Type 'Help' for a list of commands.");
 
-                                                    String command_lst[] = {"Exit", "Help", "Stats", "Store"};
+                                                    String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
                                             
                                                     String command = "";
-                                                    while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Exit"
+                                                    while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Leave Earth"
                                                         System.out.print("\nCommand: ");
                                                         command = Keyboard.readString();
                                             
@@ -313,6 +318,14 @@ class SpaceRacer {
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[5];
                                         System.out.println("Congratulations this wormhole led straight to " + currentPosition + "!");
+                                        System.out.println();
+
+                                        try {
+                                            Thread.sleep(3000);
+                                        } catch (InterruptedException e) {
+                                            Thread.currentThread().interrupt();
+                                        }
+
                                         System.out.println("Let's hope you managed to get as many points as you could then, Lieutenant!");
                                         try {
                                             Thread.sleep(2000);
@@ -360,7 +373,7 @@ class SpaceRacer {
                     System.out.println("Your total score is: " + totalPoints + " points.");
 
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(7000);
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
@@ -392,13 +405,22 @@ class SpaceRacer {
             System.out.println("|Help Captain Kirk make it to Europa safely.                                                                       |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Objective:                                                                                                        |");
-            System.out.println("|You must roll a dice and move forward several asteroids depending on the die's result.                            |");
+            System.out.println("|You must roll two dice (6 & 6) and move forward several asteroids depending on the dice's result.                 |");
             System.out.println("|You must keep doing this until you reach Europa.                                                                  |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|CAUTION:                                                                                                          |");
             System.out.println("|Space junk is dangerous!                                                                                          |");
             System.out.println("|Some asteroids will give you a set of points and some will be wormholes.                                          |");
-            System.out.println("|If you pass through a wormhole you can end up anywhere in the universe! High chance that you'll end up dead.      |");
+            System.out.println("|If you pass through a wormhole you can end up:                                                                    |");
+            System.out.println("|                                               - near the Sun                                                     |");
+            System.out.println("|                                               - in an Unknown Location in the universe                           |");
+            System.out.println("|                                               - gettig hit by meteoroids                                         |");
+            System.out.println("|                                               - or making it to Europa                                           |");
+            System.out.println("|                                                                                                                  |");
+            System.out.println("|If you get teleported near the Sun you'll burn up and lose a life.                                                |");
+            System.out.println("|If you get teleported in an Unknown location in the universe you'll die and lose a life.                          |");
+            System.out.println("|If you get hit by a meteoroid you'll have to go back to Earth to repair your ship from a store,                   |");
+            System.out.println("|otherwise you'll die and it's GAME OVER!!                                                                         |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Starting Stats:                                                                                                   |");
             System.out.println("|                  - 3 Lives                                                                                       |");
@@ -407,6 +429,8 @@ class SpaceRacer {
             System.out.println("|                                                                                                                  |");
             System.out.println("|Tips:                                                                                                             |");
             System.out.println("|      Try: 'Help' for a list of commands!                                                                         |");
+            System.out.println("|            This will give you the options for you to see your:                                                   |");
+            System.out.println("|            Stats and a Store                                                                                     |");
             System.out.println("|__________________________________________________________________________________________________________________|");
             
             System.out.println();
