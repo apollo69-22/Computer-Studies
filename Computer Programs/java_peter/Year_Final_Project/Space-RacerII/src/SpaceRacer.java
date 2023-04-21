@@ -125,7 +125,9 @@ class SpaceRacer {
                         }
                     }
                     else { //If user entered 'R' or 'r', then the diceResult will run and result will be added to currentAsteroid
-                        int diceResult = (int)(Math.random() * 12) + 1;
+                        int die1 = (int)(Math.random() * 6) + 1;
+                        int die2 = (int)(Math.random() * 6) + 1;
+                        int diceResult = die1 + die2;
                         currentAsteroid += diceResult;
             
                         //This if will run everytime until currentAsteroid is equal to numAsteroids 
@@ -226,8 +228,17 @@ class SpaceRacer {
 
                                                     String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
                                             
+                                                    //boolean loopedOnce = false;
                                                     String command = "";
                                                     while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Leave Earth"
+                                                        
+                                                        /*if (command.equals(command_lst[0])) {
+                                                            loopedOnce = true;
+                                                            System.out.println(loopedOnce);
+
+                                                            
+                                                        }*/
+
                                                         System.out.print("\nCommand: ");
                                                         command = Keyboard.readString();
                                             
@@ -241,7 +252,7 @@ class SpaceRacer {
                                                         else if (command.equals(command_lst[2])) {
                                                             getStats(lives, money, currentPosition);
                                                         }
-                                                        else if (command.contains(command_lst[3])) {
+                                                        else if (command.equals(command_lst[3])) {
                                                             getStore(inventory);
 
                                                             System.out.println();
