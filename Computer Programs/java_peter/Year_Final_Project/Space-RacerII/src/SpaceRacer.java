@@ -224,7 +224,7 @@ class SpaceRacer {
                                             String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
                                             
                                             String command = "";
-                                            while(!command.equals(command_lst[0]) && !repairedShip) { //This while loop will run until user enters "Leave Earth" and ship must be repaired
+                                            while(!command.equals(command_lst[0]) || !repairedShip) { //This while loop will run until user enters "Leave Earth" and ship must be repaired
                                                 System.out.print("\nCommand: ");
                                                 command = Keyboard.readString();
                                     
@@ -256,14 +256,15 @@ class SpaceRacer {
                                                             } catch (InterruptedException e) {
                                                                 Thread.currentThread().interrupt();
                                                             }
-
                                                             return;
                                                         }
                                                         else {
+                                                            money -= 10000;
+                                                            repairedShip = true;
+
                                                             System.out.println();
                                                             System.out.println("Lieutenant, we have just repaired your ship.");
                                                             System.out.println("That costed you 10,000 Starfleet Dollars!");
-                                                            money -= 10000;
 
                                                             try {
                                                                 Thread.sleep(2500);
@@ -277,7 +278,6 @@ class SpaceRacer {
 
                                                             System.out.println("Lieutenant, now you can keep going on your journey!");
                                                             System.out.println("Good Luck and don't DIE!");
-                                                            repairedShip = true;
 
                                                             try {
                                                                 Thread.sleep(5000);
