@@ -42,7 +42,6 @@ class SpaceRacer {
     }
 
     public static void getStore(Map<String, Integer> inventory) {
-        System.out.println(inventory.get("Ship Repairs"));
         System.out.println(" _______________________________________________________________________");
         System.out.println("|                                 STORE                                 |");
         System.out.println("|                                                                       |");
@@ -273,7 +272,6 @@ class SpaceRacer {
                                                     int storeChoice = Keyboard.readInt();
 
                                                     if (storeChoice == 1) {
-                                                        System.out.println(money);
                                                         if (money <= 0) {
                                                             System.out.println("You ran out of money and you can't repair your ship.");
                                                             System.out.println("Lieutenant, its GAME OVER!");
