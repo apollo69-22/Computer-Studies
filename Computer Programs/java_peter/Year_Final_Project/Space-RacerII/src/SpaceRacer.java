@@ -247,6 +247,7 @@ class SpaceRacer {
                                                     int storeChoice = Keyboard.readInt();
 
                                                     if (storeChoice == 1) {
+                                                        System.out.println(money);
                                                         if (money <= 0) {
                                                             System.out.println("You ran out of money and you can't repair your ship.");
                                                             System.out.println("Lieutenant, its GAME OVER!");
