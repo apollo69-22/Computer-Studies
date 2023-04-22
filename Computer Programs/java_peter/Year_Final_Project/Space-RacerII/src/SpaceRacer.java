@@ -128,10 +128,10 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        int challengeType = (int)(Math.random() * 1) + 1; //Variable challengeType is created to randomize 4 chances of different ypes of challenges
+                        int challengeType = (int)(Math.random() * 4) + 1; //Variable challengeType is created to randomize 4 chances of different ypes of challenges
                         if (isWormhole[currentAsteroid-1]) {
                             switch (challengeType) {
-                                /*case 1:
+                                case 1:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[0];
@@ -157,7 +157,7 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
                                         
-                                        enteredWormhole = true;
+                                        //enteredWormhole = true;
                                 break;
 
                                 case 2:
@@ -186,10 +186,10 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        enteredWormhole = true;
-                                break;*/
+                                        //enteredWormhole = true;
+                                break;
 
-                                case 1:        
+                                case 3:        
                                     System.out.println();
                                     System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
                                     System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
@@ -273,6 +273,7 @@ class SpaceRacer {
 
                                                     if (storeChoice == 1) {
                                                         if (money <= 0) {
+                                                            // add lives system and money restore instead of game over
                                                             System.out.println("You ran out of money and you can't repair your ship.");
                                                             System.out.println("Lieutenant, its GAME OVER!");
 
@@ -323,7 +324,7 @@ class SpaceRacer {
                                     }
                                 break;
 
-                                /*case 4:
+                                case 4:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[5];
@@ -356,7 +357,7 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        return;*/
+                                        return;
                             }
                         }
                         else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
