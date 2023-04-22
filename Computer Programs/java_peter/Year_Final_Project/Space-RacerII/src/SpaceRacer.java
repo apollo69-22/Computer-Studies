@@ -74,7 +74,7 @@ class SpaceRacer {
         int money = 20000;    //Declaring a variable named money to 20000
 
 
-        Map<String, String> inventory = new HashMap<>(); //This map type Sting, String is connectedto the method getStore()
+        Map<String, String> inventory = new HashMap<>(); //This map type String, String is connectedto the method getStore()
 
         String[] position = {"Sun", "Mercury", "Venus", "Earth", "Mars", "Europa", 
         "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "UNKNOWN"}; //Declaring an array named position and it stores all of the positions used in this game
@@ -82,7 +82,7 @@ class SpaceRacer {
         /******************************************************/
 
         char choice = ' ';
-        while (choice != 'T' && choice != 't') { //This while loop will work only if the user enters the letter 'T' or 't', otherwise it will print an error
+        while (choice != 'T' | choice != 't') { //This while loop will work only if the user enters the letter 'T' or 't', otherwise it will print an error
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
             System.out.println("Welcome Lieutenant!");
@@ -90,16 +90,7 @@ class SpaceRacer {
 
             System.out.print("Press T to travel to Mars: ");
             choice = Keyboard.readChar();
-            if (choice != 'T' && choice != 't') { //Checks if user entered 'T' or 't' in the variable choice
-                System.out.print("\nError. Press T to travel to Mars.");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            else {
+            if (choice == 'T' | choice == 't') {  //Checks if user entered 'T' or 't' in the variable choice
                 System.out.println();
                 System.out.println("You have arrived on " + position[4] + "!");
                 System.out.println("Use the dice to travel between asteroids and reach Europa!");
@@ -115,16 +106,7 @@ class SpaceRacer {
                     System.out.println();
                     System.out.print("Press R to roll the dice and travel to a new asteroid: ");
                     char roll = Keyboard.readChar();
-                    if (roll != 'R' && roll != 'r') { //Checks if user entered 'R' or 'r' in the variable choice
-                        System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
-                    }
-                    else { //If user entered 'R' or 'r', then the diceResult will run and result will be added to currentAsteroid
+                    if (roll == 'R' | roll == 'r') { //Checks if user entered 'R' or 'r' in the variable choice
                         int die1 = (int)(Math.random() * 6) + 1;
                         int die2 = (int)(Math.random() * 6) + 1;
                         int diceResult = die1 + die2;
@@ -148,16 +130,16 @@ class SpaceRacer {
                                         if (lives == 0) {
                                             System.out.println();
                                             System.out.println("GAME OVER!");
-    
+
                                             try {
                                                 Thread.sleep(5000);
                                             } catch (InterruptedException e) {
                                                 Thread.currentThread().interrupt();
                                             }
-    
+
                                             return;
                                         }
-    
+
                                         try {
                                             Thread.sleep(5000);
                                         } catch (InterruptedException e) {
@@ -374,6 +356,15 @@ class SpaceRacer {
 
                             totalPoints += points;
                         }
+                    }
+                    else { //If user entered another letter than 'R' or 'r', the game will print an error message
+                        System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
+
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
                     }            
                 }
 
@@ -390,6 +381,15 @@ class SpaceRacer {
                     }
 
                     return;
+                }
+            }
+            else {  //If user entered another letter than 'T' or 't', the game will print an error message
+                System.out.print("\nError. Press T to travel to Mars.");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             }
         }
