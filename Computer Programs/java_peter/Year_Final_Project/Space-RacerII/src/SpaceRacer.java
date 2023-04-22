@@ -117,10 +117,10 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        int challengeType = (int)(Math.random() * 4) + 1; //Variable challengeType is created to randomize 4 chances of different ypes of challenges
+                        int challengeType = (int)(Math.random() * 1) + 1; //Variable challengeType is created to randomize 4 chances of different ypes of challenges
                         if (isWormhole[currentAsteroid-1]) {
                             switch (challengeType) {
-                                case 1:
+                                /*case 1:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[0];
@@ -176,14 +176,16 @@ class SpaceRacer {
                                         }
 
                                         enteredWormhole = true;
-                                break;
+                                break;*/
 
-                                case 3:
+                                case 1:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
                                         System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
                                         
                                         boolean repairedShip = false;
+                                        repairedShip = false; // Resets the value of repairedShip to false everytime it runs again
+
                                         while (!repairedShip) {
                                             choice = ' ';
                                             while (!(choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')) {
@@ -200,7 +202,7 @@ class SpaceRacer {
                                                         Thread.currentThread().interrupt();
                                                     }
                                                 }
-                                                else if (choice == 'Y' | choice == 'y') { //If user entered 'Y' or 'y', the below code will execute
+                                                else if (choice == 'Y' || choice == 'y') { //If user entered 'Y' or 'y', the below code will execute
                                                     currentPosition = position[3];
                                                     System.out.println();
                                                     System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
@@ -210,17 +212,8 @@ class SpaceRacer {
 
                                                     String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
                                                     
-                                                    //boolean loopedOnce = false;
                                                     String command = "";
                                                     while(!command.equals(command_lst[0])) { //This while loop will run until user enters "Leave Earth"
-                                                        
-                                                        /*if (command.equals(command_lst[0])) {
-                                                            loopedOnce = true;
-                                                            System.out.println(loopedOnce);
-
-                                                            
-                                                        }*/
-
                                                         System.out.print("\nCommand: ");
                                                         command = Keyboard.readString();
                                             
@@ -283,13 +276,14 @@ class SpaceRacer {
                                                                 }
                                                             }
                                                             else {
-                                                                System.out.print("Invalid Option");
                                                                 System.out.println();
+                                                                System.out.println("Invalid Option");
+                                                                System.out.println("Type 'Store' again to retry...");
                                                             }
                                                         }
                                                     }
                                                 }
-                                                else if (choice == 'N' | choice == 'n') { //If user entered 'N' or 'n', the game will tell user they lost and then stops
+                                                else if (choice == 'N' || choice == 'n') { //If user entered 'N' or 'n', the game will tell user they lost and then stops
                                                     System.out.println();
                                                     System.out.println("GAME OVER!");
                                                     System.out.println("You did not repair your ship, therefore you couldn't continue the mission!");
@@ -306,7 +300,7 @@ class SpaceRacer {
                                         }
                                 break;
 
-                                case 4:
+                                /*case 4:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
                                         currentPosition = position[5];
@@ -339,7 +333,7 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        return;
+                                        return;*/
                             }
                         }
                         else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
@@ -428,9 +422,9 @@ class SpaceRacer {
             System.out.println("|                                               - gettig hit by meteoroids                                         |");
             System.out.println("|                                               - or making it to Europa                                           |");
             System.out.println("|                                                                                                                  |");
-            System.out.println("|If you get teleported near the Sun you'll burn up and lose a life.                                                |");
-            System.out.println("|If you get teleported in an Unknown location in the universe you'll die and lose a life.                          |");
-            System.out.println("|If you get hit by a meteoroid you'll have to go back to Earth to repair your ship from a store,                   |");
+            System.out.println("|If you end up near the Sun you'll burn up and lose a life.                                                        |");
+            System.out.println("|If you en up in an Unknown location in the universe you'll die and lose a life.                                   |");
+            System.out.println("|If you end up hit by a meteoroid you'll have to go back to Earth to repair your ship from a store,                |");
             System.out.println("|otherwise you'll die and it's GAME OVER!!                                                                         |");
             System.out.println("|If you repair your ship you'll be brought back to the last asteroid you were at before you got hit.               |");
             System.out.println("|                                                                                                                  |");
