@@ -213,6 +213,7 @@ class SpaceRacer {
 
                                         else if (choice == 'y' || choice == 'Y') {
                                             boolean repairedShip = false;// Resets the value of repairedShip to false everytime it runs again
+                                            System.out.println(repairedShip);
                                             currentPosition = position[3];
 
                                             System.out.println();
@@ -262,6 +263,7 @@ class SpaceRacer {
                                                         else {
                                                             money -= 10000;
                                                             repairedShip = true;
+                                                            System.out.println(repairedShip);
 
                                                             System.out.println();
                                                             System.out.println("Lieutenant, we have just repaired your ship.");
