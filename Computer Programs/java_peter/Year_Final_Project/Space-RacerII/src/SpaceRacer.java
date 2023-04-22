@@ -227,7 +227,6 @@ class SpaceRacer {
                                             boolean repairedShip = false;// Resets the value of repairedShip to false everytime it runs again
                                             currentPosition = position[3];
                                             
-                                            
                                             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
                                             System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
@@ -242,14 +241,19 @@ class SpaceRacer {
                                                 System.out.print("\nCommand: ");
                                                 command = Keyboard.readString();
 
-                                                if (command.equals(command_lst[0]) && !repairedShip) {
-                                                    System.out.println();
-                                                    System.out.println("Can't Leave Earth, your ship is still broken ;)");
+                                                if (command.equals(command_lst[0])) {
+                                                    if (repairedShip)
+                                                        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-                                                    try {
-                                                        Thread.sleep(5000);
-                                                    } catch (InterruptedException e) {
-                                                        Thread.currentThread().interrupt();
+                                                    else {
+                                                        System.out.println();
+                                                        System.out.println("Can't Leave Earth, your ship is still broken ;)");
+
+                                                        try {
+                                                            Thread.sleep(5000);
+                                                        } catch (InterruptedException e) {
+                                                            Thread.currentThread().interrupt();
+                                                        }
                                                     }
                                                 }
                                     
