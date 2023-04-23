@@ -355,7 +355,7 @@ class SpaceRacer {
                                     }
                                 break;
 
-                                ////Case 4 will send the user directly to Europa. Catch is will the user have collected a lot of points or not.
+                                //Case 4 will send the user directly to Europa. Catch is will the user have collected a lot of points or not.
                                 case 4:
                                         System.out.println();
                                         System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
