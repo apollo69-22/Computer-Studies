@@ -68,6 +68,21 @@ class SpaceRacer {
         return random;
     } 
 
+    public static void getWormholeScenario1() {
+        
+    }
+
+    public static void getWormholeScenario2() {
+        
+    }
+    
+    public static void getWormholeScenario3() {
+        
+    }
+
+    public static void getWormholeScenario4() {
+        
+    }
     /************************Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
