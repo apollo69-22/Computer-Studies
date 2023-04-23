@@ -53,13 +53,20 @@ class SpaceRacer {
         }
     }
 
-    public static void getStore(Map<String, Integer> inventory) {
+    public static String getStore(Map<String, Integer> inventory) {
         System.out.println(" _______________________________________________________________________");
         System.out.println("|                                 STORE                                 |");
         System.out.println("|                                                                       |");
         System.out.printf("|                1. Repair Ship:               S-$%d                 |\n", inventory.get("Ship Repairs"));
         System.out.println("|                                                                       |");
         System.out.println("|_______________________________________________________________________|");
+
+        System.out.println();
+        System.out.println("Pick what you need Lieutenant.");
+        System.out.print("Choice: ");
+        String storeChoice = Keyboard.readString();
+
+        return storeChoice;
     }
     /***********************************************************/
 
@@ -68,20 +75,61 @@ class SpaceRacer {
         return random;
     } 
 
-    public static void getWormholeScenario1() {
-        
-    }
-
-    public static void getWormholeScenario2() {
-        
+    public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message) {
+        if (!scenerio3) {
+            System.out.println();
+            System.out.printf("You rolled a %d and arrived at a wormhole!", diceResult);
+            
+            System.out.printf("Oh no! The wormhole led to %s. %s\n", currentPosition, message);
+            System.out.printf("Lives left: %d\n", lives);
+        }
+        else {
+            System.out.println();
+            System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
+            System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
+        }
     }
     
-    public static void getWormholeScenario3() {
-        
+    public static void generateMessage(String message, int miliSec) {
+        System.out.println(message);
+        try {
+            Thread.sleep(miliSec);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
-    public static void getWormholeScenario4() {
-        
+    public static void gameResult(boolean won, int totalPoints, String message) throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+        if (!won) {
+            System.out.printf("GAME OVER!\n%s", message);
+
+            try {
+                Thread.sleep(8000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        else {
+            System.out.println("CONGRATULATIONS!");
+            System.out.println("You have reached Europa!");
+            System.out.println("Your total score is: " + totalPoints + " points.");
+
+            try {
+                Thread.sleep(7000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public static void getCommandLst(String[] command_lst) {
+        System.out.print("\n| ");
+        for (int i = 0; i < command_lst.length; i++) {
+            System.out.print(command_lst[i] + " : ");
+        }
+        System.out.print("|\n");
     }
     /************************Game Method************************/
     public static void game() throws IOException, InterruptedException {
@@ -122,7 +170,17 @@ class SpaceRacer {
 
             System.out.print("Press T to travel to Mars: ");
             choice = Keyboard.readChar();
-            if (choice == 'T' || choice == 't') {  //Checks if user entered 'T' or 't' in the variable choice
+            
+            if (choice != 'T' && choice != 't') {  //If user entered another letter than 'T' or 't', the game will print an error message
+                System.out.print("\nError. Press T to travel to Mars.");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+            else { //if user entered 'T' or 't' in the variable choice
                 System.out.println();
                 System.out.println("You have arrived on " + position[4] + "!");
                 System.out.println("Use the dice to travel between asteroids and reach Europa!");
@@ -137,7 +195,17 @@ class SpaceRacer {
                     System.out.println();
                     System.out.print("Press R to roll the dice and travel to a new asteroid: ");
                     char roll = Keyboard.readChar();
-                    if (roll == 'R' || roll == 'r') { //Checks if user entered 'R' or 'r' in the variable choice
+                    
+                    if (roll != 'R' && roll != 'r') { //If user entered another letter than 'R' or 'r', the game will print an error message
+                        System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
+
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                    else { //Checks if user entered 'R' or 'r' in the variable choice
                         int die1 = getRandom(6,1); //range in this one is 6 which equals to (max 6 - min 0) and starts from min == 1
                         int die2 = getRandom(6,1);
                         int diceResult = die1 + die2;
@@ -148,73 +216,56 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        int challengeType = (int)(Math.random() * 4) + 1; //Variable challengeType is created to randomize 4 chances of different types of challenges
+                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 4) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
                         if (isWormhole[currentAsteroid-1]) {  //This if statement checks if the currentAsteroid is a Wormhole, if so it will execute
-                            switch (challengeType) {
+                            switch (wormhole_scenerio) {
                                 //Case 1 will send the user next to the Sun, therefore they'll die and lose a life. If lives == 0 then it's Game Over
-                                case 1:
-                                        System.out.println();
-                                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
+                                case "1":
                                         currentPosition = position[0];
-                                        System.out.println(currentPosition);
-                                        System.out.println("Oh no! The wormhole led to the " + currentPosition + ". Oops you burned up..");
                                         lives--;
-                                        System.out.println("Lives left: " + lives);
-                                        if (lives == 0) {
-                                            System.out.println();
-                                            System.out.println("GAME OVER!");
+                                        
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, "Oops you burned up..");
 
+                                        if (lives != 0) {
                                             try {
                                                 Thread.sleep(5000);
                                             } catch (InterruptedException e) {
                                                 Thread.currentThread().interrupt();
                                             }
-                                            return;
                                         }
-
-                                        try {
-                                            Thread.sleep(5000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
+                                        else {
+                                            gameResult(false, totalPoints, "");
+                                            return;
                                         }
                                         
                                         //enteredWormhole = true;
                                 break;
 
                                 //Case 2 will send the user in an Unknown location in the Universe, therefore they'll die and lose a life. If lives == 0 then it's Game Over
-                                case 2:
-                                        System.out.println();
-                                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
+                                case "2":
                                         currentPosition = position[11];
-                                        System.out.println("Oh no! The wormhole led to an " + currentPosition + " location in the universe and you're lost forever...");
                                         lives--;
-                                        System.out.println("Lives left: " + lives);
-                                        if (lives == 0) {
-                                            System.out.println();
-                                            System.out.println("GAME OVER!");
 
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, "location in the universe and you're lost");
+
+                                        if (lives != 0) {
                                             try {
                                                 Thread.sleep(5000);
                                             } catch (InterruptedException e) {
                                                 Thread.currentThread().interrupt();
                                             }
-                                            return;
                                         }
-
-                                        try {
-                                            Thread.sleep(5000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
+                                        else {
+                                            gameResult(false, totalPoints, "");
+                                            return;
                                         }
 
                                         //enteredWormhole = true;
                                 break;
 
                                 //Case 3 will hit the user's ship with a meteoroid, therefore they'll have to go back to Earth to fix the ship.
-                                case 3:        
-                                    System.out.println();
-                                    System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
-                                    System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
+                                case "3":    
+                                    getWormholeScenario(true, diceResult, currentPosition, lives, currentPosition);
 
                                     choice = ' ';
                                     while (choice != 'n' && choice != 'N' && choice != 'y' && choice != 'Y') {  //This while loop will run again if the user enters any letter other than 'n', 'N', 'y', 'Y'
@@ -233,15 +284,7 @@ class SpaceRacer {
                                         }
 
                                         else if (choice == 'n' || choice == 'N') {  //Checks if user entered 'n' or 'N', if so the below code will execute
-                                            System.out.println();
-                                            System.out.println("GAME OVER!");
-                                            System.out.print("You did not repair your ship, therefore you couldn't continue the mission!");
-
-                                            try {
-                                                Thread.sleep(4000);
-                                            } catch (InterruptedException e) {
-                                                Thread.currentThread().interrupt();
-                                            }
+                                            gameResult(false, totalPoints, "\nYou did not repair your ship, therefore you couldn't continue the mission!");
                                             return;
                                         }
 
@@ -251,12 +294,16 @@ class SpaceRacer {
                                             
                                             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-                                            System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
+                                            generateMessage(new String("Welcome back to " + currentPosition + " Lieutenant!"), 0);
+                                            generateMessage("We noticed your ship needs a few repairs.", 0);
+                                            generateMessage("\nHINT: Type 'Help' for a list of commands.", 0);
+
+                                            /*System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
                                             System.out.println("We noticed your ship needs a few repairs.");
                                             System.out.println();
-                                            System.out.print("HINT: Type 'Help' for a list of commands.");
+                                            System.out.print("HINT: Type 'Help' for a list of commands.");*/
 
-                                            String command_lst[] = {"Leave Earth", "Help", "Stats", "Store",};
+                                            String command_lst[] = {"leave Earth", "help", "stats", "store"};
                                             
                                             String command = "";
                                             while(!command.equals(command_lst[0]) || !repairedShip) { //This while loop will run until user enters "Leave Earth" and ship must be repaired
@@ -267,37 +314,19 @@ class SpaceRacer {
                                                     if (repairedShip)  //Checks whether the user repaired their ship, if yes it will clear screen
                                                         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-                                                    else {    //Checks whether the user repaired their ship, if no below message will execute
-                                                        System.out.println();
-                                                        System.out.println("Can't Leave Earth, your ship is still broken ;)");
-
-                                                        try {
-                                                            Thread.sleep(5000);
-                                                        } catch (InterruptedException e) {
-                                                            Thread.currentThread().interrupt();
-                                                        }
-                                                    }
+                                                    else   //Checks whether the user repaired their ship, if no below message will execute
+                                                        generateMessage("\nCan't Leave Earth, your ship is still broken ;)", 5000);
                                                 }
-                                    
                                                 else if (command.equals(command_lst[1])) {
-                                                    System.out.print("\n| ");
-                                                    for (int i = 0; i < command_lst.length; i++) {
-                                                        System.out.print(command_lst[i] + " : ");
-                                                    }
-                                                    System.out.print("|\n");
+                                                    getCommandLst(command_lst);
                                                 }
                                                 else if (command.equals(command_lst[2])) {
                                                     getStats(lives, totalMoney, currentPosition);
                                                 }
                                                 else if (command.equals(command_lst[3])) {
-                                                    getStore(inventory);
+                                                    String storeChoice = getStore(inventory);
 
-                                                    System.out.println();
-                                                    System.out.println("Pick what you need Lieutenant.");
-                                                    System.out.print("Choice: ");
-                                                    int storeChoice = Keyboard.readInt();
-
-                                                    if (storeChoice == 1) {  //Checks if user entered '1', if so the below code will execute
+                                                    if (storeChoice == "1") {  //Checks if user entered '1', if so the below code will execute
                                                         if (totalMoney < 10000) {
                                                             lives--;
                                                             System.out.println("You don't have enough money to buy this!");
@@ -369,12 +398,10 @@ class SpaceRacer {
                                 break;
 
                                 //Case 4 will send the user directly to Europa. Catch is will the user have collected a lot of points or not.
-                                case 4:
-                                        System.out.println();
-                                        System.out.println("You rolled a " + diceResult + " and arrived at a wormhole!");
+                                case "4":
                                         currentPosition = position[5];
-                                        System.out.println("Congratulations this wormhole led straight to " + currentPosition + "!");
-                                        System.out.println();
+
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, new String("\nCongratulations this wormhole led straight to " + currentPosition));
 
                                         try {
                                             Thread.sleep(3000);
@@ -382,26 +409,10 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        System.out.println("Let's hope you managed to get as many points as you could then, Lieutenant!");
-                                        try {
-                                            Thread.sleep(2000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                        }
-                                        System.out.println("Because...");
-                                        try {
-                                            Thread.sleep(2000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                        }
-                                        System.out.println("Your total score is: " + totalPoints + " points.");
-
-                                        try {
-                                            Thread.sleep(3000);
-                                        } catch (InterruptedException e) {
-                                            Thread.currentThread().interrupt();
-                                        }
-                                        return;
+                                        generateMessage("Let's hope you managed to get as many points as you could then, Lieutenant!", 2000);
+                                        generateMessage("Because...", 2000);
+                                        generateMessage(new String("Your total score is: " + totalPoints + " points."), 3000);
+                                    return;
                             }
                         }
                         else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
@@ -420,39 +431,12 @@ class SpaceRacer {
                             totalMoney += points;   //Adds all points and stores them in the variable totalMoney
                         }
                     }
-                    else { //If user entered another letter than 'R' or 'r', the game will print an error message
-                        System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
-                    }            
                 }
 
                 //Win Game method
                 if (currentAsteroid >= numAsteroids) { //If the currentAsteroid the user is on is greater or equal to the numAsteroids(100) then the user is done from game and congratulating message is outputted
-                    System.out.println();
-                    System.out.println("CONGRATULATIONS!");
-                    System.out.println("You have reached Europa!");
-                    System.out.println("Your total score is: " + totalPoints + " points.");
-
-                    try {
-                        Thread.sleep(7000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
+                    gameResult(true, totalPoints, "");
                     return;
-                }
-            }
-            else {  //If user entered another letter than 'T' or 't', the game will print an error message
-                System.out.print("\nError. Press T to travel to Mars.");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
                 }
             }
         }
