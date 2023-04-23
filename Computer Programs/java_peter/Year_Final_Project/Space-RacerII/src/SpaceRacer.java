@@ -175,19 +175,10 @@ class SpaceRacer {
             System.out.print("Press T to travel to Mars: ");
             choice = Keyboard.readChar();
             
-            if (choice != 'T' && choice != 't') {  //If user entered another letter than 'T' or 't', the game will print an error message
-                System.out.print("\nError. Press T to travel to Mars.");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
+            if (choice != 'T' && choice != 't')  //If user entered another letter than 'T' or 't', the game will print an error message
+                generateMessage("\nError. Press T to travel to Mars.", 2000);
             else { //if user entered 'T' or 't' in the variable choice
-                System.out.println();
-                System.out.println("You have arrived on " + position[4] + "!");
-                System.out.println("Use the dice to travel between asteroids and reach Europa!");
+                generateMessage(new String("\nYou have arrived on " + position[4] + "!\nUse the dice to travel between asteroids and reach Europa!"), 0);
 
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
@@ -200,15 +191,8 @@ class SpaceRacer {
                     System.out.print("Press R to roll the dice and travel to a new asteroid: ");
                     char roll = Keyboard.readChar();
                     
-                    if (roll != 'R' && roll != 'r') { //If user entered another letter than 'R' or 'r', the game will print an error message
-                        System.out.println("Error. Press R to roll the dice and travel to a new asteroid.");
-
-                        try {
-                            Thread.sleep(2000);
-                        } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt();
-                        }
-                    }
+                    if (roll != 'R' && roll != 'r') //If user entered another letter than 'R' or 'r', the game will print an error message
+                        generateMessage("Error. Press R to roll the dice and travel to a new asteroid.\n", 2000);
                     else { //Checks if user entered 'R' or 'r' in the variable choice
                         int die1 = getRandom(6,1); //range in this one is 6 which equals to (max 6 - min 0) and starts from min == 1
                         int die2 = getRandom(6,1);
