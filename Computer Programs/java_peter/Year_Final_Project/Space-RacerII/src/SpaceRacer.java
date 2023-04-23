@@ -26,17 +26,29 @@ class SpaceRacer {
     /************************************************************/
 
     /*****************Game Methods & Functions******************/
-    public static void getStats(int lives, int money, String currentPosition) {
-        if (money == 0) {
+    public static void getStats(int lives, int totalMoney, String currentPosition) {
+        if (totalMoney == 0) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     |   S-$" + money + "    |    " + currentPosition + "     |");
+            System.out.println(" |     " +  lives  + "     |   S-$" + totalMoney + "    |    " + currentPosition + "     |");
             System.out.println(" |______________________________________|");
         }
-        else {
+        else if (totalMoney >= 1000 && totalMoney <= 9999) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     | S-$" + money + "  |    " + currentPosition + "     |");
+            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + "   |    " + currentPosition + "     |");
+            System.out.println(" |______________________________________|");
+        }
+        else if (totalMoney >= 10000 && totalMoney <= 99999) {
+            System.out.println("  ______________________________________");
+            System.out.println(" |   Lives   |   Money   |   Location   |");
+            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + "  |    " + currentPosition + "     |");
+            System.out.println(" |______________________________________|");
+        }
+        else if (totalMoney >= 100000 && totalMoney <= 999999) {
+            System.out.println("  ______________________________________");
+            System.out.println(" |   Lives   |   Money   |   Location   |");
+            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + " |    " + currentPosition + "    |");
             System.out.println(" |______________________________________|");
         }
     }
@@ -51,15 +63,9 @@ class SpaceRacer {
     }
     /***********************************************************/
 
-    /********************Game Initialization********************/
-    public static void game_init_(Map<String, String> star_map, Map<String, Integer> inventory) {
-        inventory.put("Ship Repairs", 10000); //Declaring a map type String, String to "Repair Ship", "S-$10,000"
-    }
-    /***********************************************************/
-
     public static int getRandom(int max, int min) {
-        int rand = (int)(Math.random() * (max - min) + min);
-        return rand;
+        int random = (int)(Math.random() * (max - min) + min);
+        return random;
     } 
 
     /************************Game Method************************/
@@ -76,12 +82,13 @@ class SpaceRacer {
 
         int totalPoints = 0;  //Declaring a variable named totalPoints to 0
         int lives = 3;        //Declaring a variable named lives to 3 
-        int money = 20000;    //Declaring a variable named money to 20000
+        int totalMoney = 0;   //Declaring a variable named totalMoney to 0
 
         /*Map<String, Integer> stats = new HashMap<>();
         stats.put("totalPoints", 0);
         stats.put("lives", 3);
-        stats.put("money", 20000);*/
+        stats.put("money", 20000);
+        stats.put("totalMoney", 0);*/
 
         Map<String, Integer> inventory = new HashMap<>(); //This map type String, String is connectedto the method getStore()
         inventory.put("Ship Repairs", 10000); //Declaring a map type String, String to "Repair Ship", "S-$10,000"
@@ -107,19 +114,18 @@ class SpaceRacer {
 
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
-                    //asteroidPoints[i] = (int)(Math.random() * 26) + 75;
-                    asteroidPoints[i] = (int)(Math.random() *(100-75) + 75); //verify this works like line 110
-                    isWormhole[i] = Math.random() < 0.30;
+                    asteroidPoints[i] = getRandom(10000,5000);
+                    isWormhole[i] = Math.random() < 0.25;
                 }
                 
                 ///hawn ross zubbi!!
-                while (currentAsteroid < numAsteroids && lives > 0 && money >= 0) {
+                while (currentAsteroid < numAsteroids && lives > 0 && totalMoney >= 0) {
                     System.out.println();
                     System.out.print("Press R to roll the dice and travel to a new asteroid: ");
                     char roll = Keyboard.readChar();
                     if (roll == 'R' | roll == 'r') { //Checks if user entered 'R' or 'r' in the variable choice
-                        int die1 = (int)(Math.random() * 6) + 1; //range in this one is 6 which equals to (max 6 - min 0) and starts from min == 1
-                        int die2 = (int)(Math.random() * 6) + 1;
+                        int die1 = getRandom(6,1); //range in this one is 6 which equals to (max 6 - min 0) and starts from min == 1
+                        int die2 = getRandom(6,1);
                         int diceResult = die1 + die2;
                         currentAsteroid += diceResult;
             
@@ -137,7 +143,7 @@ class SpaceRacer {
                                         currentPosition = position[0];
                                         System.out.println("Oh no! The wormhole led to the " + currentPosition + ". Oops you burned up..");
                                         lives--;
-                                        System.out.println("You have " + lives + " lives left.");
+                                        System.out.println("Lives left: " + lives);
                                         if (lives == 0) {
                                             System.out.println();
                                             System.out.println("GAME OVER!");
@@ -166,7 +172,7 @@ class SpaceRacer {
                                         currentPosition = position[11];
                                         System.out.println("Oh no! The wormhole led to an " + currentPosition + " location in the universe and you're lost forever...");
                                         lives--;
-                                        System.out.println("You have " + lives + " lives left.");
+                                        System.out.println("Lives left: " + lives);
                                         if (lives == 0) {
                                             System.out.println();
                                             System.out.println("GAME OVER!");
@@ -265,7 +271,7 @@ class SpaceRacer {
                                                     System.out.print("|\n");
                                                 }
                                                 else if (command.equals(command_lst[2])) {
-                                                    getStats(lives, money, currentPosition);
+                                                    getStats(lives, totalMoney, currentPosition);
                                                 }
                                                 else if (command.equals(command_lst[3])) {
                                                     getStore(inventory);
@@ -276,26 +282,44 @@ class SpaceRacer {
                                                     int storeChoice = Keyboard.readInt();
 
                                                     if (storeChoice == 1) {
-                                                        if (money <= 0) {
-                                                            // add lives system and money restore instead of game over
-                                                            System.out.println("You ran out of money and you can't repair your ship.");
-                                                            System.out.println("Lieutenant, its GAME OVER!");
+                                                        if (totalMoney < 10000) {
+                                                            lives--;
+                                                            System.out.println("You don't have enough money to buy this!");
+                                                            System.out.println("Therefore you lost a life.");
+                                                            System.out.println("In return..");
 
                                                             try {
-                                                                Thread.sleep(5000);
+                                                                Thread.sleep(3500);
                                                             } catch (InterruptedException e) {
                                                                 Thread.currentThread().interrupt();
                                                             }
-                                                            return;
+
+                                                            System.out.println("We have given you S-$20000 since you used up all of your money.");
+                                                            totalMoney += 20000;
+
+                                                            if (lives == 0) {
+                                                                System.out.println();
+                                                                System.out.println("BUT..");
+                                                                System.out.println("It looks like you lost all of your lives!!");
+                                                                System.out.println("Lives left: " + lives);
+                                                                System.out.println("GAME OVER, Lieutenant!");
+
+                                                                try {
+                                                                    Thread.sleep(5000);
+                                                                } catch (InterruptedException e) {
+                                                                    Thread.currentThread().interrupt();
+                                                                }
+                                                                return;
+                                                            }
                                                         }
                                                         else {
                                                             //negates the cost of ship repairs from current money
-                                                            money -= inventory.get("Ship Repairs");
+                                                            totalMoney -= inventory.get("Ship Repairs");
                                                             repairedShip = true;
 
                                                             System.out.println();
                                                             System.out.println("Lieutenant, we have just repaired your ship.");
-                                                            System.out.printf("That costed you %d Starfleet Dollars!", inventory.get("Ship Repairs"));
+                                                            System.out.println("That costed you " + inventory.get("Ship Repairs") + " Starfleet Dollars!");
 
                                                             try {
                                                                 Thread.sleep(2500);
@@ -304,7 +328,7 @@ class SpaceRacer {
                                                             }
 
                                                             System.out.println();
-                                                            System.out.printf("\nYou have %d Starfleet Dollars left!", money);
+                                                            System.out.println("You have " + totalMoney + " Starfleet Dollars left!");
                                                             System.out.println();
 
                                                             System.out.println("Lieutenant, now you can keep going on your journey!");
@@ -319,8 +343,8 @@ class SpaceRacer {
                                                     }
                                                     else {
                                                         System.out.println();
-                                                        System.out.println("Invalid Option");
-                                                        System.out.println("Type 'Store' again to retry...");
+                                                        System.out.println("Invalid Option. Type 'Store' again to retry...");
+                                                        System.out.println();
                                                     }
                                                 }
                                             }
@@ -377,6 +401,7 @@ class SpaceRacer {
                             }
 
                             totalPoints += points;
+                            totalMoney += points;
                         }
                     }
                     else { //If user entered another letter than 'R' or 'r', the game will print an error message
