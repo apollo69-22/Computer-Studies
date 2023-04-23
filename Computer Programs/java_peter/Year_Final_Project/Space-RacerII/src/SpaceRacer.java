@@ -30,25 +30,25 @@ class SpaceRacer {
         if (totalMoney == 0) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     |   S-$" + totalMoney + "    |    " + currentPosition + "     |");
+            System.out.printf(" |     %d     |   S-$%d    |    %s     |\n", lives, totalMoney, currentPosition);
             System.out.println(" |______________________________________|");
         }
         else if (totalMoney >= 1000 && totalMoney <= 9999) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + "   |    " + currentPosition + "     |");
+            System.out.printf(" |     %d     | S-$%d   |    %s     |\n", lives, totalMoney, currentPosition);
             System.out.println(" |______________________________________|");
         }
         else if (totalMoney >= 10000 && totalMoney <= 99999) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + "  |    " + currentPosition + "     |");
+            System.out.printf(" |     %d     | S-$%d  |    %s     |\n", lives, totalMoney, currentPosition);
             System.out.println(" |______________________________________|");
         }
         else if (totalMoney >= 100000 && totalMoney <= 999999) {
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
-            System.out.println(" |     " +  lives  + "     | S-$" + totalMoney + " |    " + currentPosition + "    |");
+            System.out.printf(" |     %d     | S-$%d |    %s    |\n", lives, totalMoney, currentPosition);
             System.out.println(" |______________________________________|");
         }
     }
@@ -81,7 +81,7 @@ class SpaceRacer {
         //boolean enteredWormhole = false;
 
         int totalPoints = 0;  //Declaring a variable named totalPoints to 0
-        int totalMoney = 0;   //Declaring a variable named totalMoney to 0
+        int totalMoney = 10000;   //Declaring a variable named totalMoney to 0
         int lives = 3;        //Declaring a variable named lives to 3 
 
         /*Map<String, Integer> stats = new HashMap<>();
@@ -154,7 +154,6 @@ class SpaceRacer {
                                             } catch (InterruptedException e) {
                                                 Thread.currentThread().interrupt();
                                             }
-
                                             return;
                                         }
 
@@ -184,7 +183,6 @@ class SpaceRacer {
                                             } catch (InterruptedException e) {
                                                 Thread.currentThread().interrupt();
                                             }
-
                                             return;
                                         }
 
@@ -418,6 +416,7 @@ class SpaceRacer {
                     }            
                 }
 
+                //Win Game method
                 if (currentAsteroid >= numAsteroids) { //If the currentAsteroid the user is on is greater or equal to the numAsteroids(100) then the user is done from game and congratulating message is outputted
                     System.out.println();
                     System.out.println("CONGRATULATIONS!");
@@ -429,7 +428,6 @@ class SpaceRacer {
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
-
                     return;
                 }
             }
@@ -486,7 +484,7 @@ class SpaceRacer {
             System.out.println("|                                                                                                                  |");
             System.out.println("|Starting Stats:                                                                                                   |");
             System.out.println("|                  - 3 Lives                                                                                       |");
-            System.out.println("|                  - S-$20,000 (Starfleet Dollars)                                                                 |");
+            System.out.println("|                  - S-$10,000 (Starfleet Dollars)                                                                 |");
             System.out.println("|                  - Starting Location: Earth                                                                      |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Tips:                                                                                                             |");
