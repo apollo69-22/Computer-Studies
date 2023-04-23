@@ -53,7 +53,7 @@ class SpaceRacer {
         }
     }
 
-    public static String getStore(Map<String, Integer> inventory) {
+    public static char getStore(Map<String, Integer> inventory) {
         System.out.println(" _______________________________________________________________________");
         System.out.println("|                                 STORE                                 |");
         System.out.println("|                                                                       |");
@@ -64,7 +64,7 @@ class SpaceRacer {
         System.out.println();
         System.out.println("Pick what you need Lieutenant.");
         System.out.print("Choice: ");
-        String storeChoice = Keyboard.readString();
+        char storeChoice = Keyboard.readChar();
 
         return storeChoice;
     }
@@ -78,7 +78,7 @@ class SpaceRacer {
     public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message) {
         if (!scenerio3) {
             System.out.println();
-            System.out.printf("You rolled a %d and arrived at a wormhole!", diceResult);
+            System.out.printf("You rolled a %d and arrived at a wormhole!\n", diceResult);
             
             System.out.printf("Oh no! The wormhole led to %s. %s\n", currentPosition, message);
             System.out.printf("Lives left: %d\n", lives);
@@ -99,25 +99,29 @@ class SpaceRacer {
         }
     }
 
-    public static void gameResult(boolean won, int totalPoints, String message) throws IOException, InterruptedException {
+    public static void gameResult(boolean won, int totalPoints, String message, int miliSec) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
         if (!won) {
             System.out.printf("GAME OVER!\n%s", message);
 
             try {
-                Thread.sleep(8000);
+                Thread.sleep(miliSec);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
         else {
-            System.out.println("CONGRATULATIONS!");
-            System.out.println("You have reached Europa!");
-            System.out.println("Your total score is: " + totalPoints + " points.");
+            if (message.equals("")) {
+                System.out.println("CONGRATULATIONS!");
+                System.out.println("You have reached Europa!");
+                System.out.println("Your total score is: " + totalPoints + " points.");
+            }
+            else
+                System.out.print(message);
 
             try {
-                Thread.sleep(7000);
+                Thread.sleep(miliSec);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -234,7 +238,7 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
-                                            gameResult(false, totalPoints, "");
+                                            gameResult(false, totalPoints, "", 0);
                                             return;
                                         }
                                         
@@ -256,7 +260,7 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
-                                            gameResult(false, totalPoints, "");
+                                            gameResult(false, totalPoints, "", 8000);
                                             return;
                                         }
 
@@ -284,7 +288,7 @@ class SpaceRacer {
                                         }
 
                                         else if (choice == 'n' || choice == 'N') {  //Checks if user entered 'n' or 'N', if so the below code will execute
-                                            gameResult(false, totalPoints, "\nYou did not repair your ship, therefore you couldn't continue the mission!");
+                                            gameResult(false, totalPoints, "\nYou did not repair your ship, therefore you couldn't continue the mission!", 8000);
                                             return;
                                         }
 
@@ -324,24 +328,20 @@ class SpaceRacer {
                                                     getStats(lives, totalMoney, currentPosition);
                                                 }
                                                 else if (command.equals(command_lst[3])) {
-                                                    String storeChoice = getStore(inventory);
+                                                    char storeChoice = getStore(inventory);
 
-                                                    if (storeChoice == "1") {  //Checks if user entered '1', if so the below code will execute
-                                                        if (totalMoney < 10000) {
+                                                    if (storeChoice == '1') {  //Checks if user entered '1', if so the below code will execute
+                                                        if (totalMoney < inventory.get("Ship Repairs")) {
                                                             lives--;
-                                                            System.out.println("You don't have enough money to buy this!");
-                                                            System.out.println("Therefore you lost a life.");
-                                                            System.out.println("In return..");
+                                                            generateMessage("You don't have enough money to buy this!", 0);
+                                                            generateMessage("Therefore you lost a life.", 0);
+                                                            generateMessage("In return..", 3500);
+                                                            generateMessage("We have given you S-$20000 since you used up all of your money.", 0);
+                                                            
+                                                            //found your error duqqumlow ;) lmao if you put totalMoney += 20000 it'll add it to what you got not assign 20000
+                                                            totalMoney = 20000;
 
-                                                            try {
-                                                                Thread.sleep(3500);
-                                                            } catch (InterruptedException e) {
-                                                                Thread.currentThread().interrupt();
-                                                            }
-
-                                                            System.out.println("We have given you S-$20000 since you used up all of your money.");
-                                                            totalMoney += 20000;
-
+                                                            ///this needs fixing, if you run out of lives you shouldn't give money just tell him not enough lives game lost
                                                             if (lives == 0) {
                                                                 System.out.println();
                                                                 System.out.println("BUT..");
@@ -362,28 +362,10 @@ class SpaceRacer {
                                                             totalMoney -= inventory.get("Ship Repairs");
                                                             repairedShip = true;
 
-                                                            System.out.println();
-                                                            System.out.println("Lieutenant, we have just repaired your ship.");
-                                                            System.out.println("That costed you " + inventory.get("Ship Repairs") + " Starfleet Dollars!");
-
-                                                            try {
-                                                                Thread.sleep(2500);
-                                                            } catch (InterruptedException e) {
-                                                                Thread.currentThread().interrupt();
-                                                            }
-
-                                                            System.out.println();
-                                                            System.out.println("You have " + totalMoney + " Starfleet Dollars left!");
-                                                            System.out.println();
-
-                                                            System.out.println("Lieutenant, now you can keep going on your journey!");
-                                                            System.out.println("Good Luck and don't DIE!");
-
-                                                            try {
-                                                                Thread.sleep(5000);
-                                                            } catch (InterruptedException e) {
-                                                                Thread.currentThread().interrupt();
-                                                            }
+                                                            generateMessage("\nLieutenant, we have just repaired your ship.", 0);
+                                                            generateMessage(new String("That costed you " + inventory.get("Ship Repairs") + " Starfleet Dollars!"), 2500);
+                                                            generateMessage(new String("\nYou have " + totalMoney + " Starfleet Dollars left!"), 0);
+                                                            generateMessage("Lieutenant, now you can keep going on your journey!\nGood Luck and don't DIE!", 5000);
                                                         }
                                                     }
                                                     else {  //If user entered another number than '1', the game will print an error message
@@ -412,6 +394,8 @@ class SpaceRacer {
                                         generateMessage("Let's hope you managed to get as many points as you could then, Lieutenant!", 2000);
                                         generateMessage("Because...", 2000);
                                         generateMessage(new String("Your total score is: " + totalPoints + " points."), 3000);
+
+                                        gameResult(true, totalPoints, "CONGRATULATIONS Again Lieutenant, Excellent Job!", 7000);
                                     return;
                             }
                         }
@@ -435,7 +419,7 @@ class SpaceRacer {
 
                 //Win Game method
                 if (currentAsteroid >= numAsteroids) { //If the currentAsteroid the user is on is greater or equal to the numAsteroids(100) then the user is done from game and congratulating message is outputted
-                    gameResult(true, totalPoints, "");
+                    gameResult(true, totalPoints, "", 7000);
                     return;
                 }
             }
