@@ -75,13 +75,17 @@ class SpaceRacer {
         return random;
     } 
 
-    public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message) {
+    public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message, String customMessage) {
         if (!scenerio3) {
-            System.out.println();
-            System.out.printf("You rolled a %d and arrived at a wormhole!\n", diceResult);
-            
-            System.out.printf("Oh no! The wormhole led to %s. %s\n", currentPosition, message);
-            System.out.printf("Lives left: %d\n", lives);
+            if (customMessage.equals("")) {
+                System.out.println();
+                System.out.printf("You rolled a %d and arrived at a wormhole!\n", diceResult);
+                
+                System.out.printf("Oh no! The wormhole led to %s%s\n", currentPosition, message);
+                System.out.printf("Lives left: %d\n", lives);
+            }
+            else
+                System.out.printf("\n%s", customMessage);
         }
         else {
             System.out.println();
@@ -148,7 +152,7 @@ class SpaceRacer {
         //boolean enteredWormhole = false;
 
         int totalPoints = 0;  //Declaring a variable named totalPoints to 0
-        int totalMoney = 10000;   //Declaring a variable named totalMoney to 0
+        int totalMoney = 10000;   //Declaring a variable named totalMoney to 10000
         int lives = 3;        //Declaring a variable named lives to 3 
 
         /*Map<String, Integer> stats = new HashMap<>();
@@ -158,7 +162,7 @@ class SpaceRacer {
         stats.put("totalMoney", 0);*/
 
         Map<String, Integer> inventory = new HashMap<>(); //This map type String, String is connected to the method getStore()
-        inventory.put("Ship Repairs", 10000); //Declaring a map type String, String to "Repair Ship", "S-$10,000"
+        inventory.put("Ship Repairs", 15000); //Declaring a map type String, String to "Repair Ship", "S-$15,000"
 
         String[] position = {"Sun", "Mercury", "Venus", "Earth", "Mars", "Europa", 
         "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto", "UNKNOWN"}; //Declaring an array named position and it stores all of the positions used in this game
@@ -182,7 +186,7 @@ class SpaceRacer {
 
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
-                    asteroidPoints[i] = getRandom(10000,5000);
+                    asteroidPoints[i] = getRandom(5000,2500);
                     isWormhole[i] = Math.random() < 0.25;
                 }
                 
@@ -212,7 +216,7 @@ class SpaceRacer {
                                         currentPosition = position[0];
                                         lives--;
                                         
-                                        getWormholeScenario(false, diceResult, currentPosition, lives, "Oops you burned up..");
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, ". Oops you burned up..", "");
 
                                         if (lives != 0) {
                                             try {
@@ -222,7 +226,7 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
-                                            gameResult(false, totalPoints, "", 0);
+                                            gameResult(false, totalPoints, "You lost all of your lives!", 5000);
                                             return;
                                         }
                                         
@@ -234,7 +238,7 @@ class SpaceRacer {
                                         currentPosition = position[11];
                                         lives--;
 
-                                        getWormholeScenario(false, diceResult, currentPosition, lives, "location in the universe and you're lost");
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, " location in the universe and you're lost!", "");
 
                                         if (lives != 0) {
                                             try {
@@ -244,7 +248,7 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
-                                            gameResult(false, totalPoints, "", 8000);
+                                            gameResult(false, totalPoints, "You lost all of your lives!", 8000);
                                             return;
                                         }
 
@@ -253,7 +257,7 @@ class SpaceRacer {
 
                                 //Case 3 will hit the user's ship with a meteoroid, therefore they'll have to go back to Earth to fix the ship.
                                 case "3":    
-                                    getWormholeScenario(true, diceResult, currentPosition, lives, currentPosition);
+                                    getWormholeScenario(true, diceResult, currentPosition, lives, currentPosition, "");
 
                                     choice = ' ';
                                     while (choice != 'n' && choice != 'N' && choice != 'y' && choice != 'Y') {  //This while loop will run again if the user enters any letter other than 'n', 'N', 'y', 'Y'
@@ -284,7 +288,7 @@ class SpaceRacer {
 
                                             generateMessage(new String("Welcome back to " + currentPosition + " Lieutenant!"), 0);
                                             generateMessage("We noticed your ship needs a few repairs.", 0);
-                                            generateMessage("\nHINT: Type 'Help' for a list of commands.", 0);
+                                            generateMessage("\nHINT: Type 'help' for a list of commands.", 0);
 
                                             /*System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
                                             System.out.println("We noticed your ship needs a few repairs.");
@@ -367,7 +371,7 @@ class SpaceRacer {
                                 case "4":
                                         currentPosition = position[5];
 
-                                        getWormholeScenario(false, diceResult, currentPosition, lives, new String("\nCongratulations this wormhole led straight to " + currentPosition));
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, "", new String("\nCongratulations you won!\nThis wormhole led straight to " + currentPosition));
 
                                         try {
                                             Thread.sleep(3000);
@@ -375,7 +379,7 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
-                                        generateMessage("Let's hope you managed to get as many points as you could then, Lieutenant!", 2000);
+                                        generateMessage("\nLet's hope you managed to get as many points as you could then, Lieutenant!", 2000);
                                         generateMessage("Because...", 2000);
                                         generateMessage(new String("Your total score is: " + totalPoints + " points."), 3000);
 
@@ -385,16 +389,9 @@ class SpaceRacer {
                         }
                         else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
                             int points = asteroidPoints[currentAsteroid-1];
-                            System.out.println();
-                            System.out.println("You rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + ".");
-                            System.out.println("This asteroid is worth " + points + " points!");
-
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                Thread.currentThread().interrupt();
-                            }
-
+                            generateMessage(new String("\nYou rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + "."), 0);
+                            generateMessage(new String("This asteroid is worth " + points + " points!"), 1000);
+                            
                             totalPoints += points;  //Adds all points and stores them in the variable totalPoints
                             totalMoney += points;   //Adds all points and stores them in the variable totalMoney
                         }
