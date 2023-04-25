@@ -27,7 +27,7 @@ class SpaceRacer {
 
     /*****************Game Methods & Functions******************/
     public static void getStats(int lives, int totalMoney, String currentPosition) {
-        if (totalMoney == 0) {
+        if (totalMoney == 0) {  //This if statement checks how much money the sure has and outputs the table required
             System.out.println("  ______________________________________");
             System.out.println(" |   Lives   |   Money   |   Location   |");
             System.out.printf(" |     %d     |   S-$%d    |    %s     |\n", lives, totalMoney, currentPosition);
@@ -53,9 +53,9 @@ class SpaceRacer {
         }
     }
 
-    public static char getStore(Map<String, Integer> inventory) {
+    public static char getWorkshop(Map<String, Integer> inventory) {
         System.out.println(" _______________________________________________________________________");
-        System.out.println("|                                 STORE                                 |");
+        System.out.println("|                             NASA Workshop                             |");
         System.out.println("|                                                                       |");
         System.out.printf("|                1. Repair Ship:               S-$%d                 |\n", inventory.get("Ship Repairs"));
         System.out.println("|                                                                       |");
@@ -68,32 +68,32 @@ class SpaceRacer {
 
         return storeChoice;
     }
-    /***********************************************************/
 
     public static int getRandom(int max, int min) {
-        int random = (int)(Math.random() * (max - min) + min);
+        int random = (int)(Math.random() * (max - min) + min);  //Generates a random number depending on the number assigned to the variable
         return random;
     } 
 
     public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message, String customMessage) {
-        if (!scenerio3) {
-            if (customMessage.equals("")) {
+        if (!scenerio3) {  //This if statement will check whether the generated scenario was 3, if so the below code will be executed
+            if (customMessage.equals("")) {  //If customMessage was used then the below code will execute
                 System.out.println();
                 System.out.printf("You rolled a %d and arrived at a wormhole!\n", diceResult);
                 
                 System.out.printf("Oh no! The wormhole led to %s%s\n", currentPosition, message);
                 System.out.printf("Lives left: %d\n", lives);
             }
-            else
+            else  //If the above if statement does not execute then the below code will
                 System.out.printf("\n%s", customMessage);
         }
-        else {
+        else {  //If the above if statement does not execute then the below code will instead
             System.out.println();
             System.out.println("You rolled a " + diceResult + " and you got hit by a meteoroid!");
             System.out.println("You have to go back to Earth to repair your ship or else you will die and LOSE!!");
         }
     }
     
+    //This method will generate a message depending on what it was assigned to during coding
     public static void generateMessage(String message, int miliSec) {
         System.out.println(message);
         try {
@@ -106,7 +106,7 @@ class SpaceRacer {
     public static void gameResult(boolean won, int totalPoints, String message, int miliSec) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
-        if (!won) {
+        if (!won) {  //This if statement will check whether the user has not won, if so the below code will be executed
             System.out.printf("GAME OVER!\n%s", message);
 
             try {
@@ -115,13 +115,13 @@ class SpaceRacer {
                 Thread.currentThread().interrupt();
             }
         }
-        else {
-            if (message.equals("")) {
+        else {  //If the aboe if statement does not execute then the below code will
+            if (message.equals("")) {  //If Message was used then the below code will execute
                 System.out.println("CONGRATULATIONS!");
                 System.out.println("You have reached Europa!");
                 System.out.println("Your total score is: " + totalPoints + " points.");
             }
-            else
+            else //If the above if statement does not execute then the below code will
                 System.out.print(message);
 
             try {
@@ -139,7 +139,9 @@ class SpaceRacer {
         }
         System.out.print("|\n");
     }
-    /************************Game Method************************/
+    /***********************************************************/
+    
+    /************************Main Game Method************************/
     public static void game() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         
@@ -149,17 +151,10 @@ class SpaceRacer {
 
         int[] asteroidPoints = new int[numAsteroids];        //Declaring an array named asteroidPoints to the number of asteroids
         boolean[] isWormhole = new boolean[numAsteroids];    //Declaring an array named isWormhole to the number of asteroids
-        //boolean enteredWormhole = false;
 
         int totalPoints = 0;  //Declaring a variable named totalPoints to 0
         int totalMoney = 10000;   //Declaring a variable named totalMoney to 10000
-        int lives = 3;        //Declaring a variable named lives to 3 
-
-        /*Map<String, Integer> stats = new HashMap<>();
-        stats.put("totalPoints", 0);
-        stats.put("lives", 3);
-        stats.put("money", 20000);
-        stats.put("totalMoney", 0);*/
+        int lives = 3;        //Declaring a variable named lives to 3
 
         Map<String, Integer> inventory = new HashMap<>(); //This map type String, String is connected to the method getStore()
         inventory.put("Ship Repairs", 15000); //Declaring a map type String, String to "Repair Ship", "S-$15,000"
@@ -186,8 +181,8 @@ class SpaceRacer {
 
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
-                    asteroidPoints[i] = getRandom(5000,2500);
-                    isWormhole[i] = Math.random() < 0.25;
+                    asteroidPoints[i] = getRandom(2500,500);
+                    isWormhole[i] = Math.random() < 0.20;
                 }
                 
                 while (currentAsteroid < numAsteroids && lives > 0 && totalMoney >= 0) {  //This while loop will keep running until currentAsteroids value is < numAsteroids, lives value is > 0 and totalMoney >= 0
@@ -198,8 +193,8 @@ class SpaceRacer {
                     if (roll != 'R' && roll != 'r') //If user entered another letter than 'R' or 'r', the game will print an error message
                         generateMessage("Error. Press R to roll the dice and travel to a new asteroid.\n", 2000);
                     else { //Checks if user entered 'R' or 'r' in the variable choice
-                        int die1 = getRandom(6,1); //range in this one is 6 which equals to (max 6 - min 0) and starts from min == 1
-                        int die2 = getRandom(6,1);
+                        int die1 = getRandom(6,1);  //This variable uses the method getRandom() and the range in it is 6 which equals to (max 6 - min 0) and starts from min == 1
+                        int die2 = getRandom(6,1);  //This variable uses the method getRandom() and the range in it is 6 which equals to (max 6 - min 0) and starts from min == 1
                         int diceResult = die1 + die2;
                         currentAsteroid += diceResult;
             
@@ -208,7 +203,7 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 4) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
+                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 1) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
                         if (isWormhole[currentAsteroid-1]) {  //This if statement checks if the currentAsteroid is a Wormhole, if so it will execute
                             switch (wormhole_scenerio) {
                                 //Case 1 will send the user next to the Sun, therefore they'll die and lose a life. If lives == 0 then it's Game Over
@@ -216,6 +211,7 @@ class SpaceRacer {
                                         currentPosition = position[0];
                                         lives--;
                                         
+                                        //The below code uses the getWormholeScenario() method
                                         getWormholeScenario(false, diceResult, currentPosition, lives, ". Oops you burned up..", "");
 
                                         if (lives != 0) {
@@ -226,11 +222,10 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
+                                            //The below code uses the getResults() method
                                             gameResult(false, totalPoints, "You lost all of your lives!", 5000);
                                             return;
                                         }
-                                        
-                                        //enteredWormhole = true;
                                 break;
 
                                 //Case 2 will send the user in an Unknown location in the Universe, therefore they'll die and lose a life. If lives == 0 then it's Game Over
@@ -238,6 +233,7 @@ class SpaceRacer {
                                         currentPosition = position[11];
                                         lives--;
 
+                                        //The below code uses the getWormholeScenario() method
                                         getWormholeScenario(false, diceResult, currentPosition, lives, " location in the universe and you're lost!", "");
 
                                         if (lives != 0) {
@@ -248,15 +244,15 @@ class SpaceRacer {
                                             }
                                         }
                                         else {
+                                            //The below code uses the getResult() method
                                             gameResult(false, totalPoints, "You lost all of your lives!", 8000);
                                             return;
                                         }
-
-                                        //enteredWormhole = true;
                                 break;
 
                                 //Case 3 will hit the user's ship with a meteoroid, therefore they'll have to go back to Earth to fix the ship.
-                                case "3":    
+                                case "1":    
+                                    //The below code uses the getWormholeScenario() method
                                     getWormholeScenario(true, diceResult, currentPosition, lives, currentPosition, "");
 
                                     choice = ' ';
@@ -276,6 +272,7 @@ class SpaceRacer {
                                         }
 
                                         else if (choice == 'n' || choice == 'N') {  //Checks if user entered 'n' or 'N', if so the below code will execute
+                                            //The below code uses the getResult() method
                                             gameResult(false, totalPoints, "\nYou did not repair your ship, therefore you couldn't continue the mission!", 8000);
                                             return;
                                         }
@@ -286,16 +283,12 @@ class SpaceRacer {
                                             
                                             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
+                                            //The below code uses the generateMessage() method
                                             generateMessage(new String("Welcome back to " + currentPosition + " Lieutenant!"), 0);
                                             generateMessage("We noticed your ship needs a few repairs.", 0);
                                             generateMessage("\nHINT: Type 'help' for a list of commands.", 0);
 
-                                            /*System.out.println("Welcome back to " + currentPosition + ", Lieutenant!");
-                                            System.out.println("We noticed your ship needs a few repairs.");
-                                            System.out.println();
-                                            System.out.print("HINT: Type 'Help' for a list of commands.");*/
-
-                                            String command_lst[] = {"leave Earth", "help", "stats", "store"};
+                                            String command_lst[] = {"leave Earth", "help", "stats", "nasa workshop"};
                                             
                                             String command = "";
                                             while(!command.equals(command_lst[0]) || !repairedShip) { //This while loop will run until user enters "Leave Earth" and ship must be repaired
@@ -310,29 +303,19 @@ class SpaceRacer {
                                                         generateMessage("\nCan't Leave Earth, your ship is still broken ;)", 5000);
                                                 }
                                                 else if (command.equals(command_lst[1])) {
-                                                    getCommandLst(command_lst);
+                                                    getCommandLst(command_lst);  //This code uses the getCommadLst() method
                                                 }
                                                 else if (command.equals(command_lst[2])) {
-                                                    getStats(lives, totalMoney, currentPosition);
+                                                    getStats(lives, totalMoney, currentPosition);  //This code uses the getStats() method
                                                 }
                                                 else if (command.equals(command_lst[3])) {
-                                                    char storeChoice = getStore(inventory);
+                                                    char storeChoice = getWorkshop(inventory);  //This code uses the getWorkshop() method
 
                                                     if (storeChoice == '1') {  //Checks if user entered '1', if so the below code will execute
                                                         if (totalMoney < inventory.get("Ship Repairs")) {
                                                             lives--;
-                                                            generateMessage("You don't have enough money to buy this!", 0);
-                                                            generateMessage("Therefore you lost a life.", 0);
-                                                            generateMessage("In return..", 3500);
-                                                            generateMessage("We have given you S-$20000 since you used up all of your money.", 0);
-                                                            
-                                                            //found your error duqqumlow ;) lmao if you put totalMoney += 20000 it'll add it to what you got not assign 20000
-                                                            totalMoney = 20000;
-
-                                                            ///this needs fixing, if you run out of lives you shouldn't give money just tell him not enough lives game lost
                                                             if (lives == 0) {
                                                                 System.out.println();
-                                                                System.out.println("BUT..");
                                                                 System.out.println("It looks like you lost all of your lives!!");
                                                                 System.out.println("Lives left: " + lives);
                                                                 System.out.println("GAME OVER, Lieutenant!");
@@ -344,12 +327,23 @@ class SpaceRacer {
                                                                 }
                                                                 return;
                                                             }
+                                                            else {
+                                                                //The below code uses the generateMessage() method
+                                                                generateMessage("\nYou don't have enough money to buy this!", 0);
+                                                                generateMessage("Therefore you lost a life.", 0);
+                                                                System.out.println("Lives left: " + lives);
+                                                                generateMessage("", 3000);
+                                                                generateMessage("In return..", 2500);
+                                                                generateMessage("We have given you S-$10000 since you used up all of your money.", 0);
+                                                                totalMoney = 10000;
+                                                            }
                                                         }
                                                         else {
                                                             //Subtracts the cost of ship repairs from totalMoney(current money value)
                                                             totalMoney -= inventory.get("Ship Repairs");
                                                             repairedShip = true;
 
+                                                            //The below code uses the generateMessage() method
                                                             generateMessage("\nLieutenant, we have just repaired your ship.", 0);
                                                             generateMessage(new String("That costed you " + inventory.get("Ship Repairs") + " Starfleet Dollars!"), 2500);
                                                             generateMessage(new String("\nYou have " + totalMoney + " Starfleet Dollars left!"), 0);
@@ -371,7 +365,8 @@ class SpaceRacer {
                                 case "4":
                                         currentPosition = position[5];
 
-                                        getWormholeScenario(false, diceResult, currentPosition, lives, "", new String("\nCongratulations you won!\nThis wormhole led straight to " + currentPosition));
+                                        //The below code uses the getWormholeScenario() method
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, "", new String("Congratulations you won!\nThis wormhole led straight to " + currentPosition));
 
                                         try {
                                             Thread.sleep(3000);
@@ -379,16 +374,20 @@ class SpaceRacer {
                                             Thread.currentThread().interrupt();
                                         }
 
+                                        //The below code uses the generateMessage() method
                                         generateMessage("\nLet's hope you managed to get as many points as you could then, Lieutenant!", 2000);
                                         generateMessage("Because...", 2000);
                                         generateMessage(new String("Your total score is: " + totalPoints + " points."), 3000);
 
+                                        //The below code uses the gameResult() method
                                         gameResult(true, totalPoints, "CONGRATULATIONS Again Lieutenant, Excellent Job!", 7000);
                                     return;
                             }
                         }
                         else { //If challengeType isn't executed then user is told the dice result and that they moved to the next asteroid
                             int points = asteroidPoints[currentAsteroid-1];
+
+                            //The below code uses the generateMessage() method
                             generateMessage(new String("\nYou rolled a " + diceResult + " and arrived at asteroid " + currentAsteroid + "."), 0);
                             generateMessage(new String("This asteroid is worth " + points + " points!"), 1000);
                             
@@ -400,6 +399,7 @@ class SpaceRacer {
 
                 //Win Game method
                 if (currentAsteroid >= numAsteroids) { //If the currentAsteroid the user is on is greater or equal to the numAsteroids(100) then the user is done from game and congratulating message is outputted
+                    //The below code uses the gameResult() method
                     gameResult(true, totalPoints, "", 7000);
                     return;
                 }
@@ -438,13 +438,14 @@ class SpaceRacer {
             System.out.println("|                                               - near the Sun                                                     |");
             System.out.println("|                                               - in an Unknown Location in the universe                           |");
             System.out.println("|                                               - gettig hit by meteoroids                                         |");
-            System.out.println("|                                               - or making it to Europa                                           |");
+            System.out.println("|                                               - or making it to Europa!                                          |");
             System.out.println("|                                                                                                                  |");
+            System.out.println("|EXPLANATION:                                                                                                      |");
             System.out.println("|If you end up near the Sun you'll burn up and lose a life.                                                        |");
             System.out.println("|If you en up in an Unknown location in the universe you'll die and lose a life.                                   |");
-            System.out.println("|If you end up hit by a meteoroid you'll have to go back to Earth to repair your ship from a store,                |");
-            System.out.println("|otherwise you'll die and it's GAME OVER!!                                                                         |");
-            System.out.println("|If you repair your ship you'll be brought back to the last asteroid you were at before you got hit.               |");
+            System.out.println("|If you end up getting hit by a meteoroid you'll have to go back to Earth,                                         |");
+            System.out.println("|to repair your ship from the NASA Workshop otherwise you'll die and it's GAME OVER!!                              |");
+            System.out.println("|If you repair your ship you'll be brought back to the last asteroid you were at before.                           |");
             System.out.println("|                                                                                                                  |");
             System.out.println("|Starting Stats:                                                                                                   |");
             System.out.println("|                  - 3 Lives                                                                                       |");
@@ -454,7 +455,7 @@ class SpaceRacer {
             System.out.println("|Tips:                                                                                                             |");
             System.out.println("|      Try: 'Help' for a list of commands!                                                                         |");
             System.out.println("|            This will give you the options for you to see your:                                                   |");
-            System.out.println("|            Stats and a Store                                                                                     |");
+            System.out.println("|            Stats and the NASA Workshop                                                                           |");
             System.out.println("|__________________________________________________________________________________________________________________|");
             
             System.out.println();
@@ -475,7 +476,7 @@ class SpaceRacer {
     /************************************************************/
 
     
-    /******************main Method******************/
+    /************************main Method************************/
     public static void main(String[] args) throws IOException, InterruptedException {
         int choice = 0;
 
