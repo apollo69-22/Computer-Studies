@@ -182,7 +182,7 @@ class SpaceRacer {
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
                     asteroidPoints[i] = getRandom(2500,500);
-                    isWormhole[i] = Math.random() < 0.20;
+                    isWormhole[i] = Math.random() < 0.21;
                 }
                 
                 while (currentAsteroid < numAsteroids && lives > 0 && totalMoney >= 0) {  //This while loop will keep running until currentAsteroids value is < numAsteroids, lives value is > 0 and totalMoney >= 0
@@ -203,7 +203,7 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 1) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
+                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 4) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
                         if (isWormhole[currentAsteroid-1]) {  //This if statement checks if the currentAsteroid is a Wormhole, if so it will execute
                             switch (wormhole_scenerio) {
                                 //Case 1 will send the user next to the Sun, therefore they'll die and lose a life. If lives == 0 then it's Game Over
@@ -251,7 +251,7 @@ class SpaceRacer {
                                 break;
 
                                 //Case 3 will hit the user's ship with a meteoroid, therefore they'll have to go back to Earth to fix the ship.
-                                case "1":    
+                                case "3":    
                                     //The below code uses the getWormholeScenario() method
                                     getWormholeScenario(true, diceResult, currentPosition, lives, currentPosition, "");
 
@@ -366,7 +366,7 @@ class SpaceRacer {
                                         currentPosition = position[5];
 
                                         //The below code uses the getWormholeScenario() method
-                                        getWormholeScenario(false, diceResult, currentPosition, lives, "", new String("Congratulations you won!\nThis wormhole led straight to " + currentPosition));
+                                        getWormholeScenario(false, diceResult, currentPosition, lives, "", new String("Congratulations you won!\nThis wormhole led straight to " + currentPosition + "!"));
 
                                         try {
                                             Thread.sleep(3000);
