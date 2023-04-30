@@ -26,6 +26,7 @@ class SpaceRacer {
     /************************************************************/
 
     /*****************Game Methods & Functions******************/
+    //This method is used to display the users' stats
     public static void getStats(int lives, int totalMoney, String currentPosition) {
         if (totalMoney == 0) {  //This if statement checks how much money the sure has and outputs the table required
             System.out.println("  ______________________________________");
@@ -53,6 +54,7 @@ class SpaceRacer {
         }
     }
 
+    //This method is used to assign the different values of different stuff available in the NASA Workshop
     public static char getWorkshop(Map<String, Integer> inventory) {
         System.out.println(" _______________________________________________________________________");
         System.out.println("|                             NASA Workshop                             |");
@@ -69,13 +71,15 @@ class SpaceRacer {
         return storeChoice;
     }
 
+    //This method is used to generate a random number
     public static int getRandom(int max, int min) {
         int random = (int)(Math.random() * (max - min) + min);  //Generates a random number depending on the number assigned to the variable
         return random;
     } 
 
-    public static void getWormholeScenario(boolean scenerio3, int diceResult, String currentPosition, int lives, String message, String customMessage) {
-        if (!scenerio3) {  //This if statement will check whether the generated scenario was 3, if so the below code will be executed
+    //This method will print out a message depending on the Wormhole Sceneario generated
+    public static void getWormholeScenario(boolean scenario3, int diceResult, String currentPosition, int lives, String message, String customMessage) {
+        if (!scenario3) {  //This if statement will check whether the generated scenario was 3, if so the below code will be executed
             if (customMessage.equals("")) {  //If customMessage was used then the below code will execute
                 System.out.println();
                 System.out.printf("You rolled a %d and arrived at a wormhole!\n", diceResult);
@@ -103,6 +107,7 @@ class SpaceRacer {
         }
     }
 
+    //This method will execute whenever the user doesn't win, wins or to show them their points
     public static void gameResult(boolean won, int totalPoints, String message, int miliSec) throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 
@@ -132,6 +137,7 @@ class SpaceRacer {
         }
     }
 
+    //This method will have a for loop running until all variables in command_lst[i] will be displayed
     public static void getCommandLst(String[] command_lst) {
         System.out.print("\n| ");
         for (int i = 0; i < command_lst.length; i++) {
@@ -203,9 +209,9 @@ class SpaceRacer {
                             currentAsteroid = numAsteroids;
                         }
 
-                        String wormhole_scenerio = Integer.toString(((int)(Math.random() * 4) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
+                        String wormhole_scenario = Integer.toString(((int)(Math.random() * 4) + 1)); //Variable challengeType is created to randomize 4 chances of different types of challenges
                         if (isWormhole[currentAsteroid-1]) {  //This if statement checks if the currentAsteroid is a Wormhole, if so it will execute
-                            switch (wormhole_scenerio) {
+                            switch (wormhole_scenario) {
                                 //Case 1 will send the user next to the Sun, therefore they'll die and lose a life. If lives == 0 then it's Game Over
                                 case "1":
                                         currentPosition = position[0];
