@@ -120,7 +120,7 @@ class SpaceRacer {
                 Thread.currentThread().interrupt();
             }
         }
-        else {  //If the aboe if statement does not execute then the below code will
+        else {  //If the above if statement does not execute then the below code will
             if (message.equals("")) {  //If Message was used then the below code will execute
                 System.out.println("CONGRATULATIONS!");
                 System.out.println("You have reached Europa!");
@@ -188,7 +188,7 @@ class SpaceRacer {
                 //Randomizing Asteroid & Wormhole Chances
                 for (int i = 0; i < numAsteroids; i++) {
                     asteroidPoints[i] = getRandom(2500,500);
-                    isWormhole[i] = Math.random() < 0.21;
+                    isWormhole[i] = Math.random() < 0.22;
                 }
                 
                 while (currentAsteroid < numAsteroids && lives > 0 && totalMoney >= 0) {  //This while loop will keep running until currentAsteroids value is < numAsteroids, lives value is > 0 and totalMoney >= 0
@@ -341,7 +341,7 @@ class SpaceRacer {
                                                                 generateMessage("", 3000);
                                                                 generateMessage("In return..", 2500);
                                                                 generateMessage("We have given you S-$10000 since you used up all of your money.", 0);
-                                                                totalMoney = 10000;
+                                                                totalMoney += 10000;
                                                             }
                                                         }
                                                         else {
